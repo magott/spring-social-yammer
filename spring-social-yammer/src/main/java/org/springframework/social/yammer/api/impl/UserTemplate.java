@@ -17,6 +17,7 @@ package org.springframework.social.yammer.api.impl;
 
 import java.net.URI;
 
+import org.springframework.social.yammer.api.UserOperations;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -24,7 +25,7 @@ import org.springframework.web.client.RestTemplate;
  * @author Morten Andersen-Gott
  *
  */
-public class UserTemplate extends AbstractYammerOperations{
+public class UserTemplate extends AbstractYammerOperations implements UserOperations{
 
 	private RestTemplate restTemplate;
 	

@@ -13,28 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api;
+
+import org.springframework.social.yammer.api.impl.YammerProfile;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public class YammerProfile {
+public interface UserOperations {
 
-	private long id;
-	
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-	
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
-	
+	YammerProfile getUser(long id);
+
 }
