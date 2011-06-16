@@ -22,6 +22,21 @@ package org.springframework.social.yammer.api.impl;
 public class YammerProfile {
 
 	private long id;
+	private Stats stats;
+	
+	/**
+	 * @return the stats
+	 */
+	public Stats getStats() {
+		return stats;
+	}
+	
+	/**
+	 * @param stats the stats to set
+	 */
+	public void setStats(Stats stats) {
+		this.stats = stats;
+	}
 	
 	/**
 	 * @return the id
@@ -35,6 +50,39 @@ public class YammerProfile {
 	 */
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public static class Stats {
+
+		private long followers;
+		private long following;
+		private long updates;
+		
+		
+
+		public void setFollowers(long followers) {
+			this.followers = followers;
+		}
+
+		public long getFollowers() {
+			return followers;
+		}
+
+		public long getFollowing() {
+			return following;
+		}
+
+		public void setFollowing(long following) {
+			this.following = following;
+		}
+
+		public long getUpdates() {
+			return updates;
+		}
+
+		public void setUpdates(long updates) {
+			this.updates = updates;
+		}
 	}
 	
 }

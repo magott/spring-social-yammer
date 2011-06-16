@@ -18,6 +18,7 @@ package org.springframework.social.yammer.api.impl;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.springframework.social.yammer.api.impl.YammerProfile.Stats;
 
 /**
  * @author Morten Andersen-Gott
@@ -27,6 +28,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 public class YammerProfileMixin {
 	@JsonCreator
 	YammerProfileMixin(
-			@JsonProperty("id") long id 
+			@JsonProperty("id") long id, 
+			@JsonProperty("stats") Stats stats
 	){}
 }
