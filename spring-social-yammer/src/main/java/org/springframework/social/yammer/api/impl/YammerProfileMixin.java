@@ -29,6 +29,7 @@ public class YammerProfileMixin {
 	@JsonCreator
 	YammerProfileMixin(
 			@JsonProperty("id") long id, 
+			@JsonProperty("mugshot_url") String mugshotUrl,
 			@JsonProperty("stats") Stats stats
 	){}
 }

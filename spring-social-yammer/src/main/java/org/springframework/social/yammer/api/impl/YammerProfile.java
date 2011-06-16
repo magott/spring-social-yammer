@@ -15,50 +15,59 @@
  */
 package org.springframework.social.yammer.api.impl;
 
+
 /**
  * @author Morten Andersen-Gott
  *
  */
 public class YammerProfile {
 
+	/**
+	 * @param id
+	 * @param mugshotUrl
+	 * @param stats
+	 */
+	public YammerProfile(long id, String mugshotUrl, Stats stats) {
+		super();
+		this.id = id;
+		this.mugshotUrl = mugshotUrl;
+		this.stats = stats;
+	}
+
 	private long id;
+	private String mugshotUrl;
 	private Stats stats;
 	
-	/**
-	 * @return the stats
-	 */
+	
+	
+	public String getMugshotUrl() {
+		return mugshotUrl;
+	}
+	
+	public void setMugshotUrl(String mugshotUrl) {
+		this.mugshotUrl = mugshotUrl;
+	}
+	
 	public Stats getStats() {
 		return stats;
 	}
-	
-	/**
-	 * @param stats the stats to set
-	 */
+
 	public void setStats(Stats stats) {
 		this.stats = stats;
 	}
 	
-	/**
-	 * @return the id
-	 */
 	public long getId() {
 		return id;
 	}
-	
-	/**
-	 * @param id the id to set
-	 */
+
 	public void setId(long id) {
 		this.id = id;
 	}
 	
 	public static class Stats {
-
 		private long followers;
 		private long following;
 		private long updates;
-		
-		
 
 		public void setFollowers(long followers) {
 			this.followers = followers;

@@ -31,6 +31,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		assertThat(yProfile.getStats().getFollowers(), equalTo(1L));
 		assertThat(yProfile.getStats().getFollowing(), equalTo(1L));
 		assertThat(yProfile.getStats().getUpdates(), equalTo(1L));
+		assertThat(yProfile.getMugshotUrl(), notNullValue());
 	}
 	
 	

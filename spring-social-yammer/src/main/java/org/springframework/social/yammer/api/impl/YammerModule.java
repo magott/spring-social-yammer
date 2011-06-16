@@ -30,7 +30,7 @@ public class YammerModule extends SimpleModule {
 	 * @param version
 	 */
 	public YammerModule() {
-		super("Yammer Module", new Version(1, 0, 0, null));
+		super("YammerModule", new Version(1, 0, 0, null));
 	}
 
 	@Override
