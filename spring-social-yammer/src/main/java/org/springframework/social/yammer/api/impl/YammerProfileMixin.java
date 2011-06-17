@@ -15,9 +15,12 @@
  */
 package org.springframework.social.yammer.api.impl;
 
+import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.springframework.social.yammer.api.impl.YammerProfile.School;
 import org.springframework.social.yammer.api.impl.YammerProfile.Stats;
 
 /**
@@ -30,6 +33,16 @@ public class YammerProfileMixin {
 	YammerProfileMixin(
 			@JsonProperty("id") long id, 
 			@JsonProperty("mugshot_url") String mugshotUrl,
-			@JsonProperty("stats") Stats stats
+			@JsonProperty("stats") Stats stats,
+			@JsonProperty("type") String type,
+			@JsonProperty("web_url") String url,
+			@JsonProperty("full_name") String fullName,
+			@JsonProperty("name") String name,
+			@JsonProperty("admin") boolean admin,
+			@JsonProperty("expertise") String expertise,
+			@JsonProperty("summary") String summary,
+			@JsonProperty("job_title") String jobTitle,
+			@JsonProperty("schools") List<School> schools,
+			@JsonProperty("external_urls") List<String> externalUrls
 	){}
 }

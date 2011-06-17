@@ -1,6 +1,8 @@
 package org.springframework.social.yammer.api.impl;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
@@ -32,6 +34,17 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		assertThat(yProfile.getStats().getFollowing(), equalTo(1L));
 		assertThat(yProfile.getStats().getUpdates(), equalTo(1L));
 		assertThat(yProfile.getMugshotUrl(), notNullValue());
+		assertThat(yProfile.getExpertise(), equalTo("Socializing"));
+		assertThat(yProfile.getSummary(), equalTo("A summary"));
+		assertThat(yProfile.getType(), notNullValue());
+		assertThat(yProfile.getFullName(), notNullValue());
+		assertThat(yProfile.getName(), notNullValue());
+		assertThat(yProfile.getUrl(), notNullValue());
+		assertThat(yProfile.getSchools(), notNullValue());
+		assertThat(yProfile.getSchools().isEmpty(), is(false));
+		assertThat(yProfile.getExternalUrls(), notNullValue());
+		assertThat(yProfile.getExternalUrls().isEmpty(), is(false));
+		assertThat(yProfile.getJobTitle(), equalTo("Social animal"));
 	}
 	
 	

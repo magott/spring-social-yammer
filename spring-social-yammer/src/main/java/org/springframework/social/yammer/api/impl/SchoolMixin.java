@@ -15,30 +15,22 @@
  */
 package org.springframework.social.yammer.api.impl;
 
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.module.SimpleModule;
-import org.springframework.social.yammer.api.impl.YammerProfile.School;
-import org.springframework.social.yammer.api.impl.YammerProfile.Stats;
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public class YammerModule extends SimpleModule {
-
-	/**
-	 * @param name
-	 * @param version
-	 */
-	public YammerModule() {
-		super("YammerModule", new Version(1, 0, 0, null));
-	}
-
-	@Override
-	public void setupModule(SetupContext context) {
-		context.setMixInAnnotations(YammerProfile.class, YammerProfileMixin.class);
-		context.setMixInAnnotations(Stats.class, StatsMixin.class);
-		context.setMixInAnnotations(School.class, SchoolMixin.class);
-	}
-
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class SchoolMixin {
+		@JsonCreator
+		SchoolMixin(
+				@JsonProperty("school") String name, 
+				@JsonProperty("degree") String degreee,
+				@JsonProperty("description") String description, 
+				@JsonProperty("start_year") int startYear, 
+				@JsonProperty("end_year") int endYear 
+		){}
 }
