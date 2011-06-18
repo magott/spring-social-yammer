@@ -19,6 +19,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.social.yammer.api.UserOperations;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -63,7 +64,13 @@ public class UserTemplate extends AbstractYammerOperations implements UserOperat
 	
 	public YammerProfile getUserByEmail(String email){
 		URI uri = buildUri("users/by_email.json", "email", email);
-		return restTemplate.getForObject(uri, YammerProfile.class);
+		YammerProfileList profileList = restTemplate.getForObject(uri, YammerProfileList.class);
+
+		//Yammer returns user inside a Json array element
+		if(CollectionUtils.isEmpty(profileList)){
+			return null;
+		}
+		return profileList.get(0);
 	}
 	
 }

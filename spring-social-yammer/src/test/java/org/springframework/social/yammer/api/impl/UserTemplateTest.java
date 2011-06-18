@@ -38,7 +38,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/by_email.json?email="+encodedEmail))
 		.andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
+		.andRespond(withResponse(new ClassPathResource("yammer-users.json", getClass()), responseHeaders));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUserByEmail(email);
 		assertYammerProfile(yProfile);
 	}
