@@ -58,7 +58,6 @@ public class YammerProfile {
 	}
 	
 	
-	
 	/**
 	 * @return the schools
 	 */

@@ -19,6 +19,8 @@ import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.social.yammer.api.impl.YammerProfile.School;
 import org.springframework.social.yammer.api.impl.YammerProfile.Stats;
+import org.springframework.social.yammer.api.impl.YammerProfileMixin.SchoolMixin;
+import org.springframework.social.yammer.api.impl.YammerProfileMixin.StatsMixin;
 
 /**
  * @author Morten Andersen-Gott

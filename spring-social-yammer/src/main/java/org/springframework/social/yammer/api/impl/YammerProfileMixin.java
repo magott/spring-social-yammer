@@ -45,4 +45,26 @@ public class YammerProfileMixin {
 			@JsonProperty("schools") List<School> schools,
 			@JsonProperty("external_urls") List<String> externalUrls
 	){}
+	
+	@JsonIgnoreProperties(ignoreUnknown=true)
+	public static class StatsMixin {
+		@JsonCreator
+		StatsMixin(
+				@JsonProperty("followers") long followers, 
+				@JsonProperty("followering") long followering,
+				@JsonProperty("updates") long updates 
+		){}
+	}
+	
+	@JsonIgnoreProperties(ignoreUnknown=true)
+	public static class SchoolMixin {
+			@JsonCreator
+			SchoolMixin(
+					@JsonProperty("school") String name, 
+					@JsonProperty("degree") String degreee,
+					@JsonProperty("description") String description, 
+					@JsonProperty("start_year") int startYear, 
+					@JsonProperty("end_year") int endYear 
+			){}
+	}
 }

@@ -2,7 +2,6 @@ package org.springframework.social.yammer.api.impl;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
@@ -37,6 +36,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		assertThat(yProfile.getExpertise(), equalTo("Socializing"));
 		assertThat(yProfile.getSummary(), equalTo("A summary"));
 		assertThat(yProfile.getType(), notNullValue());
+		assertThat(yProfile.isAdmin(), is(true));
 		assertThat(yProfile.getFullName(), notNullValue());
 		assertThat(yProfile.getName(), notNullValue());
 		assertThat(yProfile.getUrl(), notNullValue());
