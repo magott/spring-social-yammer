@@ -16,8 +16,11 @@
 package org.springframework.social.yammer.api.impl;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.social.yammer.api.UserOperations;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -36,6 +39,22 @@ public class UserTemplate extends AbstractYammerOperations implements UserOperat
 		this.restTemplate=restTemplate;
 	}
 	
+	public List<YammerProfile> getUsers(int page){
+		return getUsers(page, null, false, null);
+	}
+	
+	public List<YammerProfile> getUsers(int page, String sortBy, boolean reverse, Character letter){
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		params.set("page", String.valueOf(page));
+		if(sortBy!=null){
+			params.set("sort_by", sortBy);
+		}
+		params.set("reverse", String.valueOf(reverse));
+		if(letter!=null){
+			params.set("letter", String.valueOf(letter));
+		}
+		return restTemplate.getForObject(buildUri("users.json", params), YammerProfileList.class);
+	}
 
 	public YammerProfile getUser(long id){
 		URI uri = buildUri("users/"+String.valueOf(id)+".json");

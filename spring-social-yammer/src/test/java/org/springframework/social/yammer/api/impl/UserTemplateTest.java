@@ -10,6 +10,7 @@ import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
@@ -29,7 +30,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		assertThat(yProfile.getId(), equalTo(id));
 		assertYammerProfile(yProfile);
 	}
-	
+
 	@Test
 	public void testGetUserInfoByEmail() throws UnsupportedEncodingException{
 		String email = "ilya@users.yammer.com";
@@ -41,6 +42,26 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		YammerProfile yProfile = yammerTemplate.userOperations().getUserByEmail(email);
 		assertYammerProfile(yProfile);
 	}
+	
+	@Test
+	public void testGetUsers() throws UnsupportedEncodingException{
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&sort_by=messages&reverse=false&letter=A"))
+		.andExpect(method(GET))
+		.andRespond(withResponse(new ClassPathResource("yammer-users.json", getClass()), responseHeaders));
+		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1, "messages", false, 'A');
+		assertYammerProfile(users.get(0));
+	}
+	@Test
+	public void testGetUsers_page() throws UnsupportedEncodingException{
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&reverse=false"))
+		.andExpect(method(GET))
+		.andRespond(withResponse(new ClassPathResource("yammer-users.json", getClass()), responseHeaders));
+		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1);
+		assertYammerProfile(users.get(0));
+	}
+	
 
 	private void assertYammerProfile(YammerProfile yProfile) {
 		assertThat(yProfile.getStats(), notNullValue());

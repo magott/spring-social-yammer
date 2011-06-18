@@ -13,24 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api;
+package org.springframework.social.yammer.api.impl;
 
-import java.util.List;
-
-import org.springframework.social.yammer.api.impl.YammerProfile;
+import java.util.ArrayList;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public interface UserOperations {
-
-	YammerProfile getUser(long id);
-
-	YammerProfile getUserByEmail(String email);
-
-	List<YammerProfile> getUsers(int page, String sortBy, boolean reverse, Character letter);
-
-	List<YammerProfile> getUsers(int page);
+@SuppressWarnings("serial")
+public class YammerProfileList extends ArrayList<YammerProfile> {
 
 }
