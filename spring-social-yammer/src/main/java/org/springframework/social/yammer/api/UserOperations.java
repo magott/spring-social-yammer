@@ -25,4 +25,6 @@ public interface UserOperations {
 
 	YammerProfile getUser(long id);
 
+	YammerProfile getUserByEmail(String email);
+
 }

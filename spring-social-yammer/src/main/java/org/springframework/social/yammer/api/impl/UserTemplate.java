@@ -42,4 +42,9 @@ public class UserTemplate extends AbstractYammerOperations implements UserOperat
 		return restTemplate.getForObject(uri, YammerProfile.class);
 	}
 	
+	public YammerProfile getUserByEmail(String email){
+		URI uri = buildUri("users/by_email.json", "email", email);
+		return restTemplate.getForObject(uri, YammerProfile.class);
+	}
+	
 }

@@ -9,9 +9,12 @@ import static org.springframework.social.test.client.RequestMatchers.method;
 import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
 
+import java.io.UnsupportedEncodingException;
+
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.util.StringUtils;
 
 public class UserTemplateTest extends AbstractYammerApiTest{
 	
@@ -24,6 +27,18 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 				.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUser(id);
 		assertThat(yProfile.getId(), equalTo(id));
+		assertYammerProfile(yProfile);
+	}
+	
+	@Test
+	public void testGetUserInfoByEmail() throws UnsupportedEncodingException{
+		String email = "ilya@users.yammer.com";
+		String encodedEmail = StringUtils.replace(email, "@", "%40");
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/by_email.json?email="+encodedEmail))
+		.andExpect(method(GET))
+		.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
+		YammerProfile yProfile = yammerTemplate.userOperations().getUserByEmail(email);
 		assertYammerProfile(yProfile);
 	}
 
