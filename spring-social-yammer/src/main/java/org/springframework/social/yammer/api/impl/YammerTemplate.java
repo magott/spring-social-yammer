@@ -21,6 +21,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.social.oauth1.AbstractOAuth1ApiBinding;
+import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.social.yammer.api.UserOperations;
 
 /**
@@ -29,7 +30,8 @@ import org.springframework.social.yammer.api.UserOperations;
  */
 public class YammerTemplate extends AbstractOAuth1ApiBinding{
 
-	private UserOperations userTemplate;
+	private UserOperations userOperations;
+	private MessageOperations messageOperations;
 	
 	public YammerTemplate(String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
 		super(consumerKey, consumerSecret, accessToken, accessTokenSecret);
@@ -38,11 +40,16 @@ public class YammerTemplate extends AbstractOAuth1ApiBinding{
 	}
 
 	public UserOperations userOperations(){
-		return userTemplate;
+		return userOperations;
+	}
+	
+	public MessageOperations messageOperations(){
+		return messageOperations;
 	}
 	
 	private void initSubApis() {
-		userTemplate = new UserTemplate(getRestTemplate());
+		userOperations = new UserTemplate(getRestTemplate());
+		messageOperations = new MessageTemplate(getRestTemplate());
 		
 	}
 	private void registerYammerJsonModule() {

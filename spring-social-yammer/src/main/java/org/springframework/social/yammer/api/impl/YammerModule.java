@@ -17,6 +17,18 @@ package org.springframework.social.yammer.api.impl;
 
 import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.module.SimpleModule;
+import org.springframework.social.yammer.api.impl.YammerMessage.Attachment;
+import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.File;
+import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.Image;
+import org.springframework.social.yammer.api.impl.YammerMessage.Body;
+import org.springframework.social.yammer.api.impl.YammerMessage.LikedBy;
+import org.springframework.social.yammer.api.impl.YammerMessage.LikedBy.Name;
+import org.springframework.social.yammer.api.impl.YammerMessageMixin.AttachmentMixin;
+import org.springframework.social.yammer.api.impl.YammerMessageMixin.AttachmentMixin.FileMixin;
+import org.springframework.social.yammer.api.impl.YammerMessageMixin.AttachmentMixin.ImageMixin;
+import org.springframework.social.yammer.api.impl.YammerMessageMixin.BodyMixin;
+import org.springframework.social.yammer.api.impl.YammerMessageMixin.LikedByMixin;
+import org.springframework.social.yammer.api.impl.YammerMessageMixin.LikedByMixin.NameMixin;
 import org.springframework.social.yammer.api.impl.YammerProfile.School;
 import org.springframework.social.yammer.api.impl.YammerProfile.Stats;
 import org.springframework.social.yammer.api.impl.YammerProfileMixin.SchoolMixin;
@@ -41,6 +53,14 @@ public class YammerModule extends SimpleModule {
 		context.setMixInAnnotations(YammerProfile.class, YammerProfileMixin.class);
 		context.setMixInAnnotations(Stats.class, StatsMixin.class);
 		context.setMixInAnnotations(School.class, SchoolMixin.class);
+		context.setMixInAnnotations(MessageInfo.class, MessageInfoMixin.class);
+		context.setMixInAnnotations(YammerMessage.class, YammerMessageMixin.class);
+		context.setMixInAnnotations(Body.class, BodyMixin.class);
+		context.setMixInAnnotations(LikedBy.class, LikedByMixin.class);
+		context.setMixInAnnotations(Attachment.class, AttachmentMixin.class);
+		context.setMixInAnnotations(File.class, FileMixin.class);
+		context.setMixInAnnotations(Image.class, ImageMixin.class);
+		context.setMixInAnnotations(Name.class, NameMixin.class);
 	}
 
 }
