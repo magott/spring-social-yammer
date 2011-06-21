@@ -24,13 +24,19 @@ import java.util.List;
 public class MessageInfo {
 
 	private List<YammerMessage> messages;
+	private YammerMessageMeta metadata;
 	
-	public MessageInfo(List<YammerMessage> messages) {
+	public MessageInfo(List<YammerMessage> messages, YammerMessageMeta meta) {
 		this.messages=messages;
+		this.metadata=meta;
 	}
 	
 	public List<YammerMessage> getMessages() {
 		return messages;
+	}
+	
+	public YammerMessageMeta getMetadata() {
+		return metadata;
 	}
 	
 }

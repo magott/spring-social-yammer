@@ -50,6 +50,7 @@ public class YammerModule extends SimpleModule {
 
 	@Override
 	public void setupModule(SetupContext context) {
+		context.setMixInAnnotations(YammerMessageMeta.class, YammerMessageMetaMixin.class);
 		context.setMixInAnnotations(YammerProfile.class, YammerProfileMixin.class);
 		context.setMixInAnnotations(Stats.class, StatsMixin.class);
 		context.setMixInAnnotations(School.class, SchoolMixin.class);

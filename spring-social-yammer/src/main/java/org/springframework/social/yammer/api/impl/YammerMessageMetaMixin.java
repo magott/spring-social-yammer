@@ -26,12 +26,18 @@ import org.codehaus.jackson.annotate.JsonProperty;
  *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class MessageInfoMixin {
+public class YammerMessageMetaMixin {
 
 	@JsonCreator
-	public MessageInfoMixin(
-		@JsonProperty("messages") List<YammerMessage> messages,
-		@JsonProperty("meta") YammerMessageMeta metadata
-	) {}
+	public YammerMessageMetaMixin(
+			@JsonProperty("current_user_id")long currentUserId, 
+			@JsonProperty("feed_name")String feedName, 
+			@JsonProperty("feed_desc")String feedDescription,
+			@JsonProperty("unsee_message_count_following")int unseenMessageCountFollowing, 
+			@JsonProperty("unseen_message_count_received")int unseenMessageCountReceived, 
+			@JsonProperty("liked_message_ids")List<Long> likedMessageIds,
+			@JsonProperty("favorite_message_ids")List<Long> favoriteMessageIds, 
+			@JsonProperty("followed_user_id")List<Long> followedUserIds, 
+			@JsonProperty("bookmarked_message_ids")List<Long> bookmarkedMessageIds) {}
 	
 }
