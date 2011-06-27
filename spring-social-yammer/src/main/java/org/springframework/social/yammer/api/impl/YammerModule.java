@@ -40,10 +40,6 @@ import org.springframework.social.yammer.api.impl.YammerProfileMixin.StatsMixin;
  */
 public class YammerModule extends SimpleModule {
 
-	/**
-	 * @param name
-	 * @param version
-	 */
 	public YammerModule() {
 		super("YammerModule", new Version(1, 0, 0, null));
 	}

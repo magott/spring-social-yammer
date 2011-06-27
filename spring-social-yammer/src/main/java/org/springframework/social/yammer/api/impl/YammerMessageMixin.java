@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.springframework.social.yammer.api.impl.YammerMessage.Attachment;
@@ -53,7 +54,8 @@ public class YammerMessageMixin {
 			@JsonProperty("created_at") @JsonDeserialize(using=YammerDateDeserializer.class)Date createdAt, 
 			@JsonProperty("direct_message")boolean directMessage,
 			@JsonProperty("client_type")String clientType, 
-			@JsonProperty("liked_by")LikedBy likedBy
+			@JsonProperty("liked_by")LikedBy likedBy,
+			@JsonProperty("group_id")long groupId
 			){}
 	
 	public static class BodyMixin{
@@ -65,6 +67,7 @@ public class YammerMessageMixin {
 		){}
 	}
 	
+	@JsonIgnoreProperties(ignoreUnknown=true)
 	public static class AttachmentMixin{
 		@JsonCreator
 		public AttachmentMixin(
