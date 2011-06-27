@@ -42,13 +42,14 @@ public class YammerMessage {
 	private String clientType;
 	private Body body;
 	private LikedBy likedBy;
+	private long groupId;
 	
 	
 	
     public YammerMessage(long id, Body body, String url, long networkId, String privacy, long threadId,
 			String senderType, List<Attachment> attachments, long repliedToId, long senderId, String webUrl,
 			String clientUrl, boolean systemMessage, String messageType, Date createdAt, boolean directMessage,
-			String clientType, LikedBy likedBy) {
+			String clientType, LikedBy likedBy, long groupId) {
 		super();
 		this.id = id;
 		this.body = body;
@@ -142,6 +143,10 @@ public class YammerMessage {
 
 	public LikedBy getLikedBy() {
 		return likedBy;
+	}
+	
+	public long getGroupId() {
+		return groupId;
 	}
 
 	public static class Body{
@@ -300,7 +305,7 @@ public class YammerMessage {
 		public Image getImage() {
 			return image;
 		}
-
+		
 		public static class File{
     		private String url;
     		private long size;
