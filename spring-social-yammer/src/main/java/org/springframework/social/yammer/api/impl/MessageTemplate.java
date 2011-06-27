@@ -36,6 +36,11 @@ public class MessageTemplate extends AbstractYammerOperations implements Message
 	}
 
 	public MessageInfo getMessages(long olderThan, long newerThan, String threaded, int limit){
+		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
+		return restTemplate.getForObject(buildUri("messages.json", params), MessageInfo.class);
+	}
+
+	private MultiValueMap<String, String> buildParams(long olderThan, long newerThan, String threaded, int limit) {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		if(olderThan!=0){
 			params.set("older_than", String.valueOf(olderThan));
@@ -49,7 +54,9 @@ public class MessageTemplate extends AbstractYammerOperations implements Message
 		if(limit!=0){
 			params.set("limit", String.valueOf(limit));
 		}
-		return restTemplate.getForObject(buildUri("messages.json"), MessageInfo.class);
+		return params;
 	}
+	
+	
 	
 }
