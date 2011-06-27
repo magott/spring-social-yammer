@@ -25,4 +25,18 @@ public interface MessageOperations {
 
 	MessageInfo getMessages(long olderThan, long newerThan, String threaded, int limit);
 
+	MessageInfo getMessagesFromUser(long userId, long olderThan, long newerThan, String threaded, int limit);
+
+	MessageInfo getMessagesPrivate(long olderThan, long newerThan, String threaded, int limit);
+
+	MessageInfo getMessagesSent(long olderThan, long newerThan, String threaded, int limit);
+
+	MessageInfo getMessagesFollowing(long olderThan, long newerThan, String threaded, int limit);
+
+	MessageInfo getMessagesReceived(long olderThan, long newerThan, String threaded, int limit);
+
+	MessageInfo getMessagesAboutTopic(long topicId, long olderThan, long newerThan, String threaded, int limit);
+
+	MessageInfo getMessagesLikedByUser(long userId, long olderThan, long newerThan, String threaded, int limit);
+
 }
