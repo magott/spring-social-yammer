@@ -16,6 +16,7 @@
 package org.springframework.social.yammer.api;
 
 import org.springframework.social.yammer.api.impl.MessageInfo;
+import org.springframework.social.yammer.api.impl.YammerPostDetails;
 
 /**
  * @author Morten Andersen-Gott
@@ -38,5 +39,9 @@ public interface MessageOperations {
 	MessageInfo getMessagesAboutTopic(long topicId, long olderThan, long newerThan, String threaded, int limit);
 
 	MessageInfo getMessagesLikedByUser(long userId, long olderThan, long newerThan, String threaded, int limit);
+
+	MessageInfo postUpdate(String message, YammerPostDetails details);
+
+	MessageInfo postUpdate(String message);
 
 }
