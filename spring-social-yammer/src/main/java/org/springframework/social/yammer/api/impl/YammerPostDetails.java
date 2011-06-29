@@ -18,6 +18,7 @@ package org.springframework.social.yammer.api.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.core.io.Resource;
 import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -40,9 +41,10 @@ public class YammerPostDetails {
 	private Boolean broadcast;
 	private List<String> topics = new ArrayList<String>();
 	private OpenGraphObject openGraphObject;
+	private List<Resource> attachments = new ArrayList<Resource>();
 
-	public MultiValueMap<String, String> toParameters() {
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+	public MultiValueMap<String, Object> toParameters() {
+		MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>();
 		if (broadcast != null) {
 			params.set("broadcast", String.valueOf(broadcast));
 		}
@@ -50,11 +52,16 @@ public class YammerPostDetails {
 		addLongToParamsIfSet(params, directToUserId, "direct_to_id");
 		addLongToParamsIfSet(params, replyToId, "replied_to_id");
 		addOpenGraphObjectToParamsIfSet(params);
+		addAttachmentsIfPresent(params);
 
 		return params;
 	}
+	
+	public void addAttachment(Resource resource){
+		attachments.add(resource);
+	}
 
-	private void addOpenGraphObjectToParamsIfSet(MultiValueMap<String, String> params) {
+	private void addOpenGraphObjectToParamsIfSet(MultiValueMap<String,Object> params) {
 		if (openGraphObject != null) {
 			addStringToParamsIfSet(params, openGraphObject.getUrl(), "og_url");
 			addStringToParamsIfSet(params, openGraphObject.getTitle(), "og_title");
@@ -66,6 +73,7 @@ public class YammerPostDetails {
 			params.set("og_fetch", String.valueOf(openGraphObject.isFetch()));
 
 			addTopicsIfPresent(params);
+			addAttachmentsIfPresent(params);
 
 			if (openGraphObject.getObjectType() != null) {
 				params.set("og_object_type", openGraphObject.getObjectType().getTypeString());
@@ -73,7 +81,20 @@ public class YammerPostDetails {
 		}
 	}
 
-	private void addTopicsIfPresent(MultiValueMap<String, String> params) {
+	/**
+	 * @param params
+	 */
+	private void addAttachmentsIfPresent(MultiValueMap<String, Object> params) {
+		int count = 0;
+		// attachment1..20 is valid more than 20 is ignored by Yammer
+		for (Resource attachment: attachments) {
+			count++;
+			params.set("attachment" + count, attachment);
+		}
+		
+	}
+
+	private void addTopicsIfPresent(MultiValueMap<String,Object> params) {
 		int count = 0;
 		// topic1..topic20 is valid more than 20 is ignored by Yammer
 		for (String topic : topics) {
@@ -82,13 +103,13 @@ public class YammerPostDetails {
 		}
 	}
 
-	private void addStringToParamsIfSet(MultiValueMap<String, String> params, String param, String paramName) {
+	private void addStringToParamsIfSet(MultiValueMap<String,Object> params, String param, String paramName) {
 		if (param != null) {
 			params.set(paramName, String.valueOf(param));
 		}
 	}
 
-	private void addLongToParamsIfSet(MultiValueMap<String, String> params, long param, String paramName) {
+	private void addLongToParamsIfSet(MultiValueMap<String,Object> params, long param, String paramName) {
 		if (param != 0) {
 			params.set(paramName, String.valueOf(param));
 		}
@@ -140,5 +161,13 @@ public class YammerPostDetails {
 
 	public void setOpenGraphObject(OpenGraphObject openGraphObject) {
 		this.openGraphObject = openGraphObject;
+	}
+
+	public List<Resource> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Resource> attachements) {
+		this.attachments = attachements;
 	}
 }

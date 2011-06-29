@@ -63,5 +63,4 @@ public class YammerTemplate extends AbstractOAuth1ApiBinding{
 			}
 		}
 	}
-
 }

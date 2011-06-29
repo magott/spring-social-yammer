@@ -9,6 +9,7 @@ import static org.springframework.social.test.client.ResponseCreators.withRespon
 
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.LogManager;
 
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
@@ -19,6 +20,7 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 
 	@Test
 	public void testGetMessages() {
+		LogManager.getLogManager().getLogger("foo").fine("fooo");
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json")).andExpect(method(GET))
 				.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));

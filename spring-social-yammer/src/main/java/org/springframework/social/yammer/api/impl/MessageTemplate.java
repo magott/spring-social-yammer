@@ -89,7 +89,7 @@ public class MessageTemplate extends AbstractYammerOperations implements Message
 	}
 
 	public MessageInfo postUpdate(String message, YammerPostDetails details){
-		LinkedMultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		LinkedMultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>();
 		params.set("body", message);
 		params.putAll(details.toParameters());
 		return restTemplate.postForObject(buildUri("messages.json"),params ,MessageInfo.class);
