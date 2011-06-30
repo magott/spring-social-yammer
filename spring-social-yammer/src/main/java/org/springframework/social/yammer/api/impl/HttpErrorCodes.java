@@ -13,35 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api;
-
-import java.util.List;
-
+package org.springframework.social.yammer.api.impl;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public interface UserOperations {
+public interface HttpErrorCodes {
 
-	/**
-	 * Convenience constant for sorting by messages
-	 */
-	public static final String SORT_BY_MESSAGES = "messages";
-	
-	/**
-	 * Convenience constant for sorting by followers
-	 */
-	public static final String SORT_BY_FOLLOWERS = "followers";
-	
-	YammerProfile getUser(long id);
-
-	YammerProfile getUserByEmail(String email);
-
-	List<YammerProfile> getUsers(int page, String sortBy, boolean reverse, Character letter);
-
-	List<YammerProfile> getUsers(int page);
-
-	void updateProfile(long userId, UserInfo userInfo);
-
+	public static String E405 = "May be returned if URL is malformed";
 }
