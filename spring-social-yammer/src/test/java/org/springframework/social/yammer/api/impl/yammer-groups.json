@@ -1,0 +1,18 @@
+[
+  {
+    "type": "group",
+    "privacy": "public",
+    "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/groups/yammer-test-group",
+    "stats": {
+      "updates": 0,
+      "members": 1
+    },
+    "mugshot_url": "https://assets2.yammer.com/images/group_profile_small.gif",
+    "url": "https://www.yammer.com/api/v1/groups/124742",
+    "description": "Example group for yamdev docs.",
+    "full_name": "yammer-test-group",
+    "name": "yammer-test-group",
+    "id": 124742,
+    "created_at": "2011/02/18 22:34:19 +0000"
+  }
+]
