@@ -80,6 +80,8 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		assertThat(yProfile.getSchools().isEmpty(), is(false));
 		assertThat(yProfile.getExternalUrls(), notNullValue());
 		assertThat(yProfile.getExternalUrls().isEmpty(), is(false));
+		assertThat(yProfile.getContact(), notNullValue());
+		assertThat(yProfile.getContact(), notNullValue());
 		assertThat(yProfile.getJobTitle(), equalTo("Social animal"));
 	}
 	

@@ -38,9 +38,22 @@ public class YammerProfile {
 	private List<School> schools;
 	private List<String> externalUrls;
 	private String jobTitle;
+	private Contact contact;
 	
-	public YammerProfile(long id, String mugshotUrl, Stats stats, String type, String url, String fullName,
-			String name, boolean admin, String expertise, String summary, String jobTitle, List<School> schools, List<String> externalUrls) {
+	public YammerProfile(long id, 
+			String mugshotUrl, 
+			Stats stats, 
+			String type, 
+			String url, 
+			String fullName,
+			String name, 
+			boolean admin, 
+			String expertise, 
+			String summary, 
+			String jobTitle, 
+			Contact contact, 
+			List<School> schools, 
+			List<String> externalUrls) {
 		super();
 		this.id = id;
 		this.mugshotUrl = mugshotUrl;
@@ -53,10 +66,17 @@ public class YammerProfile {
 		this.expertise = expertise;
 		this.summary = summary;
 		this.jobTitle = jobTitle;
+		this.contact = contact;
 		this.schools = schools;
 		this.externalUrls = externalUrls;
 	}
 	
+	/**
+	 * @return the contact
+	 */
+	public Contact getContact() {
+		return contact;
+	}
 	
 	/**
 	 * @return the schools
@@ -159,12 +179,73 @@ public class YammerProfile {
 		this.jobTitle = jobTitle;
 	}
 
-
-
 	public String getJobTitle() {
 		return jobTitle;
 	}
 
+	public static class Contact{
+		private List<EMail> eMails;
+		private List<String> phoneNumbers;
+		private InstantMessaging instantMessaging;
+		
+		public Contact(List<EMail> eMails, List<String> phoneNumbers, InstantMessaging instantMessaging) {
+			this.eMails = eMails;
+			this.phoneNumbers = phoneNumbers;
+			this.instantMessaging = instantMessaging;
+		}
+		
+		public List<EMail> getEMailAdresses() {
+			return eMails;
+		}
+		
+		public InstantMessaging getInstantMessaging() {
+			return instantMessaging;
+		}
+		
+		public List<String> getPhoneNumbers() {
+			return phoneNumbers;
+		}
+
+		
+	}
+	
+	public static class EMail{
+		private String type;
+		private String address;
+		
+		public EMail(String type, String address){
+			this.type=type;
+			this.address=address;
+		}
+
+		public String getAddress() {
+			return address;
+		}
+
+		public String getType() {
+			return type;
+		}
+	}
+	
+	public static class InstantMessaging{
+		private String provider;
+		private String username;
+
+		public InstantMessaging(String provider, String username) {
+			this.provider = provider;
+			this.username = username;
+		}
+
+		public String getProvider() {
+			return provider;
+		}
+		
+		public String getUsername() {
+			return username;
+		}
+		
+	}	
+	
 	public static class School {
 		private String degree;
 		private String name;

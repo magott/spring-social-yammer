@@ -29,8 +29,14 @@ import org.springframework.social.yammer.api.impl.YammerMessageMixin.AttachmentM
 import org.springframework.social.yammer.api.impl.YammerMessageMixin.BodyMixin;
 import org.springframework.social.yammer.api.impl.YammerMessageMixin.LikedByMixin;
 import org.springframework.social.yammer.api.impl.YammerMessageMixin.LikedByMixin.NameMixin;
+import org.springframework.social.yammer.api.impl.YammerProfile.Contact;
+import org.springframework.social.yammer.api.impl.YammerProfile.EMail;
+import org.springframework.social.yammer.api.impl.YammerProfile.InstantMessaging;
 import org.springframework.social.yammer.api.impl.YammerProfile.School;
 import org.springframework.social.yammer.api.impl.YammerProfile.Stats;
+import org.springframework.social.yammer.api.impl.YammerProfileMixin.ContactMixin;
+import org.springframework.social.yammer.api.impl.YammerProfileMixin.EMailMixin;
+import org.springframework.social.yammer.api.impl.YammerProfileMixin.InstantMessagingMixin;
 import org.springframework.social.yammer.api.impl.YammerProfileMixin.SchoolMixin;
 import org.springframework.social.yammer.api.impl.YammerProfileMixin.StatsMixin;
 
@@ -49,6 +55,9 @@ public class YammerModule extends SimpleModule {
 		context.setMixInAnnotations(YammerMessageMeta.class, YammerMessageMetaMixin.class);
 		context.setMixInAnnotations(YammerProfile.class, YammerProfileMixin.class);
 		context.setMixInAnnotations(Stats.class, StatsMixin.class);
+		context.setMixInAnnotations(Contact.class, ContactMixin.class);
+		context.setMixInAnnotations(EMail.class, EMailMixin.class);
+		context.setMixInAnnotations(InstantMessaging.class, InstantMessagingMixin.class);
 		context.setMixInAnnotations(School.class, SchoolMixin.class);
 		context.setMixInAnnotations(MessageInfo.class, MessageInfoMixin.class);
 		context.setMixInAnnotations(YammerMessage.class, YammerMessageMixin.class);
