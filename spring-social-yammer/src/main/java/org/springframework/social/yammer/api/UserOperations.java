@@ -25,6 +25,16 @@ import org.springframework.social.yammer.api.impl.YammerProfile;
  */
 public interface UserOperations {
 
+	/**
+	 * Convenience constant for sorting by messages
+	 */
+	public static final String SORT_BY_MESSAGES = "messages";
+	
+	/**
+	 * Convenience constant for sorting by followers
+	 */
+	public static final String SORT_BY_FOLLOWERS = "followers";
+	
 	YammerProfile getUser(long id);
 
 	YammerProfile getUserByEmail(String email);

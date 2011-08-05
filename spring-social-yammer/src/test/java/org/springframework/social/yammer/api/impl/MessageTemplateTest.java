@@ -6,21 +6,22 @@ import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.social.test.client.RequestMatchers.method;
 import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
-
+import static org.springframework.social.yammer.api.MessageOperations.THREADED;
+import static org.springframework.social.yammer.api.MessageOperations.THREADED_EXTENDED;
+import static org.springframework.social.yammer.api.MessageOperations.NO_THREADING;
 import java.util.Collection;
 import java.util.List;
-import java.util.logging.LogManager;
 
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.util.CollectionUtils;
 
 public class MessageTemplateTest extends AbstractYammerApiTest {
 
 	@Test
 	public void testGetMessages() {
-		LogManager.getLogManager().getLogger("foo").fine("fooo");
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json")).andExpect(method(GET))
 				.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
@@ -33,7 +34,7 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
-		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessages(10000, 1, "true", 10);
+		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessages(10000, 1, THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 
@@ -51,7 +52,7 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/following.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
-		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesFollowing(10000, 1, "true", 10);
+		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesFollowing(10000, 1, THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 
@@ -67,9 +68,9 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 	@Test
 	public void testGetMessagesSent_withParams() {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
-		mockServer.expect(requestTo("https://www.yammer.com/api/v1/sent.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/sent.json?older_than=10000&newer_than=1&threaded=extended&limit=10")).andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
-		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesSent(10000, 1, "true", 10);
+		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesSent(10000, 1, THREADED_EXTENDED, 10);
 		assertMessageInfo(messageInfo);
 	}
 	@Test
@@ -86,7 +87,7 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/private.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
-		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesPrivate(10000, 1, "true", 10);
+		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesPrivate(10000, 1,THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 	
@@ -146,7 +147,7 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/liked_by/"+123+".json")).andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
-		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesLikedByUser(123,0,0,null,0);
+		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesLikedByUser(123,0,0,NO_THREADING,0);
 		assertMessageInfo(messageInfo);
 	}
 	
@@ -155,7 +156,7 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/liked_by/"+123+".json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
-		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesLikedByUser(123,10000, 1, "true", 10);
+		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesLikedByUser(123,10000, 1, THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 

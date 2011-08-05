@@ -23,12 +23,42 @@ import org.springframework.social.yammer.api.impl.YammerPostDetails;
  *
  */
 public interface MessageOperations {
+	
+	/**
+	 * Convenience constant for viewing messages by thread.
+	 * Will return first message of each thread.
+	 */
+	public static final String THREADED = "true";
+	
+	/**
+	 * Convenience constant for viewing messages as extended threads.
+	 * Will return first message of each thread and the last two messages of each thread.
+	 */
+	public static final String THREADED_EXTENDED = "extended";
+	
+	/**
+	 * Convenience constant not threading
+	 * Will return first message of each thread and the last two messages of each thread.
+	 */
+	public static final String NO_THREADING = null;
 
-	MessageInfo getMessages(long olderThan, long newerThan, String threaded, int limit);
+	MessageInfo getMessages(long olderThan, long newerThan, String threadedView, int limit);
 
-	MessageInfo getMessagesFromUser(long userId, long olderThan, long newerThan, String threaded, int limit);
+	/**
+	 * 
+	 * @param userId
+	 * @param olderThan
+	 * @param newerThan
+	 * @param threadedView type of threaded view or null if no threaded view is required. 
+	 * @param limit
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 */
+	MessageInfo getMessagesFromUser(long userId, long olderThan, long newerThan, String threadedView, int limit);
 
-	MessageInfo getMessagesPrivate(long olderThan, long newerThan, String threaded, int limit);
+	MessageInfo getMessagesPrivate(long olderThan, long newerThan, String threadedView, int limit);
 
 	MessageInfo getMessagesSent(long olderThan, long newerThan, String threaded, int limit);
 
