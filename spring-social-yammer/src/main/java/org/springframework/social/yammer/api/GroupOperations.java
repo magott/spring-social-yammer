@@ -25,6 +25,32 @@ import org.springframework.social.yammer.api.impl.Group;
  */
 public interface GroupOperations {
 
+	
+	/**
+	 * Convenience constant for sorting by privacy
+	 */
+	public static final String SORT_BY_PRIVACY = "privacy";
+
+	/**
+	 * Convenience constant for sorting by created at
+	 */
+	public static final String SORT_BY_CREATED_AT = "created_at";
+	
+	/**
+	 * Convenience constant for sorting by messages
+	 */
+	public static final String SORT_BY_MESSAGES = "messages";
+	
+	/**
+	 * Convenience constant for sorting by creator
+	 */
+	public static final String SORT_BY_CREATOR = "creator";
+	
+	/**
+	 * Convenience constant for sorting by members
+	 */
+	public static final String SORT_BY_MEMBERS = "members";
+	
 	/**
 	 * Retrieves a list of groups as specified by the parameters. Groups are returned on pages
 	 * with each page having a maximum of 20 groups.

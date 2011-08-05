@@ -38,7 +38,7 @@ public class GroupTemplate extends AbstractYammerOperations implements GroupOper
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.set("page", String.valueOf(page));
 		if(sortBy!=null){
-			params.set("sort_by", sortBy);
+			params.set("sort_by", GroupOperations.SORT_BY_PRIVACY);
 		}
 		params.set("reverse", String.valueOf(reverse));
 		if(letter!=null){
