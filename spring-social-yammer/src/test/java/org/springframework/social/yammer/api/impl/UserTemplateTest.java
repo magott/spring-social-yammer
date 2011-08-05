@@ -15,6 +15,7 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.social.yammer.api.UserOperations;
 import org.springframework.util.StringUtils;
 
 public class UserTemplateTest extends AbstractYammerApiTest{
@@ -49,7 +50,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&sort_by=messages&reverse=false&letter=A"))
 		.andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-users.json", getClass()), responseHeaders));
-		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1, "messages", false, 'A');
+		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1, UserOperations.SORT_BY_MESSAGES, false, 'A');
 		assertYammerProfile(users.get(0));
 	}
 	@Test
