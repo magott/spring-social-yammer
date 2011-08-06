@@ -77,4 +77,8 @@ public interface GroupOperations {
 	
 	void createGroup(String name, boolean isPrivate);
 
+	public abstract void leaveGroup(long groupId);
+
+	public abstract void joinGroup(long groupId);
+
 }

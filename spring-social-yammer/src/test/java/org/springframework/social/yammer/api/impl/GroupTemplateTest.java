@@ -17,7 +17,9 @@ package org.springframework.social.yammer.api.impl;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.social.test.client.RequestMatchers.method;
 import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
@@ -63,6 +65,31 @@ public class GroupTemplateTest extends AbstractYammerApiTest {
 		.andRespond(withResponse(new ClassPathResource("yammer-groups.json", getClass()), responseHeaders));
 		List<Group> groups = yammerTemplate.groupOperations().getGroups(1, 'A', "privacy", true);
 		assertThat(groups.get(0).getFullName(), equalTo("yammer-test-group"));
+	}
+	
+	@Test
+	public void testCreateGroup(){
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/groups"))
+		.andExpect(method(POST))
+		.andRespond(withResponse("", responseHeaders));
+		yammerTemplate.groupOperations().createGroup("foo", false);
+	}
+	@Test
+	public void testJoinGroup(){
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/group_memberships.json?group_id=1234"))
+		.andExpect(method(POST))
+		.andRespond(withResponse("", responseHeaders));
+		yammerTemplate.groupOperations().joinGroup(1234L);
+	}
+	@Test
+	public void testLeaveGroup(){
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/group_memberships.json?group_id=1234"))
+		.andExpect(method(DELETE))
+		.andRespond(withResponse("", responseHeaders));
+		yammerTemplate.groupOperations().leaveGroup(1234L);
 	}
 	
 }

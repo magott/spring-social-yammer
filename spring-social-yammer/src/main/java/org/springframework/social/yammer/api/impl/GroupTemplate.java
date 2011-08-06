@@ -73,5 +73,13 @@ public class GroupTemplate extends AbstractYammerOperations implements GroupOper
 		params.set("private", String.valueOf(isPrivate));
 		restTemplate.put(buildUri("groups/"+groupId), params);
 	}
+	
+	public void joinGroup(long groupId){
+		restTemplate.postForObject(buildUri("group_memberships.json", "group_id", String.valueOf(groupId)), null, String.class);
+	}
+	
+	public void leaveGroup(long groupId){
+		restTemplate.delete(buildUri("group_memberships.json", "group_id", String.valueOf(groupId)));
+	}
 
 }
