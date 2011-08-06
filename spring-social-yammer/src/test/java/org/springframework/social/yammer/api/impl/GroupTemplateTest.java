@@ -29,6 +29,7 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.social.yammer.api.GroupOperations;
 
 /**
  * @author Morten Andersen-Gott
@@ -63,7 +64,7 @@ public class GroupTemplateTest extends AbstractYammerApiTest {
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/groups.json?page=1&sort_by=privacy&reverse=true&letter=A"))
 		.andExpect(method(GET))
 		.andRespond(withResponse(new ClassPathResource("yammer-groups.json", getClass()), responseHeaders));
-		List<Group> groups = yammerTemplate.groupOperations().getGroups(1, 'A', "privacy", true);
+		List<Group> groups = yammerTemplate.groupOperations().getGroups(1, 'A', GroupOperations.SORT_BY_PRIVACY, true);
 		assertThat(groups.get(0).getFullName(), equalTo("yammer-test-group"));
 	}
 	
