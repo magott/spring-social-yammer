@@ -6,16 +6,16 @@ import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.social.test.client.RequestMatchers.method;
 import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
+import static org.springframework.social.yammer.api.MessageOperations.NO_THREADING;
 import static org.springframework.social.yammer.api.MessageOperations.THREADED;
 import static org.springframework.social.yammer.api.MessageOperations.THREADED_EXTENDED;
-import static org.springframework.social.yammer.api.MessageOperations.NO_THREADING;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
-import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.util.CollectionUtils;
 
 public class MessageTemplateTest extends AbstractYammerApiTest {
