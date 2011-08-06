@@ -92,6 +92,21 @@ public class Group {
 		return createdAt;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Group [privacy=").append(privacy).append(", webUrl=").append(webUrl)
+				.append(", members=").append(getMemberCount()).append(", updates=").append(getUpdateCount())
+				.append(", mugshotUrl=").append(mugshotUrl).append(", url=").append(url)
+				.append(", description=").append(description).append(", fullName=").append(fullName).append(", name=")
+				.append(name).append(", id=").append(id).append(", createdAt=").append(createdAt).append("]");
+		return builder.toString();
+	}
+
+
+
 	static class GroupStats{
 		private int updates;
 		private int members;

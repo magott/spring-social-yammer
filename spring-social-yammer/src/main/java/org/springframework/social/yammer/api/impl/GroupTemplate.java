@@ -51,4 +51,27 @@ public class GroupTemplate extends AbstractYammerOperations implements GroupOper
 		return restTemplate.getForObject(buildUri("groups/"+String.valueOf(groupId)+".json"), Group.class);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.social.yammer.api.GroupOperations#createGroup(java.lang.String, boolean)
+	 */
+	public void createGroup(String name, boolean isPrivate) {
+		LinkedMultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		params.set("name",name);
+		params.set("private", String.valueOf(isPrivate));
+		restTemplate.postForEntity(buildUri("groups"), params, String.class);
+	}
+
+	/**
+	 * Method returns 401 from Yammer, so it isn't visible in GroupOperations yet
+	 * @param groupId
+	 * @param name
+	 * @param isPrivate
+	 */
+	public void updateGroup(long groupId, String name, boolean isPrivate) {
+		LinkedMultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		params.set("name",name);
+		params.set("private", String.valueOf(isPrivate));
+		restTemplate.put(buildUri("groups/"+groupId), params);
+	}
+
 }

@@ -21,11 +21,10 @@ import org.springframework.social.yammer.api.impl.Group;
 
 /**
  * @author Morten Andersen-Gott
- *
+ * 
  */
 public interface GroupOperations {
 
-	
 	/**
 	 * Convenience constant for sorting by privacy
 	 */
@@ -35,38 +34,47 @@ public interface GroupOperations {
 	 * Convenience constant for sorting by created at
 	 */
 	public static final String SORT_BY_CREATED_AT = "created_at";
-	
+
 	/**
 	 * Convenience constant for sorting by messages
 	 */
 	public static final String SORT_BY_MESSAGES = "messages";
-	
+
 	/**
 	 * Convenience constant for sorting by creator
 	 */
 	public static final String SORT_BY_CREATOR = "creator";
-	
+
 	/**
 	 * Convenience constant for sorting by members
 	 */
 	public static final String SORT_BY_MEMBERS = "members";
-	
+
 	/**
-	 * Retrieves a list of groups as specified by the parameters. Groups are returned on pages
-	 * with each page having a maximum of 20 groups.
-	 * @param page number. First page = 1
-	 * @param letter return groups beginning with the given letter
-	 * @param sortBy sort key. Valid values are  messages | members | privacy | created_at | creator 
-	 * @param reverse indicating whether sort should be reversed
+	 * Retrieves a list of groups as specified by the parameters. Groups are
+	 * returned on pages with each page having a maximum of 20 groups.
+	 * 
+	 * @param page
+	 *            number. First page = 1
+	 * @param letter
+	 *            return groups beginning with the given letter
+	 * @param sortBy
+	 *            sort key. Valid values are messages | members | privacy |
+	 *            created_at | creator
+	 * @param reverse
+	 *            indicating whether sort should be reversed
 	 * @return
 	 */
 	List<Group> getGroups(int page, Character letter, String sortBy, boolean reverse);
-	
+
 	/**
 	 * Returns the group with the given id
+	 * 
 	 * @param groupId
 	 * @return
 	 */
 	Group getGroup(long groupId);
 	
+	void createGroup(String name, boolean isPrivate);
+
 }
