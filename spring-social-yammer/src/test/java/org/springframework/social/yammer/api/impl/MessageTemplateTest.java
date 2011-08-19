@@ -2,7 +2,9 @@ package org.springframework.social.yammer.api.impl;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.social.test.client.RequestMatchers.method;
 import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
@@ -158,6 +160,22 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesLikedByUser(123,10000, 1, THREADED, 10);
 		assertMessageInfo(messageInfo);
+	}
+	@Test
+	public void testLikeMessage() {
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/liked_by/current.json?message_id=123"))
+		.andExpect(method(POST))
+		.andRespond(withResponse("", responseHeaders));
+		yammerTemplate.messageOperations().like(123L);
+	}
+	@Test
+	public void testUnlikeMessage() {
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/liked_by/current.json?message_id=123"))
+		.andExpect(method(DELETE))
+		.andRespond(withResponse("", responseHeaders));
+		yammerTemplate.messageOperations().unlike(123L);
 	}
 
 	/**

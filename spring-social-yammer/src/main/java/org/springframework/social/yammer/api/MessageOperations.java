@@ -44,6 +44,10 @@ public interface MessageOperations {
 
 	MessageInfo getMessages(long olderThan, long newerThan, String threadedView, int limit);
 
+	void like(long messageId);
+	
+	void unlike(long messageId);
+	
 	/**
 	 * 
 	 * @param userId

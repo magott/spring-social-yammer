@@ -112,7 +112,12 @@ public class MessageTemplate extends AbstractYammerOperations implements Message
 		return params;
 	}
 
-	
-	
-	
+	public void like(long messageId) {
+		restTemplate.postForObject(buildUri("messages/liked_by/current.json", "message_id", String.valueOf(messageId)),null, String.class);
+	}
+
+	public void unlike(long messageId) {
+		restTemplate.delete(buildUri("messages/liked_by/current.json", "message_id", String.valueOf(messageId)));		
+	}
+
 }
