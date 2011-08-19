@@ -120,4 +120,8 @@ public class MessageTemplate extends AbstractYammerOperations implements Message
 		restTemplate.delete(buildUri("messages/liked_by/current.json", "message_id", String.valueOf(messageId)));		
 	}
 
+	public void delete(long messageId) {
+		restTemplate.delete(buildUri("messages/"+messageId)); //400 in case message does not exist
+	}
+
 }

@@ -177,6 +177,14 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		.andRespond(withResponse("", responseHeaders));
 		yammerTemplate.messageOperations().unlike(123L);
 	}
+	@Test
+	public void testDeleteMessage() {
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/123"))
+		.andExpect(method(DELETE))
+		.andRespond(withResponse("", responseHeaders));
+		yammerTemplate.messageOperations().delete(123L);
+	}
 
 	/**
 	 * @param messageInfo

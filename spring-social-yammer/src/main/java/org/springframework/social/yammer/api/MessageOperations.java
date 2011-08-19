@@ -77,5 +77,12 @@ public interface MessageOperations {
 	MessageInfo postUpdate(String message, YammerPostDetails details);
 
 	MessageInfo postUpdate(String message);
+	
+	/**
+	 * Deletes a message, current user must be owner
+	 * Bad request (400) in case of not owner or no such message
+	 * @param messageId
+	 */
+	void delete(long messageId);
 
 }
