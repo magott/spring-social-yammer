@@ -24,6 +24,7 @@ import org.springframework.social.oauth1.AbstractOAuth1ApiBinding;
 import org.springframework.social.yammer.api.GroupOperations;
 import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.social.yammer.api.SearchOperations;
+import org.springframework.social.yammer.api.TopicOperations;
 import org.springframework.social.yammer.api.UserOperations;
 
 /**
@@ -36,6 +37,7 @@ public class YammerTemplate extends AbstractOAuth1ApiBinding{
 	private MessageOperations messageOperations;
 	private GroupOperations groupOperations;
 	private SearchOperations searchOperations;
+	private TopicOperations topicOperations;
 	
 	public YammerTemplate(String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
 		super(consumerKey, consumerSecret, accessToken, accessTokenSecret);
@@ -59,12 +61,16 @@ public class YammerTemplate extends AbstractOAuth1ApiBinding{
 		return searchOperations;
 	}
 	
+	public TopicOperations topicOperations(){
+		return topicOperations;
+	}
+	
 	private void initSubApis() {
 		userOperations = new UserTemplate(getRestTemplate());
 		messageOperations = new MessageTemplate(getRestTemplate());
 		groupOperations = new GroupTemplate(getRestTemplate());
 		searchOperations = new SearchTemplate(getRestTemplate());
-		
+		topicOperations = new TopicTemplate(getRestTemplate());
 	}
 	private void registerYammerJsonModule() {
 		List<HttpMessageConverter<?>> converters = getRestTemplate().getMessageConverters();

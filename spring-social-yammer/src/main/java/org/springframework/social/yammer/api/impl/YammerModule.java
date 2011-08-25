@@ -21,6 +21,8 @@ import org.springframework.social.yammer.api.impl.Group.GroupStats;
 import org.springframework.social.yammer.api.impl.GroupMixin.GroupStatsMixin;
 import org.springframework.social.yammer.api.impl.SearchResults.SearchStats;
 import org.springframework.social.yammer.api.impl.SearchResultsMixin.SearchStatsMixin;
+import org.springframework.social.yammer.api.impl.Topic.TopicExpert;
+import org.springframework.social.yammer.api.impl.TopicMixin.TopicExpertMixin;
 import org.springframework.social.yammer.api.impl.YammerMessage.Attachment;
 import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.File;
 import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.Image;
@@ -73,6 +75,8 @@ public class YammerModule extends SimpleModule {
 		context.setMixInAnnotations(Name.class, NameMixin.class);
 		context.setMixInAnnotations(Group.class, GroupMixin.class);
 		context.setMixInAnnotations(GroupStats.class, GroupStatsMixin.class);
+		context.setMixInAnnotations(Topic.class, TopicMixin.class);
+		context.setMixInAnnotations(TopicExpert.class, TopicExpertMixin.class);
 		context.setMixInAnnotations(SearchResults.class, SearchResultsMixin.class);
 		context.setMixInAnnotations(SearchStats.class, SearchStatsMixin.class);
 	}
