@@ -27,12 +27,14 @@ public class SearchResults {
 	private List<YammerProfile> users;
 	private List<Group> groups;
 	private SearchStats stats;
+	private List<Topic> topics;
 	
-	public SearchResults(MessageInfo messages, List<YammerProfile> users, List<Group> groups, SearchStats searchStats) {
+	public SearchResults(MessageInfo messages, List<YammerProfile> users, List<Group> groups, SearchStats searchStats, List<Topic> topics) {
 		this.messages = messages;
 		this.users = users;
 		this.groups = groups;
 		this.stats=searchStats;
+		this.topics=topics;
 	}
 
 	public MessageInfo getMessages() {
@@ -45,6 +47,10 @@ public class SearchResults {
 
 	public List<Group> getGroups() {
 		return groups;
+	}
+	
+	public List<Topic> getTopics() {
+		return topics;
 	}
 	
 	public int getUserCount(){
@@ -60,6 +66,19 @@ public class SearchResults {
 		return stats.topicCount;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SearchResults [messages=").append(messages).append(", users=").append(users)
+				.append(", groups=").append(groups).append(", stats=").append(stats).append(", topics=").append(topics)
+				.append("]");
+		return builder.toString();
+	}
+
+
+
 	static class SearchStats{
 		private int groupCount;
 		private int messageCount;
@@ -70,7 +89,16 @@ public class SearchResults {
 			this.messageCount = messageCount;
 			this.topicCount = topicCount;
 			this.userCount = userCount;
-		}		
+		}
+		@Override
+		public String toString() {
+			StringBuilder builder = new StringBuilder();
+			builder.append("SearchStats [groupCount=").append(groupCount).append(", messageCount=")
+					.append(messageCount).append(", topicCount=").append(topicCount).append(", userCount=")
+					.append(userCount).append("]");
+			return builder.toString();
+		}
+		
 	}
 	
 	

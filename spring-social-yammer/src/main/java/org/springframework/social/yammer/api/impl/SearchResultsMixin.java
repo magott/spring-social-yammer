@@ -34,7 +34,8 @@ public class SearchResultsMixin {
 		@JsonProperty("messages") MessageInfo messages,
 		@JsonProperty("users") List<YammerProfile> users,
 		@JsonProperty("groups") List<Group> groups,
-		@JsonProperty("count") SearchStats stats
+		@JsonProperty("count") SearchStats stats,
+		@JsonProperty("topics") List<Topic> topics
 	) {}
 	
 	
