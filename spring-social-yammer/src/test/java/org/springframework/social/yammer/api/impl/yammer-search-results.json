@@ -1,0 +1,225 @@
+{
+  "groups": [
+    {
+      "type": "group",
+      "url": "https://www.yammer.com/api/v1/groups/124742",
+      "created_at": "2011/02/18 22:34:19 +0000",
+      "description": "Example group for yamdev docs.",
+      "privacy": "public",
+      "full_name": "yammer-test-group",
+      "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/groups/yammer-test-group",
+      "stats": {
+        "updates": 0,
+        "members": 1
+      },
+      "name": "yammer-test-group",
+      "mugshot_url": "https://assets2.yammer.com/images/group_profile_small.gif",
+      "id": 124742
+    }
+  ],
+  "messages": {
+    "messages": [
+      {
+        "system_message": true,
+        "created_at": "2010/05/04 22:40:15 +0000",
+        "client_type": "Web",
+        "url": "https://www.yammer.com/api/v1/messages/43460838",
+        "direct_message": false,
+        "network_id": 104604,
+        "liked_by": {
+          "count": 0,
+          "names": []
+        },
+        "sender_type": "user",
+        "privacy": "public",
+        "id": 43460838,
+        "sender_id": 1452329,
+        "replied_to_id": null,
+        "body": {
+          "plain": "has created the Yammer Developers Test Community community.",
+          "parsed": "has created the Yammer Developers Test Community community."
+        },
+        "thread_id": 43460838,
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/messages/43460838",
+        "attachments": [],
+        "client_url": "https://www.yammer.com/",
+        "message_type": "system"
+      },
+      {
+        "system_message": true,
+        "created_at": "2011/02/18 22:34:19 +0000",
+        "client_type": "Web",
+        "url": "https://www.yammer.com/api/v1/messages/79537463",
+        "direct_message": false,
+        "network_id": 104604,
+        "liked_by": {
+          "count": 0,
+          "names": []
+        },
+        "sender_type": "user",
+        "privacy": "public",
+        "id": 79537463,
+        "sender_id": 4022984,
+        "replied_to_id": null,
+        "body": {
+          "plain": "has created the yammer-test-group group: Example group for yamdev docs.",
+          "parsed": "has created the [[group:124742]] group: Example group for yamdev docs."
+        },
+        "thread_id": 79537463,
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/messages/79537463",
+        "attachments": [],
+        "client_url": "https://www.yammer.com/",
+        "message_type": "system"
+      }
+    ],
+    "meta": {
+      "followed_user_ids": [
+        1452329
+      ],
+      "show_billing_banner": false,
+      "requested_poll_interval": 60,
+      "ymodules": [],
+      "current_user_id": 4022984
+    },
+    "threaded_extended": {},
+    "references": [
+      {
+        "type": "user",
+        "url": "https://www.yammer.com/api/v1/users/4022984",
+        "state": "active",
+        "full_name": "mikeal",
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/mikealrogers-guest",
+        "stats": {
+          "updates": 4,
+          "following": 1,
+          "followers": 1
+        },
+        "name": "mikealrogers-guest",
+        "job_title": "Test Title",
+        "mugshot_url": "https://assets3.yammer.com/images/no_photo_small.gif",
+        "id": 4022984
+      },
+      {
+        "type": "user",
+        "url": "https://www.yammer.com/api/v1/users/1452329",
+        "state": "active",
+        "full_name": "Matt Knopp",
+        "stats": {
+          "updates": 4,
+          "following": 2,
+          "followers": 1
+        },
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/mknopp",
+        "job_title": null,
+        "name": "mknopp",
+        "mugshot_url": "https://assets1.yammer.com/user_uploaded/photos/p1/0141/2640/n1644278019_46479_62_small.jpg",
+        "id": 1452329
+      },
+      {
+        "type": "thread",
+        "url": "https://www.yammer.com/api/v1/messages/in_thread/79537463",
+        "direct_message": false,
+        "topics": [],
+        "privacy": "public",
+        "stats": {
+          "latest_reply_id": 79537463,
+          "updates": 1,
+          "first_reply_id": null,
+          "latest_reply_at": "2011/02/18 22:34:19 +0000",
+          "first_reply_at": null
+        },
+        "thread_starter_id": 79537463,
+        "has_attachments": false,
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity#/Threads/show?threadId=79537463",
+        "id": 79537463
+      },
+      {
+        "type": "thread",
+        "url": "https://www.yammer.com/api/v1/messages/in_thread/43460838",
+        "direct_message": false,
+        "topics": [],
+        "privacy": "public",
+        "stats": {
+          "latest_reply_id": 43460838,
+          "updates": 1,
+          "first_reply_id": null,
+          "latest_reply_at": "2010/05/04 22:40:15 +0000",
+          "first_reply_at": null
+        },
+        "thread_starter_id": 43460838,
+        "has_attachments": false,
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity#/Threads/show?threadId=43460838",
+        "id": 43460838
+      },
+      {
+        "type": "group",
+        "url": "https://www.yammer.com/api/v1/groups/124742",
+        "created_at": "2011/02/18 22:34:19 +0000",
+        "description": "Example group for yamdev docs.",
+        "privacy": "public",
+        "full_name": "yammer-test-group",
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/groups/yammer-test-group",
+        "name": "yammer-test-group",
+        "mugshot_url": "https://assets2.yammer.com/images/group_profile_small.gif",
+        "id": 124742
+      }
+    ]
+  },
+  "topics": [],
+  "count": {
+    "groups": 1,
+    "messages": 2,
+    "topics": 0,
+    "users": 1
+  },
+  "users": [
+    {
+      "previous_companies": [],
+      "type": "user",
+      "birth_date": "",
+      "expertise": "",
+      "network_id": 104604,
+      "url": "https://www.yammer.com/api/v1/users/4022984",
+      "network_name": "Yammer Developers Test Community",
+      "interests": [],
+      "contact": {
+        "email_addresses": [
+          {
+            "address": "mikealrogers-guest+yammerdeveloperstestcommunity@users.yammer.com",
+            "type": "other"
+          }
+        ],
+        "phone_numbers": [],
+        "im": {
+          "username": "",
+          "provider": ""
+        }
+      },
+      "hire_date": null,
+      "location": "",
+      "state": "active",
+      "can_broadcast": "true",
+      "admin": "true",
+      "significant_other": "",
+      "schools": [],
+      "full_name": "mikeal",
+      "stats": {
+        "updates": 4,
+        "followers": 1,
+        "following": 1
+      },
+      "external_urls": [],
+      "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/mikealrogers-guest",
+      "summary": "",
+      "mugshot_url": "https://assets3.yammer.com/images/no_photo_small.gif",
+      "name": "mikealrogers-guest",
+      "job_title": "Test Title",
+      "verified_admin": "false",
+      "guid": null,
+      "id": 4022984,
+      "timezone": "Pacific Time (US & Canada)",
+      "network_domains": [],
+      "kids_names": ""
+    }
+  ]
+}

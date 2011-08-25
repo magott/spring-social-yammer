@@ -71,6 +71,7 @@ public class YammerModule extends SimpleModule {
 		context.setMixInAnnotations(Name.class, NameMixin.class);
 		context.setMixInAnnotations(Group.class, GroupMixin.class);
 		context.setMixInAnnotations(GroupStats.class, GroupStatsMixin.class);
+		context.setMixInAnnotations(SearchResults.class, SearchResultsMixin.class);
 	}
 
 }
