@@ -26,11 +26,13 @@ public class SearchResults {
 	private MessageInfo messages;
 	private List<YammerProfile> users;
 	private List<Group> groups;
+	private SearchStats stats;
 	
-	public SearchResults(MessageInfo messages, List<YammerProfile> users, List<Group> groups) {
+	public SearchResults(MessageInfo messages, List<YammerProfile> users, List<Group> groups, SearchStats searchStats) {
 		this.messages = messages;
 		this.users = users;
 		this.groups = groups;
+		this.stats=searchStats;
 	}
 
 	public MessageInfo getMessages() {
@@ -43,6 +45,32 @@ public class SearchResults {
 
 	public List<Group> getGroups() {
 		return groups;
+	}
+	
+	public int getUserCount(){
+		return stats.userCount;
+	}
+	public int getGroupCount(){
+		return stats.groupCount;
+	}
+	public int getMessageCount(){
+		return stats.messageCount;
+	}
+	public int getTopicCount(){
+		return stats.topicCount;
+	}
+	
+	static class SearchStats{
+		private int groupCount;
+		private int messageCount;
+		private int topicCount;
+		private int userCount;
+		public SearchStats(int groupCount, int messageCount, int topicCount, int userCount) {
+			this.groupCount = groupCount;
+			this.messageCount = messageCount;
+			this.topicCount = topicCount;
+			this.userCount = userCount;
+		}		
 	}
 	
 	

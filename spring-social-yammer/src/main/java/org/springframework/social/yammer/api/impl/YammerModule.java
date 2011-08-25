@@ -19,6 +19,8 @@ import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.social.yammer.api.impl.Group.GroupStats;
 import org.springframework.social.yammer.api.impl.GroupMixin.GroupStatsMixin;
+import org.springframework.social.yammer.api.impl.SearchResults.SearchStats;
+import org.springframework.social.yammer.api.impl.SearchResultsMixin.SearchStatsMixin;
 import org.springframework.social.yammer.api.impl.YammerMessage.Attachment;
 import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.File;
 import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.Image;
@@ -72,6 +74,7 @@ public class YammerModule extends SimpleModule {
 		context.setMixInAnnotations(Group.class, GroupMixin.class);
 		context.setMixInAnnotations(GroupStats.class, GroupStatsMixin.class);
 		context.setMixInAnnotations(SearchResults.class, SearchResultsMixin.class);
+		context.setMixInAnnotations(SearchStats.class, SearchStatsMixin.class);
 	}
 
 }

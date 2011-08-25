@@ -71,6 +71,9 @@ public class SearchTemplateTest extends AbstractYammerApiTest {
 		assertThat(searchResults.getUsers(), notNullValue());
 		assertThat(searchResults.getUsers().size(), not((equalTo(0))));
 		assertThat(searchResults.getUsers().get(0).getName(), equalTo("mikealrogers-guest") );
+		assertThat(searchResults.getGroupCount(), equalTo(1));
+		assertThat(searchResults.getMessageCount(), equalTo(2));
+		assertThat(searchResults.getTopicCount(), equalTo(0));
 	}
 	
 }

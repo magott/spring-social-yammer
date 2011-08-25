@@ -20,6 +20,7 @@ import java.util.List;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.springframework.social.yammer.api.impl.SearchResults.SearchStats;
 
 /**
  * @author Morten Andersen-Gott
@@ -32,7 +33,19 @@ public class SearchResultsMixin {
 	public SearchResultsMixin(
 		@JsonProperty("messages") MessageInfo messages,
 		@JsonProperty("users") List<YammerProfile> users,
-		@JsonProperty("groups") List<Group> groups
+		@JsonProperty("groups") List<Group> groups,
+		@JsonProperty("count") SearchStats stats
 	) {}
+	
+	
+	static class SearchStatsMixin{
+		@JsonCreator
+		public SearchStatsMixin(
+		  @JsonProperty("groups") int groups,
+		  @JsonProperty("messages") int messages,
+		  @JsonProperty("topics") int topics,
+		  @JsonProperty("users") int users
+		) {}
+	}
 	
 }
