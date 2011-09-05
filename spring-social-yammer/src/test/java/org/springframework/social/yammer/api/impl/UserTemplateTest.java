@@ -22,13 +22,25 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 	
 	@Test
 	public void testGetUserInfoById(){
-		Long id = 4022983L;
+        Long id = 4022983L;
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/"+id+".json"))
 				.andExpect(method(GET))
 				.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUser(id);
 		assertThat(yProfile.getId(), equalTo(id));
+		assertYammerProfile(yProfile);
+	}
+
+    @Test
+	public void testGetCurrentUserProfile(){
+        Long currentUserId = 4022983L;
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/current.json"))
+				.andExpect(method(GET))
+				.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
+		YammerProfile yProfile = yammerTemplate.userOperations().getUserProfile();
+		assertThat(yProfile.getId(), equalTo(currentUserId));
 		assertYammerProfile(yProfile);
 	}
 
