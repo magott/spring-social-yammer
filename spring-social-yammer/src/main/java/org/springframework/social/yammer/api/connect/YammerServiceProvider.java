@@ -28,7 +28,7 @@ public class YammerServiceProvider extends AbstractOAuth1ServiceProvider<YammerT
 		super(consumerKey, consumerSecret, new OAuth1Template(consumerKey, consumerSecret,
 			"https://www.yammer.com/oauth/request_token",
 			"https://www.yammer.com/oauth/authorize",
-			"https://www.yammer.com/oauth/access_token", OAuth1Version.CORE_10));
+			"https://www.yammer.com/oauth/access_token", OAuth1Version.CORE_10_REVISION_A));
 	}
 
 	public YammerTemplate getApi(String accessToken, String secret) {
