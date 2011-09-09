@@ -15,17 +15,28 @@
  */
 package org.springframework.social.yammer.api;
 
+import java.util.List;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public interface SearchOperations {
+public class MessageInfo {
 
-	SearchResults search(String searchString);
+	private List<YammerMessage> messages;
+	private YammerMessageMeta metadata;
 	
-	SearchResults search(String searchString, int page);
+	public MessageInfo(List<YammerMessage> messages, YammerMessageMeta meta) {
+		this.messages=messages;
+		this.metadata=meta;
+	}
 	
-	SearchResults search(String searchString, int page, int numberPerPage);
+	public List<YammerMessage> getMessages() {
+		return messages;
+	}
+	
+	public YammerMessageMeta getMetadata() {
+		return metadata;
+	}
 	
 }

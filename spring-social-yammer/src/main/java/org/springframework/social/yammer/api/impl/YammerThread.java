@@ -13,19 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api;
+package org.springframework.social.yammer.api.impl;
 
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.social.yammer.api.Topic;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public interface SearchOperations {
+public class YammerThread {
 
-	SearchResults search(String searchString);
+	private ThreadStats stats;
+	private String type;
+	private String privacy;
+	private long threadStarterId;
+	private boolean hasAttachements;
+	private String webUrl;
+	private long id;
+	private boolean directMessage;
+	private List<Topic> topics;
 	
-	SearchResults search(String searchString, int page);
-	
-	SearchResults search(String searchString, int page, int numberPerPage);
+	static class ThreadStats{
+		private Date firstReplyAt;
+		private Date latestReplyAt;
+		private long firstReplyId;
+		private long latestReplyId;
+		private int messageCount;
+	}
 	
 }

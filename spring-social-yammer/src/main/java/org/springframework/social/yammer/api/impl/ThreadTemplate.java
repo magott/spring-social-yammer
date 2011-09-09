@@ -13,19 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api;
+package org.springframework.social.yammer.api.impl;
 
+import org.springframework.social.yammer.api.ThreadOperations;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public interface SearchOperations {
+public class ThreadTemplate extends AbstractYammerOperations implements ThreadOperations {
 
-	SearchResults search(String searchString);
+	private RestTemplate restTemplate;
+
+	public ThreadTemplate(RestTemplate restTemplate){
+		this.restTemplate = restTemplate;
+	}
 	
-	SearchResults search(String searchString, int page);
-	
-	SearchResults search(String searchString, int page, int numberPerPage);
-	
+	public YammerThread getThread(long id) {
+		String string = restTemplate.getForObject(buildUri("threads/"+id+".json"), String.class);
+		return null;
+	}
+
 }

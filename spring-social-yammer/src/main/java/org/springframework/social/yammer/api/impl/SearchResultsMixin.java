@@ -20,7 +20,11 @@ import java.util.List;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.springframework.social.yammer.api.impl.SearchResults.SearchStats;
+import org.springframework.social.yammer.api.Group;
+import org.springframework.social.yammer.api.MessageInfo;
+import org.springframework.social.yammer.api.SearchResults.SearchStats;
+import org.springframework.social.yammer.api.Topic;
+import org.springframework.social.yammer.api.YammerProfile;
 
 /**
  * @author Morten Andersen-Gott

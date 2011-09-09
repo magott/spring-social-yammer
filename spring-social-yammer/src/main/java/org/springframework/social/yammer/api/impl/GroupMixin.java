@@ -21,7 +21,7 @@ import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.springframework.social.yammer.api.impl.Group.GroupStats;
+import org.springframework.social.yammer.api.Group.GroupStats;
 
 /**
  * @author Morten Andersen-Gott

@@ -15,6 +15,7 @@
  */
 package org.springframework.social.yammer.api.impl;
 
+import org.springframework.social.yammer.api.MessageInfo;
 import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;

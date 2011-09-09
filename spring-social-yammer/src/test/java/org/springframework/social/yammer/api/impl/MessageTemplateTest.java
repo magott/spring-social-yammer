@@ -18,6 +18,9 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.social.yammer.api.MessageInfo;
+import org.springframework.social.yammer.api.YammerMessage;
+import org.springframework.social.yammer.api.YammerMessageMeta;
 import org.springframework.util.CollectionUtils;
 
 public class MessageTemplateTest extends AbstractYammerApiTest {

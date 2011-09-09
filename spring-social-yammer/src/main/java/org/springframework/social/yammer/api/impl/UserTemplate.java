@@ -19,6 +19,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.social.yammer.api.UserOperations;
+import org.springframework.social.yammer.api.YammerProfile;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;

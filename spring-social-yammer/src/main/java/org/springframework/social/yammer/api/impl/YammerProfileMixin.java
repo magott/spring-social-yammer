@@ -20,11 +20,11 @@ import java.util.List;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.springframework.social.yammer.api.impl.YammerProfile.Contact;
-import org.springframework.social.yammer.api.impl.YammerProfile.EMail;
-import org.springframework.social.yammer.api.impl.YammerProfile.InstantMessaging;
-import org.springframework.social.yammer.api.impl.YammerProfile.School;
-import org.springframework.social.yammer.api.impl.YammerProfile.Stats;
+import org.springframework.social.yammer.api.YammerProfile.Contact;
+import org.springframework.social.yammer.api.YammerProfile.EMail;
+import org.springframework.social.yammer.api.YammerProfile.InstantMessaging;
+import org.springframework.social.yammer.api.YammerProfile.School;
+import org.springframework.social.yammer.api.YammerProfile.Stats;
 
 /**
  * @author Morten Andersen-Gott

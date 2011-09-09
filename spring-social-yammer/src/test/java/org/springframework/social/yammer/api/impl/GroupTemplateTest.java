@@ -29,6 +29,7 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.social.yammer.api.Group;
 import org.springframework.social.yammer.api.GroupOperations;
 
 /**
