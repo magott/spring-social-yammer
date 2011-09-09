@@ -17,6 +17,7 @@ package org.springframework.social.yammer.api.impl;
 
 import java.util.List;
 
+import org.springframework.social.yammer.api.Group;
 import org.springframework.social.yammer.api.GroupOperations;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;

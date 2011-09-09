@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api;
 
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class Topic {
 		return id;
 	}
 
-	static class TopicExpert {
+	public static class TopicExpert {
 		private String type;
 		private long id;
 

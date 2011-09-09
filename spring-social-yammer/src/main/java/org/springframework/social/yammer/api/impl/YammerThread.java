@@ -15,28 +15,33 @@
  */
 package org.springframework.social.yammer.api.impl;
 
+import java.util.Date;
 import java.util.List;
+
+import org.springframework.social.yammer.api.Topic;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public class MessageInfo {
+public class YammerThread {
 
-	private List<YammerMessage> messages;
-	private YammerMessageMeta metadata;
+	private ThreadStats stats;
+	private String type;
+	private String privacy;
+	private long threadStarterId;
+	private boolean hasAttachements;
+	private String webUrl;
+	private long id;
+	private boolean directMessage;
+	private List<Topic> topics;
 	
-	public MessageInfo(List<YammerMessage> messages, YammerMessageMeta meta) {
-		this.messages=messages;
-		this.metadata=meta;
-	}
-	
-	public List<YammerMessage> getMessages() {
-		return messages;
-	}
-	
-	public YammerMessageMeta getMetadata() {
-		return metadata;
+	static class ThreadStats{
+		private Date firstReplyAt;
+		private Date latestReplyAt;
+		private long firstReplyId;
+		private long latestReplyId;
+		private int messageCount;
 	}
 	
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api;
 
 import java.util.Date;
 
@@ -107,7 +107,7 @@ public class Group {
 
 
 
-	static class GroupStats{
+	public static class GroupStats{
 		private int updates;
 		private int members;
 

@@ -17,6 +17,8 @@ package org.springframework.social.yammer.api.impl;
 
 import java.util.ArrayList;
 
+import org.springframework.social.yammer.api.Group;
+
 /**
  * @author Morten Andersen-Gott
  *

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api;
 
 import java.util.List;
 
@@ -79,7 +79,7 @@ public class SearchResults {
 
 
 
-	static class SearchStats{
+	public static class SearchStats{
 		private int groupCount;
 		private int messageCount;
 		private int topicCount;

@@ -26,6 +26,7 @@ import static org.springframework.social.test.client.ResponseCreators.withRespon
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.social.yammer.api.Topic;
 
 /**
  * @author Morten Andersen-Gott

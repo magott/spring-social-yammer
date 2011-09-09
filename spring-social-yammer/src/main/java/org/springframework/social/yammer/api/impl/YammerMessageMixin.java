@@ -22,12 +22,12 @@ import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.springframework.social.yammer.api.impl.YammerMessage.Attachment;
-import org.springframework.social.yammer.api.impl.YammerMessage.Body;
-import org.springframework.social.yammer.api.impl.YammerMessage.LikedBy;
-import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.File;
-import org.springframework.social.yammer.api.impl.YammerMessage.Attachment.Image;
-import org.springframework.social.yammer.api.impl.YammerMessage.LikedBy.Name;
+import org.springframework.social.yammer.api.YammerMessage.Attachment;
+import org.springframework.social.yammer.api.YammerMessage.Body;
+import org.springframework.social.yammer.api.YammerMessage.LikedBy;
+import org.springframework.social.yammer.api.YammerMessage.Attachment.File;
+import org.springframework.social.yammer.api.YammerMessage.Attachment.Image;
+import org.springframework.social.yammer.api.YammerMessage.LikedBy.Name;
 
 /**
  * @author Morten Andersen-Gott

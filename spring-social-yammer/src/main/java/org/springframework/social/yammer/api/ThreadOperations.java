@@ -15,17 +15,14 @@
  */
 package org.springframework.social.yammer.api;
 
+import org.springframework.social.yammer.api.impl.YammerThread;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public interface SearchOperations {
+public interface ThreadOperations {
 
-	SearchResults search(String searchString);
-	
-	SearchResults search(String searchString, int page);
-	
-	SearchResults search(String searchString, int page, int numberPerPage);
+	YammerThread getThread(long id);
 	
 }

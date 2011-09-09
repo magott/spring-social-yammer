@@ -16,6 +16,7 @@
 package org.springframework.social.yammer.api.impl;
 
 import org.springframework.social.yammer.api.SearchOperations;
+import org.springframework.social.yammer.api.SearchResults;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;

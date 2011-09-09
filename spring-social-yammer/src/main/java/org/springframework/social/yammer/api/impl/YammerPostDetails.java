@@ -20,6 +20,8 @@ import java.util.List;
 
 import org.springframework.core.io.Resource;
 import org.springframework.social.yammer.api.MessageOperations;
+import org.springframework.social.yammer.api.OpenGraphObject;
+import org.springframework.social.yammer.api.YammerMessage;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 

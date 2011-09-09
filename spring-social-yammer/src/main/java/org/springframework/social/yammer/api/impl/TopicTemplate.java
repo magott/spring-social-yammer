@@ -15,6 +15,7 @@
  */
 package org.springframework.social.yammer.api.impl;
 
+import org.springframework.social.yammer.api.Topic;
 import org.springframework.social.yammer.api.TopicOperations;
 import org.springframework.web.client.RestTemplate;
 

@@ -15,7 +15,6 @@
  */
 package org.springframework.social.yammer.api;
 
-import org.springframework.social.yammer.api.impl.MessageInfo;
 import org.springframework.social.yammer.api.impl.YammerPostDetails;
 
 /**
