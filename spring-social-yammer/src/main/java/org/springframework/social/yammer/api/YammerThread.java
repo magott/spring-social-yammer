@@ -35,12 +35,43 @@ public class YammerThread {
 	private boolean directMessage;
 	private List<Topic> topics;
 	
-	static class ThreadStats{
+//	public YammerThread(){}
+	
+	public YammerThread(
+			ThreadStats stats, String type, String privacy, long threadStarterId, boolean hasAttachements,
+			String webUrl, long id, boolean directMessage, List<Topic> topics) {
+		this.stats = stats;
+		this.type = type;
+		this.privacy = privacy;
+		this.threadStarterId = threadStarterId;
+		this.hasAttachements = hasAttachements;
+		this.webUrl = webUrl;
+		this.id = id;
+		this.directMessage = directMessage;
+		this.topics = topics;
+	}
+
+
+
+
+	public static class ThreadStats{
 		private Date firstReplyAt;
 		private Date latestReplyAt;
 		private long firstReplyId;
 		private long latestReplyId;
 		private int messageCount;
+		
+		public ThreadStats(){}
+		
+		public ThreadStats(Date firstReplyAt, Date latestReplyAt, long firstReplyId, long latestReplyId,
+				int messageCount) {
+			this.firstReplyAt = firstReplyAt;
+			this.latestReplyAt = latestReplyAt;
+			this.firstReplyId = firstReplyId;
+			this.latestReplyId = latestReplyId;
+			this.messageCount = messageCount;
+		}
+		
 	}
 	
 }

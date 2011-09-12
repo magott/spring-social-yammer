@@ -38,6 +38,8 @@ import org.springframework.social.yammer.api.YammerProfile.EMail;
 import org.springframework.social.yammer.api.YammerProfile.InstantMessaging;
 import org.springframework.social.yammer.api.YammerProfile.School;
 import org.springframework.social.yammer.api.YammerProfile.Stats;
+import org.springframework.social.yammer.api.YammerThread;
+import org.springframework.social.yammer.api.YammerThread.ThreadStats;
 import org.springframework.social.yammer.api.impl.GroupMixin.GroupStatsMixin;
 import org.springframework.social.yammer.api.impl.SearchResultsMixin.SearchStatsMixin;
 import org.springframework.social.yammer.api.impl.TopicMixin.TopicExpertMixin;
@@ -52,6 +54,7 @@ import org.springframework.social.yammer.api.impl.YammerProfileMixin.EMailMixin;
 import org.springframework.social.yammer.api.impl.YammerProfileMixin.InstantMessagingMixin;
 import org.springframework.social.yammer.api.impl.YammerProfileMixin.SchoolMixin;
 import org.springframework.social.yammer.api.impl.YammerProfileMixin.StatsMixin;
+import org.springframework.social.yammer.api.impl.YammerThreadMixin.YammerThreadStatsMixin;
 
 /**
  * @author Morten Andersen-Gott
@@ -86,6 +89,8 @@ public class YammerModule extends SimpleModule {
 		context.setMixInAnnotations(TopicExpert.class, TopicExpertMixin.class);
 		context.setMixInAnnotations(SearchResults.class, SearchResultsMixin.class);
 		context.setMixInAnnotations(SearchStats.class, SearchStatsMixin.class);
+		context.setMixInAnnotations(YammerThread.class, YammerThreadMixin.class);
+		context.setMixInAnnotations(ThreadStats.class, YammerThreadStatsMixin.class);
 	}
 
 }

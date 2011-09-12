@@ -32,8 +32,7 @@ public class ThreadTemplate extends AbstractYammerOperations implements ThreadOp
 	}
 	
 	public YammerThread getThread(long id) {
-		String string = restTemplate.getForObject(buildUri("threads/"+id+".json"), String.class);
-		return null;
+		return restTemplate.getForObject(buildUri("threads/"+id+".json"), YammerThread.class);
 	}
 
 }
