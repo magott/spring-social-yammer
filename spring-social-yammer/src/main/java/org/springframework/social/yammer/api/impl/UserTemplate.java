@@ -18,6 +18,7 @@ package org.springframework.social.yammer.api.impl;
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.social.yammer.api.UserInfo;
 import org.springframework.social.yammer.api.UserOperations;
 import org.springframework.social.yammer.api.YammerProfile;
 import org.springframework.util.CollectionUtils;
