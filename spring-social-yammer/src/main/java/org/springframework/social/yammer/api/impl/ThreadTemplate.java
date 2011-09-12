@@ -16,6 +16,7 @@
 package org.springframework.social.yammer.api.impl;
 
 import org.springframework.social.yammer.api.ThreadOperations;
+import org.springframework.social.yammer.api.YammerThread;
 import org.springframework.web.client.RestTemplate;
 
 /**
