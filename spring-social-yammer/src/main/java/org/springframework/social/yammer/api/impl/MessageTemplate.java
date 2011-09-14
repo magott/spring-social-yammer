@@ -43,46 +43,46 @@ public class MessageTemplate extends AbstractYammerOperations implements Message
 
 	public MessageInfo getMessagesFollowing(long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("following.json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/following.json", params), MessageInfo.class);
 	}
 	
 	public MessageInfo getMessagesSent(long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("sent.json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/sent.json", params), MessageInfo.class);
 	}
 
 	public MessageInfo getMessagesPrivate(long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("private.json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/private.json", params), MessageInfo.class);
 	}
 
 	public MessageInfo getMessagesAboutTopic(long topicId, long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("about_topic/"+topicId+".json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/about_topic/"+topicId+".json", params), MessageInfo.class);
 	}
 	
 	public MessageInfo getMessagesInGroup(long groupId, long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("in_group/"+groupId+".json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/in_group/"+groupId+".json", params), MessageInfo.class);
 	}
 	public MessageInfo getMessagesInThread(long threadId, long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("in_thread/"+threadId+".json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/in_thread/"+threadId+".json", params), MessageInfo.class);
 	}
 	
 	public MessageInfo getMessagesFromUser(long userId, long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("from_user/"+userId+".json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/from_user/"+userId+".json", params), MessageInfo.class);
 	}
 
 	public MessageInfo getMessagesLikedByUser(long userId, long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("liked_by/"+userId+".json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/liked_by/"+userId+".json", params), MessageInfo.class);
 	}
 
 	public MessageInfo getMessagesReceived(long olderThan, long newerThan, String threaded, int limit){
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
-		return restTemplate.getForObject(buildUri("received.json", params), MessageInfo.class);
+		return restTemplate.getForObject(buildUri("messages/received.json", params), MessageInfo.class);
 	}
 	
 	public MessageInfo postUpdate(String message){
