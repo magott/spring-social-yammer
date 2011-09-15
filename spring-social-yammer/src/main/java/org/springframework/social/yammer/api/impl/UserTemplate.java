@@ -69,7 +69,7 @@ public class UserTemplate extends AbstractYammerOperations implements UserOperat
 	}
 	
 	public YammerProfile getCurrentUser(){
-		return restTemplate.getForObject(buildUri("users/current"), YammerProfile.class);
+		return restTemplate.getForObject(buildUri("users/current.json"), YammerProfile.class);
 	}
 	
 	public YammerProfile getUserByEmail(String email){
