@@ -152,12 +152,14 @@ public class YammerMessage {
 	public static class Body{
     	private String plain;
     	private String parsed;
+    	private String rich;
     	private List<String> urls;
     	
-		public Body(String plain, String parsed, List<String> urls) {
+		public Body(String plain, String parsed, String rich, List<String> urls) {
 			super();
 			this.plain = plain;
 			this.parsed = parsed;
+			this.rich=rich;
 			this.urls = urls;
 		}
 
@@ -169,6 +171,10 @@ public class YammerMessage {
 			return parsed;
 		}
 
+		public String getRich() {
+			return rich;
+		}
+		
 		public List<String> getUrls() {
 			return urls;
 		}

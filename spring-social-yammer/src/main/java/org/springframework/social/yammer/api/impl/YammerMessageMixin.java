@@ -63,6 +63,7 @@ public class YammerMessageMixin {
 		BodyMixin(
 			@JsonProperty("plain")String plain,
 			@JsonProperty("parsed")String formatted,
+			@JsonProperty("rich")String rich,
 			@JsonProperty("urls")List<String> urls
 		){}
 	}
