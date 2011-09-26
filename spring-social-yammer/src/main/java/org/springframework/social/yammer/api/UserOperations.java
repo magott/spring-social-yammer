@@ -33,6 +33,8 @@ public interface UserOperations {
 	 * Convenience constant for sorting by followers
 	 */
 	public static final String SORT_BY_FOLLOWERS = "followers";
+
+    YammerProfile getCurrentUser();
 	
 	YammerProfile getUser(long id);
 

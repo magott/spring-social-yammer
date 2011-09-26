@@ -60,7 +60,12 @@ public class UserTemplate extends AbstractYammerOperations implements UserOperat
 	}
 
 	public YammerProfile getUser(long id){
-		URI uri = buildUri("users/"+String.valueOf(id)+".json");
+        String userId = String.valueOf(id);
+        return getUser(userId);
+	}
+
+    public YammerProfile getUser(String userId){
+		URI uri = buildUri("users/"+userId+".json");
 		return restTemplate.getForObject(uri, YammerProfile.class);
 	}
 	
