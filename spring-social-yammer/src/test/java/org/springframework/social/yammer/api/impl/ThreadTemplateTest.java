@@ -15,6 +15,7 @@
  */
 package org.springframework.social.yammer.api.impl;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
@@ -39,7 +40,26 @@ public class ThreadTemplateTest extends AbstractYammerApiTest {
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/threads/123.json")).andExpect(method(GET))
 				.andRespond(withResponse(new ClassPathResource("yammer-thread.json", getClass()), responseHeaders));
 		YammerThread thread = yammerTemplate.threadOperations().getThread(123L);
-		assertThat(thread, notNullValue());		
+		assertThat(thread, notNullValue());
+		assertThread(thread);
+	}
+
+	/**
+	 * @param thread
+	 */
+	private void assertThread(YammerThread thread) {
+		assertThat(thread.hasAttachements(), equalTo(true));
+		assertThat(thread.getId(), equalTo(110012127L));
+		assertThat(thread.getPrivacy(), equalTo("public"));
+		assertThat(thread.getThreadStarterId(), equalTo(110012127L));
+		assertThat(thread.getTopics().size(), equalTo(2));
+		assertThat(thread.getType(), equalTo("thread"));
+		assertThat(thread.getWebUrl(), equalTo("https://www.yammer.com/company.com#/Threads/show?threadId=110012127"));
+		assertThat(thread.getMessageCount(), equalTo(8));
+		assertThat(thread.getFirstReplyId(), equalTo(110016003L));
+		assertThat(thread.getLatestReplyId(), equalTo(110323619L));
+		assertThat(thread.getFirstReplyDate().getTime(), equalTo(1314170067000L));
+		assertThat(thread.getLatestReplyDate().getTime(), equalTo(1314272305000L));
 	}
 	
 }

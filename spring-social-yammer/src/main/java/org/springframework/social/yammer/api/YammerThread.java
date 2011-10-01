@@ -48,8 +48,62 @@ public class YammerThread {
 		this.directMessage = directMessage;
 		this.topics = topics;
 	}
+	
+
+	public long getFirstReplyId(){
+		return stats.firstReplyId;
+	}
+	
+	public Date getFirstReplyDate(){
+		return stats.firstReplyAt;
+	}
+	
+	public long getLatestReplyId(){
+		return stats.latestReplyId;
+	}
+	
+	public Date getLatestReplyDate(){
+		return stats.latestReplyAt;
+	}
+	
+	public int getMessageCount(){
+		return stats.messageCount;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getPrivacy() {
+		return privacy;
+	}
+
+	public long getThreadStarterId() {
+		return threadStarterId;
+	}
+
+	public boolean hasAttachements() {
+		return hasAttachements;
+	}
 
 
+	public String getWebUrl() {
+		return webUrl;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public boolean isDirectMessage() {
+		return directMessage;
+	}
+
+	public List<Topic> getTopics() {
+		return topics;
+	}
 
 
 	public static class ThreadStats{
