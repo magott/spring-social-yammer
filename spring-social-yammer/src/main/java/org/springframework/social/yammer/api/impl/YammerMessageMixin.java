@@ -45,7 +45,7 @@ public class YammerMessageMixin {
 			@JsonProperty("thread_id")long threadId,
 			@JsonProperty("sender_type")String senderType, 
 			@JsonProperty("attachments")List<Attachment> attachments, 
-			@JsonProperty("replied_to_id")long repliedToId, 
+			@JsonProperty("replied_to_id")Long repliedToId, 
 			@JsonProperty("sender_id")long senderId, 
 			@JsonProperty("web_url")String webUrl,
 			@JsonProperty("client_url")String clientUrl, 

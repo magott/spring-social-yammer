@@ -31,7 +31,7 @@ public class YammerMessage {
 	private long threadId;
 	private String senderType;
 	private List<Attachment> attachments;
-	private long repliedToId;
+	private Long repliedToId;
 	private long senderId;
 	private String webUrl;
 	private String clientUrl;
@@ -47,7 +47,7 @@ public class YammerMessage {
 	
 	
     public YammerMessage(long id, Body body, String url, long networkId, String privacy, long threadId,
-			String senderType, List<Attachment> attachments, long repliedToId, long senderId, String webUrl,
+			String senderType, List<Attachment> attachments, Long repliedToId, long senderId, String webUrl,
 			String clientUrl, boolean systemMessage, String messageType, Date createdAt, boolean directMessage,
 			String clientType, LikedBy likedBy, long groupId) {
 		super();
@@ -101,7 +101,7 @@ public class YammerMessage {
 		return attachments;
 	}
 
-	public long getRepliedToId() {
+	public Long getRepliedToId() {
 		return repliedToId;
 	}
 

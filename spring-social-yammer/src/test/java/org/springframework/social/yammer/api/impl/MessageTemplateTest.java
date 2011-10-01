@@ -1,6 +1,9 @@
 package org.springframework.social.yammer.api.impl;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
@@ -20,6 +23,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.social.yammer.api.MessageInfo;
 import org.springframework.social.yammer.api.YammerMessage;
+import org.springframework.social.yammer.api.YammerMessage.Attachment;
 import org.springframework.social.yammer.api.YammerMessageMeta;
 import org.springframework.util.CollectionUtils;
 
@@ -189,17 +193,49 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		yammerTemplate.messageOperations().delete(123L);
 	}
 
-	/**
-	 * @param messageInfo
-	 */
 	private void assertMessageInfo(MessageInfo messageInfo) {
 		List<YammerMessage> messages = messageInfo.getMessages();
 		YammerMessageMeta metadata = messageInfo.getMetadata();
+		assertFirstMessage(messageInfo.getMessages().get(0));
 		assertCollectionNotEmpty(messages);
 		assertCollectionNotEmpty(metadata.getBookmarkedMessageIds());
 
 	}
 	
+	private void assertFirstMessage(YammerMessage yammerMessage) {
+		assertThat(yammerMessage.getBody().getPlain(), equalTo("message with photo attachment."));
+		assertThat(yammerMessage.getBody().getParsed(), equalTo("message with photo attachment."));
+		assertThat(yammerMessage.getClientType(), equalTo("Web"));
+		assertThat(yammerMessage.getClientUrl(), equalTo("https://www.yammer.com/"));
+		assertThat(yammerMessage.isDirectMessage(), is(false));
+		assertThat(yammerMessage.isSystemMessage(), is(false));
+		assertThat(yammerMessage.getSenderType(), equalTo("user"));
+		assertThat(yammerMessage.getNetworkId(), equalTo(104604L));
+		assertThat(yammerMessage.getThreadId(), equalTo(84402777L));
+		assertThat(yammerMessage.getId(), equalTo(84402777L));
+		assertThat(yammerMessage.getSenderId(), equalTo(4022984L));
+		assertThat(yammerMessage.getRepliedToId(), nullValue());
+		assertThat(yammerMessage.getMessageType(), equalTo("update"));
+		assertThat(yammerMessage.getLikedBy().getCount(), equalTo(0));
+		assertThat(yammerMessage.getLikedBy().getNames().size(), equalTo(0));
+		assertCollectionNotEmpty(yammerMessage.getAttachments());
+		assertFirstAttachment(yammerMessage.getAttachments().get(0));
+	}
+
+	/**
+	 * @param attachment
+	 */
+	private void assertFirstAttachment(Attachment attachment) {
+		assertThat(attachment.getType(), equalTo("image"));
+		assertThat(attachment.getId(), equalTo(974915L));
+		assertThat(attachment.getyId(), equalTo(857663L));
+		assertThat(attachment.getImage(), notNullValue());
+		assertThat(attachment.getImage().getUrl(), equalTo("https://www.yammer.com/api/v1/file/857663/Firefly.jpg"));
+		assertThat(attachment.getName(), equalTo("Firefly.jpg"));
+		assertThat(attachment.getImage().getThumbnailUrl(), equalTo("https://www.yammer.com/api/v1/file/857663/Firefly.jpg?view=thumbnail"));
+		assertThat(attachment.getImage().getSize(), equalTo(0L));
+	}
+
 	private void assertCollectionNotEmpty(Collection<?> collection){
 		assertThat(CollectionUtils.isEmpty(collection), is(false));
 	}
