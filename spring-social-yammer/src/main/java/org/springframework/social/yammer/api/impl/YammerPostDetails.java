@@ -37,9 +37,9 @@ import org.springframework.util.MultiValueMap;
  */
 public class YammerPostDetails {
 
-	private long groupId;
-	private long replyToId;
-	private long directToUserId;
+	private Long groupId;
+	private Long replyToId;
+	private Long directToUserId;
 	private Boolean broadcast;
 	private List<String> topics = new ArrayList<String>();
 	private OpenGraphObject openGraphObject;
@@ -111,33 +111,33 @@ public class YammerPostDetails {
 		}
 	}
 
-	private void addLongToParamsIfSet(MultiValueMap<String,Object> params, long param, String paramName) {
-		if (param != 0) {
+	private void addLongToParamsIfSet(MultiValueMap<String,Object> params, Long param, String paramName) {
+		if (param != null) {
 			params.set(paramName, String.valueOf(param));
 		}
 	}
 
-	public long getGroupId() {
+	public Long getGroupId() {
 		return groupId;
 	}
 
-	public void setGroupId(long groupId) {
+	public void setGroupId(Long groupId) {
 		this.groupId = groupId;
 	}
 
-	public long getReplyToId() {
+	public Long getReplyToId() {
 		return replyToId;
 	}
 
-	public void setReplyToId(long replyToId) {
+	public void setReplyToId(Long replyToId) {
 		this.replyToId = replyToId;
 	}
 
-	public long getDirectToUserId() {
+	public Long getDirectToUserId() {
 		return directToUserId;
 	}
 
-	public void setDirectToUserId(long directToUserId) {
+	public void setDirectToUserId(Long directToUserId) {
 		this.directToUserId = directToUserId;
 	}
 

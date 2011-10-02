@@ -8,6 +8,7 @@ import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.social.test.client.RequestMatchers.body;
 import static org.springframework.social.test.client.RequestMatchers.method;
 import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
@@ -191,6 +192,27 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		.andExpect(method(DELETE))
 		.andRespond(withResponse("", responseHeaders));
 		yammerTemplate.messageOperations().delete(123L);
+	}
+	
+	@Test
+	public void testPostUpdate(){
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json"))
+		.andExpect(body("body=Hello"))
+		.andExpect(method(POST))
+		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
+		yammerTemplate.messageOperations().postUpdate("Hello");
+	}
+	@Test
+	public void testPostUpdate_withParams(){
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json"))
+		.andExpect(body("body=Hello&replied_to_id=1"))
+		.andExpect(method(POST))
+		.andRespond(withResponse(new ClassPathResource("yammer-messages.json", getClass()), responseHeaders));
+		YammerPostDetails details = new YammerPostDetails();
+		details.setReplyToId(1L);
+		yammerTemplate.messageOperations().postUpdate("Hello",details);
 	}
 
 	private void assertMessageInfo(MessageInfo messageInfo) {
