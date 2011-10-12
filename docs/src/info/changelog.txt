@@ -1,0 +1,6 @@
+Spring Social LinkedIn 1.0.0 Milestone 4 (October 12, 2011)
+=======================================================
+ - Created Spring Social Yammer
+
+ Refer to Spring Social's changelog for a history of the LinkedIn module
+ prior to it being extracted into its own project.

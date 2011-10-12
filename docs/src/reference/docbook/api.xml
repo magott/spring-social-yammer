@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="apis" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Yammer API Binding</title>
+
+	<para>
+		Spring Social Yammer offers integration with Yammer's REST API with the <interfacename>Yammer</interfacename> interface and its implementation, <classname>YammerTemplate</classname>.
+	</para>
+	
+	<para>
+		To create an instance of <classname>YammerTemplate</classname>, you may pass in your application's OAuth 1 credentials, along with an access token/secret pair to the constructor:
+	</para>
+	
+	<programlisting language="java"><![CDATA[
+String consumerKey = "..."; // The application's consumer key
+String consumerSecret = "..."; // The application's consumer secret
+String accessToken = "..."; // The access token granted after OAuth authorization
+String accessTokenSecret = "..."; // The access token secret granted after OAuth authorization
+Yammer yammer = new YammerTemplate(consumerKey, consumerSecret, accessToken, accessTokenSecret);]]>
+	</programlisting>
+	
+	<para>
+		If you are using Spring Social's <ulink url="http://static.springsource.org/spring-social/docs/1.0.x/reference/html/serviceprovider.html">service provider framework</ulink>, you can get an instance of <interfacename>Yammer</interfacename> from a <interfacename>Connection</interfacename>. 
+		For example, the following snippet calls <methodname>getApi()</methodname> on a connection to retrieve a <interfacename>Yammer</interfacename>:
+	</para>				
+	
+	<programlisting language="java"><![CDATA[
+Connection<Yammer> connection = connectionRepository.findPrimaryConnection(Yammer.class);
+if (connection != null) {
+    Yammer yammer = connection.getApi();
+
+    // ... use Yammer API binding
+}]]>
+	</programlisting>
+	
+	<para>
+		Here, <interfacename>ConnectionRepository</interfacename> is being asked for the primary connection that the current user has with Yammer.
+		If a connection to Yammer is found, it retrieves a <interfacename>Yammer</interfacename> instance that is configured with the connection details received when the connection was first established.
+	</para>
+	
+	<para>
+		Once you have a <interfacename>Yammer</interfacename> you can use it to interact with Yammer on behalf of the user who the access token was granted for.
+	</para>
+
+	
+	
+		<para>
+		With a <interfacename>Yammer</interfacename> in hand, there are several ways you can use it to interact with Yammer on behalf of the user.
+		Spring Social's Yammer API binding is divided into 7 sub-APIs exposed through the methods of <interfacename>Yammer</interfacename>:
+	</para>
+
+	<programlisting language="java"><![CDATA[
+public interface Yammer {
+
+	ThreadOperations threadOperations();
+
+	SubscriptionOperations subscriptionOperations();
+
+	TopicOperations topicOperations();
+
+	SearchOperations searchOperations();
+
+	GroupOperations groupOperations();
+
+	MessageOperations messageOperations();
+
+	UserOperations userOperations();
+
+}]]>
+	</programlisting>
+
+	<para>
+		The sub-API interfaces returned from <interfacename>Yammer</interfacename>'s methods are described in <xref linkend="table-yammer-sub-apis" />.
+	</para>
+
+	<table xml:id="table-yammer-sub-apis">
+		<title>Yammer's Sub-APIs</title>
+		<tgroup cols="2">
+			<colspec align="left" />
+			<colspec colnum="1" colname="col1" colwidth="2*"/>
+			<colspec colnum="2" colname="col2" colwidth="2*"/>
+			<thead>
+				<row>
+					<entry align="center">Sub-API Interface</entry>
+					<entry align="center">Description</entry>
+				</row>
+			</thead>
+			<tbody>
+				<row>
+					<entry>ThreadOperations</entry>
+					<entry>Get information about Yammer threads</entry>
+				</row>
+				<row>
+					<entry>SubscriptionOperations</entry>
+					<entry>Follow, unfollow and check whether you are following topics (tags), users or threads</entry>
+				</row>
+				<row>
+					<entry>TopicOperations</entry>
+					<entry>Get information about a single Topic (tag)</entry>
+				</row>
+				<row>
+					<entry>SearchOperations</entry>
+					<entry>Search for messages, users, tags and groups in your Yammer network</entry>
+				</row>
+				<row>
+					<entry>GroupOperations</entry>
+					<entry>List, get, create, join and leave groups</entry>
+				</row>
+				<row>
+					<entry>MessageOperations</entry>
+					<entry>Get, post and delete messages</entry>
+				</row>
+				<row>
+					<entry>UserOperations</entry>
+					<entry>List users, get, and update user.</entry>
+				</row>
+			</tbody>
+		</tgroup>
+	</table>
+
+	<para>
+		The following sections will give an overview of common tasks that can be performed via <interfacename>Yammer</interfacename> and its sub-APIs.
+		For complete details on all of the operations available, refer to the JavaDoc.
+	</para>
+	
+	
+	<section id="yammer-getProfile">
+		<title>Retrieving a user's Yammer profile data</title>
+		
+		<para>
+			To retrieve the authenticated user's profile data, call the <methodname>getUserProfile()</methodname> method method provided by the <interfacename>UserOperations</interfacename>::
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+YammerProfile profile = yammer.userOperations().getUserProfile();]]>
+		</programlisting>
+		
+		<para>
+			The data returned in the <classname>YammerProfile</classname> includes the user's Yammer ID, first and last names, contact information, education and work experience as well as stats such as number of posts, followers and number of people the user is following
+		</para>
+	</section>
+	
+	<section id="yammer-getUsers">
+		<title>Listing Yammer users in a network</title>
+		
+		<para>
+			To retrieve a list of users (members) of a Yammer network, call the <methodname>getUsers()</methodname> method provided by the <interfacename>UserOperations</interfacename>:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+YammerProfile profile = yammer.userOperations().getUsers(1);]]>
+		</programlisting>
+		
+		<para>
+			The single parameter is the page number. User lists are retrieved per page, with Yammer returning a maximum of 50 users per page. 
+			The method returns a <interfacename>List</interfacename> of <classname>YammerProfile</classname>s.
+		</para>
+
+		<para>
+			You may also the overloaded <methodname>getUsers()</methodname> method that in addition to the page number lets you specify the sorting key (followers or messages), 
+			wether you want results in reversed order (true or false, false is default) and the letter you want the users to start with:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+YammerProfile profile = yammer.userOperations().getUsers(1, UserOperations.SORT_BY_MESSAGES, false, 'A')]]>
+		</programlisting>
+	</section>
+
+	<section id="yammer-getMessages">
+		<title>Get messages posted to your network</title>
+		
+		<para>
+			To get messages posted to your network call the <methodname>getMessages()</methodname> method method provided by the <interfacename>MessageOperations</interfacename>:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+YammerProfile profile = yammer.messageOperations().getMessages(0, 0, MessageOperations.NO_THREADING, 0);]]>
+		</programlisting>
+		
+		<para>
+			The parameters to the <methodname>getMessages()</methodname> are: 
+			older than id (returns only messages older than the message ID specified, 0 if you want the latest), newer than id, threading option (NO_THREADING, THREADED or THREADED_EXTENDED), 
+			limit (the number of posts per poll, 0 for defaulting to yammer default of 50)
+			The data returned is <classname>MessageInfo</classname> which contains meta data about the poll and a <interfacename>List</interfacename> of <classname>YammerMessage</classname>
+		</para>
+		
+		<para>
+			Additional operations to get messages exists in <interfacename>MessageOperations</interfacename>, they all take the same parameters as <methodname>getMessages()</methodname>. 
+			<methodname>getMessagesFollowing()</methodname> to get messages from people you are following. 
+			<methodname>getMessagesFromUser()</methodname> to get messages posted by a specified user. 
+			<methodname>getMessagesPrivate()</methodname> to private messages. 
+			<methodname>getMessagesReceived()</methodname> to get messages received. 
+			<methodname>getMessagesLikedByUser()</methodname> to get messages liked by a specified user. 
+			<methodname>getMessagesAboutTopic()</methodname> to get messages on a specified topic (topic id). 
+		</para>
+	</section>
+	<section id="yammer-postUpdate">
+		<title>Post an update to your network</title>
+		
+		<para>
+			To post an update to your followers, call the <methodname>postUpdate()</methodname> method method provided by the <interfacename>MessageOperations</interfacename>:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+YammerProfile profile = yammer.messageOperations().postUpdate("Hello all Yammerites!");]]>
+		</programlisting>
+		
+		<para>
+			The data returned is <classname>MessageInfo</classname> which is the same type of object returned when you fetch messages. This allows you to immediately display the newly-posted message without doing a poll.
+		</para>
+		
+		<para>
+			Optionally, you may provide additional information to your update such as attachments. You may also include a group id if you are posting to a group or a replied to id if you are replying to an existing post.
+			This is done by calling the overloaded <methodname>postUpdate()</methodname> method method provided by the <interfacename>MessageOperations</interfacename>:
+		</para>
+		
+		<programlisting language="java"><![CDATA[
+		Resource resource = new FileSystemResource("file:///test.txt");
+		YammerPostDetails details = new YammerPostDetails();
+		details.addAttachment(resource);
+YammerProfile profile = yammer.messageOperations().postUpdate("Hello all Yammerites!", details);]]>
+		</programlisting>
+	</section>	
+	
+</chapter>
