@@ -16,6 +16,8 @@
 package org.springframework.social.yammer.api.impl;
 
 import org.junit.Before;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.social.test.client.MockRestServiceServer;
@@ -39,6 +41,11 @@ public abstract class AbstractYammerApiTest {
 		responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 	}
+	
+	protected Resource jsonResource(String filename) {
+		return new ClassPathResource(filename + ".json", getClass());
+	}
+
 
 }
 
