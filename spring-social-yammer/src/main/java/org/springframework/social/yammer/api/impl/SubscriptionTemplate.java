@@ -18,6 +18,7 @@ package org.springframework.social.yammer.api.impl;
 import java.net.URI;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.social.ResourceNotFoundException;
 import org.springframework.social.yammer.api.SubscriptionOperations;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -84,12 +85,8 @@ public class SubscriptionTemplate extends AbstractYammerOperations implements Su
 		try{
 			restTemplate.getForObject(url, String.class);
 			return true;
-		}catch(HttpClientErrorException ex){
-			if(ex.getStatusCode() == HttpStatus.NOT_FOUND){
-				return false;
-			}else{
-				throw ex;
-			}
+		}catch(ResourceNotFoundException ex){
+			return false; //Yammer returns 404 if not following
 		}
 	}
 
