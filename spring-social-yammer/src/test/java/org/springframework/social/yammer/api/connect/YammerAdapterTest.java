@@ -34,7 +34,7 @@ public class YammerAdapterTest {
 
         UserOperations userOperations = mock(UserOperations.class);
         when(yammer.userOperations()).thenReturn(userOperations);
-        when(userOperations.getCurrentUser()).thenReturn(yammerProfile);
+        when(userOperations.getUserProfile()).thenReturn(yammerProfile);
 
         UserProfile profile = apiAdapter.fetchUserProfile(yammer);
 
@@ -56,7 +56,7 @@ public class YammerAdapterTest {
 
         UserOperations userOperations = mock(UserOperations.class);
         when(yammer.userOperations()).thenReturn(userOperations);
-        when(userOperations.getCurrentUser()).thenReturn(yammerProfile);
+        when(userOperations.getUserProfile()).thenReturn(yammerProfile);
 
         UserProfile profile = apiAdapter.fetchUserProfile(yammer);
 
@@ -75,7 +75,7 @@ public class YammerAdapterTest {
 
         UserOperations userOperations = mock(UserOperations.class);
         when(yammer.userOperations()).thenReturn(userOperations);
-        when(userOperations.getCurrentUser()).thenReturn(yammerProfile);
+        when(userOperations.getUserProfile()).thenReturn(yammerProfile);
 
         UserProfile profile = apiAdapter.fetchUserProfile(yammer);
 
@@ -91,7 +91,7 @@ public class YammerAdapterTest {
         ConnectionValues values = mock(ConnectionValues.class);
         UserOperations userOperations = mock(UserOperations.class);
         when(yammer.userOperations()).thenReturn(userOperations);
-        when(userOperations.getCurrentUser()).thenReturn(yammerProfile);
+        when(userOperations.getUserProfile()).thenReturn(yammerProfile);
 
         apiAdapter.setConnectionValues(yammer, values);
 
@@ -107,7 +107,7 @@ public class YammerAdapterTest {
         UserOperations userOperations = mock(UserOperations.class);
         when(yammer.userOperations()).thenReturn(userOperations);
         YammerProfile yammerProfile = mock(YammerProfile.class);
-        when(userOperations.getCurrentUser()).thenReturn(yammerProfile);
+        when(userOperations.getUserProfile()).thenReturn(yammerProfile);
 
         boolean isApiOK = apiAdapter.test(yammer);
 
@@ -118,7 +118,7 @@ public class YammerAdapterTest {
     public void testShouldFailWhenApiIsUnableToRetrieveUserProfile() {
         UserOperations userOperations = mock(UserOperations.class);
         when(yammer.userOperations()).thenReturn(userOperations);
-        when(userOperations.getCurrentUser()).thenThrow(new RestClientException("unable to retrieve user profile"));
+        when(userOperations.getUserProfile()).thenThrow(new RestClientException("unable to retrieve user profile"));
 
         boolean isApiOK = apiAdapter.test(yammer);
 

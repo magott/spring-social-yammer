@@ -32,7 +32,7 @@ public class YammerAdapter implements ApiAdapter<Yammer> {
 
     public boolean test(Yammer yammer) {
         try {
-            yammer.userOperations().getCurrentUser();
+            yammer.userOperations().getUserProfile();
             return true;
         } catch (RestClientException e) {
             return false;
@@ -40,7 +40,7 @@ public class YammerAdapter implements ApiAdapter<Yammer> {
     }
 
     public void setConnectionValues(Yammer yammer, ConnectionValues values) {
-        YammerProfile profile = yammer.userOperations().getCurrentUser();
+        YammerProfile profile = yammer.userOperations().getUserProfile();
         String providerUserId = String.valueOf(profile.getId());
         values.setProviderUserId(providerUserId);
         values.setDisplayName(profile.getFullName());
@@ -49,7 +49,7 @@ public class YammerAdapter implements ApiAdapter<Yammer> {
     }
 
     public UserProfile fetchUserProfile(Yammer yammer) {
-        YammerProfile profile = yammer.userOperations().getCurrentUser();
+        YammerProfile profile = yammer.userOperations().getUserProfile();
 
         String primaryMail = getEMail(profile);
         return new UserProfileBuilder().setName(profile.getFullName()).setUsername(profile.getName()).setEmail(primaryMail).build();

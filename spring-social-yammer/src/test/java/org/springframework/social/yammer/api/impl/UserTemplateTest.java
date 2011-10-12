@@ -42,7 +42,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/current.json"))
 				.andExpect(method(GET))
 				.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
-		YammerProfile yProfile = yammerTemplate.userOperations().getCurrentUser();
+		YammerProfile yProfile = yammerTemplate.userOperations().getUserProfile();
 		assertThat(yProfile.getId(), equalTo(currentUserId));
 		assertYammerProfile(yProfile);
 	}

@@ -34,7 +34,7 @@ public interface UserOperations {
 	 */
 	public static final String SORT_BY_FOLLOWERS = "followers";
 
-    YammerProfile getCurrentUser();
+    YammerProfile getUserProfile();
 	
 	YammerProfile getUser(long id);
 
