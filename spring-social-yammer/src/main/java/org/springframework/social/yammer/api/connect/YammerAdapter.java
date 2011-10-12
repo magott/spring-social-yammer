@@ -21,16 +21,16 @@ import org.springframework.social.connect.ApiAdapter;
 import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UserProfileBuilder;
+import org.springframework.social.yammer.api.Yammer;
 import org.springframework.social.yammer.api.YammerProfile;
-import org.springframework.social.yammer.api.impl.YammerTemplate;
 import org.springframework.web.client.RestClientException;
 
 
-public class YammerAdapter implements ApiAdapter<YammerTemplate> {
+public class YammerAdapter implements ApiAdapter<Yammer> {
 
     public static final String EMAIL_PRIMARY_TYPE = "primary";
 
-    public boolean test(YammerTemplate yammer) {
+    public boolean test(Yammer yammer) {
         try {
             yammer.userOperations().getCurrentUser();
             return true;
@@ -39,7 +39,7 @@ public class YammerAdapter implements ApiAdapter<YammerTemplate> {
         }
     }
 
-    public void setConnectionValues(YammerTemplate yammer, ConnectionValues values) {
+    public void setConnectionValues(Yammer yammer, ConnectionValues values) {
         YammerProfile profile = yammer.userOperations().getCurrentUser();
         String providerUserId = String.valueOf(profile.getId());
         values.setProviderUserId(providerUserId);
@@ -48,7 +48,7 @@ public class YammerAdapter implements ApiAdapter<YammerTemplate> {
         values.setImageUrl(profile.getMugshotUrl());
     }
 
-    public UserProfile fetchUserProfile(YammerTemplate yammer) {
+    public UserProfile fetchUserProfile(Yammer yammer) {
         YammerProfile profile = yammer.userOperations().getCurrentUser();
 
         String primaryMail = getEMail(profile);
@@ -70,7 +70,7 @@ public class YammerAdapter implements ApiAdapter<YammerTemplate> {
         return fallbackEMail.getAddress();
     }
 
-    public void updateStatus(YammerTemplate yammer, String message) {
+    public void updateStatus(Yammer yammer, String message) {
         // not supported yet
     }
 

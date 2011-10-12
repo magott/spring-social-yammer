@@ -18,10 +18,11 @@ package org.springframework.social.yammer.api.connect;
 import org.springframework.social.oauth1.AbstractOAuth1ServiceProvider;
 import org.springframework.social.oauth1.OAuth1Template;
 import org.springframework.social.oauth1.OAuth1Version;
+import org.springframework.social.yammer.api.Yammer;
 import org.springframework.social.yammer.api.impl.YammerTemplate;
 
 
-public class YammerServiceProvider extends AbstractOAuth1ServiceProvider<YammerTemplate> {
+public class YammerServiceProvider extends AbstractOAuth1ServiceProvider<Yammer> {
 
 	public YammerServiceProvider(String consumerKey, String consumerSecret) {
 		super(consumerKey, consumerSecret, new OAuth1Template(consumerKey, consumerSecret,
@@ -30,7 +31,7 @@ public class YammerServiceProvider extends AbstractOAuth1ServiceProvider<YammerT
 			"https://www.yammer.com/oauth/access_token", OAuth1Version.CORE_10_REVISION_A));
 	}
 
-	public YammerTemplate getApi(String accessToken, String secret) {
+	public Yammer getApi(String accessToken, String secret) {
 		return new YammerTemplate(getConsumerKey(), getConsumerSecret(), accessToken, secret);
 	}
 

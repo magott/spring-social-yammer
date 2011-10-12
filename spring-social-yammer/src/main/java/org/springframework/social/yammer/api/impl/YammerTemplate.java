@@ -28,14 +28,15 @@ import org.springframework.social.yammer.api.SubscriptionOperations;
 import org.springframework.social.yammer.api.ThreadOperations;
 import org.springframework.social.yammer.api.TopicOperations;
 import org.springframework.social.yammer.api.UserOperations;
+import org.springframework.social.yammer.api.Yammer;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public class YammerTemplate extends AbstractOAuth1ApiBinding{
-
+public class YammerTemplate extends AbstractOAuth1ApiBinding implements Yammer{
+	
 	private UserOperations userOperations;
 	private MessageOperations messageOperations;
 	private GroupOperations groupOperations;
