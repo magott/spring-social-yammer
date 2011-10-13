@@ -71,7 +71,7 @@ public class YammerAdapter implements ApiAdapter<Yammer> {
     }
 
     public void updateStatus(Yammer yammer, String message) {
-        // not supported yet
+        yammer.messageOperations().postUpdate(message);
     }
 
 }
