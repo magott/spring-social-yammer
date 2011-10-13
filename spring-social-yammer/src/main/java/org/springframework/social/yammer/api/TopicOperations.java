@@ -17,11 +17,17 @@ package org.springframework.social.yammer.api;
 
 
 /**
+ * Sub-API for topic operations
  * @author Morten Andersen-Gott
  *
  */
 public interface TopicOperations {
 
+	/**
+	 * Get information about a topic
+	 * @param id topic id
+	 * @return {@link Topic}
+	 */
 	Topic getTopic(long id);
 	
 }

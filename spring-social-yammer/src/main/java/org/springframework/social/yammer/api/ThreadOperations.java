@@ -17,11 +17,17 @@ package org.springframework.social.yammer.api;
 
 
 /**
+ * Sub-API for Thread operations
  * @author Morten Andersen-Gott
  *
  */
 public interface ThreadOperations {
 
+	/**
+	 * Get information about a thread
+	 * @param id the thread id
+	 * @return {@link YammerThread}
+	 */
 	YammerThread getThread(long id);
 	
 }

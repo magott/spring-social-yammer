@@ -17,8 +17,10 @@ package org.springframework.social.yammer.api;
 
 import java.util.List;
 
+import org.springframework.social.ResourceNotFoundException;
 
 /**
+ * Sub-API for all Group related methods
  * @author Morten Andersen-Gott
  * 
  */
@@ -58,11 +60,12 @@ public interface GroupOperations {
 	 * @param letter
 	 *            return groups beginning with the given letter
 	 * @param sortBy
-	 *            sort key. Valid values are messages | members | privacy |
-	 *            created_at | creator
+	 *            sort key. Valid values are {@value #SORT_BY_CREATOR} | {@value #SORT_BY_MEMBERS} | {@value #SORT_BY_PRIVACY} |
+	 *             {@value #SORT_BY_CREATED_AT} | {@value #SORT_BY_MESSAGES}.
+	 *            Use convenience constants
 	 * @param reverse
 	 *            indicating whether sort should be reversed
-	 * @return
+	 * @return <code>List</code> of {@link Group}s
 	 */
 	List<Group> getGroups(int page, Character letter, String sortBy, boolean reverse);
 
@@ -70,14 +73,30 @@ public interface GroupOperations {
 	 * Returns the group with the given id
 	 * 
 	 * @param groupId
-	 * @return
+	 * @return Group for given id
+	 * @throws ResourceNotFoundException if there is no group with the given id in the network
 	 */
 	Group getGroup(long groupId);
-	
+
+	/**
+	 * Create a new group
+	 * @param name of group
+	 * @param isPrivate whether the group is public (anyone can join) or private
+	 */
 	void createGroup(String name, boolean isPrivate);
 
-	public abstract void leaveGroup(long groupId);
+	/**
+	 * Join group with given group id
+	 * @param groupId
+	 * @throws ResourceNotFoundException if you are not a member of that group or group does not exist
+	 */
+	void leaveGroup(long groupId);
 
-	public abstract void joinGroup(long groupId);
+	/**
+	 * Join a group with given group id
+	 * @param groupId
+	 * @throws ResourceNotFoundException if that group does not exist in your network 
+	 */
+	void joinGroup(long groupId);
 
 }

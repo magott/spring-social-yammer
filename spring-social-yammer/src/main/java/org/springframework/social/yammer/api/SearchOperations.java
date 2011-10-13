@@ -17,15 +17,34 @@ package org.springframework.social.yammer.api;
 
 
 /**
+ * Sub-API for search operations
  * @author Morten Andersen-Gott
  *
  */
 public interface SearchOperations {
 
+	/**
+	 * Search among messages, users, tags and groups for the given string
+	 * @param searchString
+	 * @return search results potentially containing messages, users, tags and groups as well as stats
+	 */
 	SearchResults search(String searchString);
 	
+	/**
+	 * Search among messages, users, tags and groups for the given string
+	 * @param searchString
+	 * @param page the page number in the search result (max 50 results per page)
+	 * @return search results potentially containing messages, users, tags and groups as well as stats
+	 */
 	SearchResults search(String searchString, int page);
 	
+	/**
+	 * Search among messages, users, tags and groups for the given string
+	 * @param searchString
+	 * @param page the page number in the search result
+	 * @param numberPerPage number of results per page (max 50)
+	 * @return search results potentially containing messages, users, tags and groups as well as stats
+	 */
 	SearchResults search(String searchString, int page, int numberPerPage);
 	
 }

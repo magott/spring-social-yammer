@@ -15,72 +15,219 @@
  */
 package org.springframework.social.yammer.api;
 
+import org.springframework.social.OperationNotPermittedException;
 import org.springframework.social.yammer.api.impl.YammerPostDetails;
 
 /**
+ * Sub-API for all message related operations
  * @author Morten Andersen-Gott
- *
+ * 
  */
 public interface MessageOperations {
-	
+
 	/**
-	 * Convenience constant for viewing messages by thread.
-	 * Will return first message of each thread.
+	 * Convenience constant for viewing messages by thread. Will return first
+	 * message of each thread.
 	 */
 	public static final String THREADED = "true";
-	
+
 	/**
-	 * Convenience constant for viewing messages as extended threads.
-	 * Will return first message of each thread and the last two messages of each thread.
+	 * Convenience constant for viewing messages as extended threads. Will
+	 * return first message of each thread and the last two messages of each
+	 * thread.
 	 */
 	public static final String THREADED_EXTENDED = "extended";
-	
+
 	/**
-	 * Convenience constant not threading
-	 * Will return first message of each thread and the last two messages of each thread.
+	 * Convenience constant not threading Will return first message of each
+	 * thread and the last two messages of each thread.
 	 */
 	public static final String NO_THREADING = null;
 
 	MessageInfo getMessages(long olderThan, long newerThan, String threadedView, int limit);
 
 	void like(long messageId);
-	
+
 	void unlike(long messageId);
-	
+
 	/**
+	 * Gets the message posted by a given user
 	 * 
 	 * @param userId
+	 *            the user id you want to see the messages for
 	 * @param olderThan
+	 *            return only messages older than this message id
 	 * @param newerThan
-	 * @param threadedView type of threaded view or null if no threaded view is required. 
-	 * @param limit
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
 	 * @return MessageInfo containing meta data and a list of messages
 	 * 
 	 * @see #THREADED
 	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
 	 */
 	MessageInfo getMessagesFromUser(long userId, long olderThan, long newerThan, String threadedView, int limit);
 
+	/**
+	 * Gets your private messages
+	 * 
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
+	 */
 	MessageInfo getMessagesPrivate(long olderThan, long newerThan, String threadedView, int limit);
 
-	MessageInfo getMessagesSent(long olderThan, long newerThan, String threaded, int limit);
+	/**
+	 * Gets your sent messages
+	 * 
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
+	 */	
+	MessageInfo getMessagesSent(long olderThan, long newerThan, String threadedView, int limit);
 
-	MessageInfo getMessagesFollowing(long olderThan, long newerThan, String threaded, int limit);
+	/**
+	 * Gets messages from groups, topics and users you are following
+	 * 
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
+	 */
+	MessageInfo getMessagesFollowing(long olderThan, long newerThan, String threadedView, int limit);
 
-	MessageInfo getMessagesReceived(long olderThan, long newerThan, String threaded, int limit);
+	/**
+	 * Gets messages you've received
+	 * 
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
+	 */
+	MessageInfo getMessagesReceived(long olderThan, long newerThan, String threadedView, int limit);
 
-	MessageInfo getMessagesAboutTopic(long topicId, long olderThan, long newerThan, String threaded, int limit);
+	/**
+	 * Gets messages on a specified topic
+	 * 
+	 * @param topicId the id of the topic for which you want to see messages
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
+	 */
+	MessageInfo getMessagesAboutTopic(long topicId, long olderThan, long newerThan, String threadedView, int limit);
 
-	MessageInfo getMessagesLikedByUser(long userId, long olderThan, long newerThan, String threaded, int limit);
+	/**
+	 * Gets messages liked by a specified user
+	 * 
+	 * @param userId of the person who've liked the messages
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
+	 */	
+	MessageInfo getMessagesLikedByUser(long userId, long olderThan, long newerThan, String threadedView, int limit);
 
+	/**
+	 * Post an update to your network with details (ie attachments etc)
+	 * @param message the text part of your message
+	 * @param details additional details for your message
+	 * @return MessageInfo containing meta data and your newly posted message
+	 */
 	MessageInfo postUpdate(String message, YammerPostDetails details);
 
+	/**
+	 * Post a textual message to your network
+	 * @param message
+	 * @return MessageInfo containing meta data and your newly posted message
+	 */
 	MessageInfo postUpdate(String message);
-	
+
 	/**
 	 * Deletes a message, current user must be owner
-	 * Bad request (400) in case of not owner or no such message
+	 * 
 	 * @param messageId
+	 * @throws OperationNotPermittedException if the message does not exist or you are not the owner of that message
 	 */
 	void delete(long messageId);
 

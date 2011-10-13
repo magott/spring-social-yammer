@@ -19,6 +19,8 @@ import java.util.Date;
 
 /**
  * @author Morten Andersen-Gott
+ * 
+ * Represents a group on Yammer
  *
  */
 public class Group {
