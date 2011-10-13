@@ -3,6 +3,7 @@ package org.springframework.social.yammer.api.connect;
 import org.junit.Test;
 import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;
+import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.social.yammer.api.UserOperations;
 import org.springframework.social.yammer.api.YammerProfile;
 import org.springframework.social.yammer.api.impl.YammerTemplate;
@@ -28,20 +29,31 @@ public class YammerAdapterTest {
 
     @Test
     public void shouldFetchProfile() {
-
-        YammerProfile.Contact contact = new YammerProfile.Contact(new ArrayList<YammerProfile.EMail>(), new ArrayList<String>(), null);
-        YammerProfile yammerProfile = createYammerProfile(contact);
-
-        UserOperations userOperations = mock(UserOperations.class);
-        when(yammer.userOperations()).thenReturn(userOperations);
-        when(userOperations.getUserProfile()).thenReturn(yammerProfile);
-
-        UserProfile profile = apiAdapter.fetchUserProfile(yammer);
-
-        assertEquals("Ilya Yakubovich", profile.getName());
-        assertEquals("ilya", profile.getUsername());
-        assertNull(profile.getEmail());
-
+    	
+    	YammerProfile.Contact contact = new YammerProfile.Contact(new ArrayList<YammerProfile.EMail>(), new ArrayList<String>(), null);
+    	YammerProfile yammerProfile = createYammerProfile(contact);
+    	
+    	UserOperations userOperations = mock(UserOperations.class);
+    	when(yammer.userOperations()).thenReturn(userOperations);
+    	when(userOperations.getUserProfile()).thenReturn(yammerProfile);
+    	
+    	UserProfile profile = apiAdapter.fetchUserProfile(yammer);
+    	
+    	assertEquals("Ilya Yakubovich", profile.getName());
+    	assertEquals("ilya", profile.getUsername());
+    	assertNull(profile.getEmail());
+    	
+    }
+    @Test
+    public void shouldUpdateStatus() {
+    	
+    	MessageOperations messageOperations = mock(MessageOperations.class);
+    	when(yammer.messageOperations()).thenReturn(messageOperations);
+    	
+    	final String statusUpdate = "Hello yammer";
+		apiAdapter.updateStatus(yammer, statusUpdate);
+    	
+    	verify(messageOperations).postUpdate(statusUpdate);
     }
 
     @Test
