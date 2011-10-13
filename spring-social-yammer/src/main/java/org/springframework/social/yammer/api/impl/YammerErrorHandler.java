@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus.Series;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.social.NotAuthorizedException;
+import org.springframework.social.OperationNotPermittedException;
 import org.springframework.social.RateLimitExceededException;
 import org.springframework.social.ResourceNotFoundException;
 import org.springframework.social.UncategorizedApiException;
@@ -55,6 +56,8 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 			throw new RateLimitExceededException();
 		} else if (statusCode == HttpStatus.NOT_FOUND) {
 			throw new ResourceNotFoundException(statusCode.toString());
+		}else if(statusCode == HttpStatus.BAD_REQUEST){
+			throw new OperationNotPermittedException("The resources does not exist or you don't have permission to do that (HTTP 400)");
 		}
 	}
 
