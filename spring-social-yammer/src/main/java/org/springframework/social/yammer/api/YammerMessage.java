@@ -149,6 +149,10 @@ public class YammerMessage {
 		return groupId;
 	}
 
+	/**
+	 * Holds the text of a message in different formats 
+	 *
+	 */
 	public static class Body{
     	private String plain;
     	private String parsed;

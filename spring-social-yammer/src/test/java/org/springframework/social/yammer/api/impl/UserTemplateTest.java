@@ -93,10 +93,9 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 	}
 
 	private void assertYammerProfile(YammerProfile yProfile) {
-		assertThat(yProfile.getStats(), notNullValue());
-		assertThat(yProfile.getStats().getFollowers(), equalTo(1L));
-		assertThat(yProfile.getStats().getFollowing(), equalTo(1L));
-		assertThat(yProfile.getStats().getUpdates(), equalTo(1L));
+		assertThat(yProfile.getFollowersCount(), equalTo(1L));
+		assertThat(yProfile.getFollowingCount(), equalTo(1L));
+		assertThat(yProfile.getMessageCount(), equalTo(1L));
 		assertThat(yProfile.getMugshotUrl(), notNullValue());
 		assertThat(yProfile.getExpertise(), equalTo("Socializing"));
 		assertThat(yProfile.getSummary(), equalTo("A summary"));

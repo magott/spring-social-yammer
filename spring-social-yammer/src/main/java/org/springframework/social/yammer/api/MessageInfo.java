@@ -18,6 +18,7 @@ package org.springframework.social.yammer.api;
 import java.util.List;
 
 /**
+ * Holder for the results of a message poll
  * @author Morten Andersen-Gott
  *
  */
@@ -31,10 +32,18 @@ public class MessageInfo {
 		this.metadata=meta;
 	}
 	
+	/**
+	 * List of messages
+	 * @return <code>List</code> of {@link YammerMessage}s
+	 */
 	public List<YammerMessage> getMessages() {
 		return messages;
 	}
 	
+	/**
+	 * Getter for the meta data for the message poll. Describes the meta data for the messages returned from {@link #getMessages()}
+	 * @return {@link YammerMessageMeta}
+	 */
 	public YammerMessageMeta getMetadata() {
 		return metadata;
 	}

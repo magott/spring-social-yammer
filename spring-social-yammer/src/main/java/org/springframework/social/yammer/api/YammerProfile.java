@@ -93,83 +93,50 @@ public class YammerProfile {
 		this.mugshotUrl = mugshotUrl;
 	}
 	
-	public Stats getStats() {
-		return stats;
+	public long getFollowersCount(){
+		return stats.followers;
 	}
-
-	public void setStats(Stats stats) {
-		this.stats = stats;
+	
+	public long getFollowingCount(){
+		return stats.following;
+	}
+	
+	public long getMessageCount(){
+		return stats.updates;
 	}
 	
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public String getType() {
 		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public String getUrl() {
 		return url;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
 	public String getFullName() {
 		return fullName;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
 
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public boolean isAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-
 	public String getExpertise() {
 		return expertise;
-	}
-
-	public void setExpertise(String expertise) {
-		this.expertise = expertise;
 	}
 
 	public String getSummary() {
 		return summary;
 	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-	
-	public void setExternalUrls(List<String> externalUrls) {
-		this.externalUrls = externalUrls;
-	}
-
-
 
 	public List<String> getExternalUrls() {
 		return externalUrls;
@@ -285,10 +252,12 @@ public class YammerProfile {
 		private long followers;
 		private long following;
 		private long updates;
-
-
-		public void setFollowers(long followers) {
+		
+		public Stats(long followers, long following, long updates) {
+			super();
 			this.followers = followers;
+			this.following = following;
+			this.updates = updates;
 		}
 
 		public long getFollowers() {
@@ -299,17 +268,10 @@ public class YammerProfile {
 			return following;
 		}
 
-		public void setFollowing(long following) {
-			this.following = following;
-		}
-
 		public long getUpdates() {
 			return updates;
 		}
 
-		public void setUpdates(long updates) {
-			this.updates = updates;
-		}
 	}
 	
 }

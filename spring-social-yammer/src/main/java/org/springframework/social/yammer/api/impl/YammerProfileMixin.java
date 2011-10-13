@@ -85,7 +85,7 @@ public class YammerProfileMixin {
 		@JsonCreator
 		StatsMixin(
 				@JsonProperty("followers") long followers, 
-				@JsonProperty("followering") long followering,
+				@JsonProperty("following") long following,
 				@JsonProperty("updates") long updates 
 		){}
 	}
