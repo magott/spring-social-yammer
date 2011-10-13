@@ -1,0 +1,1 @@
+A Spring Social adapter for Yammer (www.yammer.com). A work in progress, which means some APIs might change. Do not expect any major changes beyond some datatypes (ie long > Long).
