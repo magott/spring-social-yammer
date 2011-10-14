@@ -65,8 +65,9 @@ public class MessageTemplate extends AbstractYammerOperations implements Message
 		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
 		return restTemplate.getForObject(buildUri("messages/in_group/"+groupId+".json", params), MessageInfo.class);
 	}
-	public MessageInfo getMessagesInThread(long threadId, long olderThan, long newerThan, String threaded, int limit){
-		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, threaded, limit);
+
+	public MessageInfo getMessagesInThread(long threadId, long olderThan, long newerThan, int limit){
+		MultiValueMap<String, String> params = buildParams(olderThan, newerThan, null, limit);
 		return restTemplate.getForObject(buildUri("messages/in_thread/"+threadId+".json", params), MessageInfo.class);
 	}
 	

@@ -209,6 +209,19 @@ public interface MessageOperations {
 	MessageInfo getMessagesLikedByUser(long userId, long olderThan, long newerThan, String threadedView, int limit);
 
 	/**
+	 * Get all messages for a thread
+	 * @param threadId id of the thread for which messages will be returned
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * @return
+	 */
+	MessageInfo getMessagesInThread(long threadId, long olderThan, long newerThan, int limit);
+
+	/**
 	 * Post an update to your network with details (ie attachments etc)
 	 * @param message the text part of your message
 	 * @param details additional details for your message
@@ -230,5 +243,6 @@ public interface MessageOperations {
 	 * @throws OperationNotPermittedException if the message does not exist or you are not the owner of that message
 	 */
 	void delete(long messageId);
+
 
 }
