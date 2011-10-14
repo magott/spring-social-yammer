@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * Represents a Message retrieved posted to Yammer
  * @author Morten Andersen-Gott
  *
  */
@@ -72,23 +73,42 @@ public class YammerMessage {
 	}
     
     
-
+    /**
+     * The unique identifier for the message
+     * @return id
+     */
 	public long getId() {
 		return id;
 	}
 
+	/**
+	 * The restful URL of for this single message
+	 * @return url
+	 */
 	public String getUrl() {
 		return url;
 	}
 
+	/**
+	 * The id of the network this message is posted to
+	 * @return
+	 */
 	public long getNetworkId() {
 		return networkId;
 	}
 
+	/**
+	 * Privacy status of this message, either public or private
+	 * @return
+	 */
 	public String getPrivacy() {
 		return privacy;
 	}
 
+	/**
+	 * The id for the thread this message is a part of
+	 * @return id of thread
+	 */
 	public long getThreadId() {
 		return threadId;
 	}
@@ -97,10 +117,18 @@ public class YammerMessage {
 		return senderType;
 	}
 
+	/**
+	 * The list of attachments, if any
+	 * @return attachments
+	 */
 	public List<Attachment> getAttachments() {
 		return attachments;
 	}
 
+	/**
+	 * The id of the message this message is a reply to, if any
+	 * @return id of message this is a reply to, or <code>null</code> if this is not a reply
+	 */
 	public Long getRepliedToId() {
 		return repliedToId;
 	}
@@ -137,6 +165,10 @@ public class YammerMessage {
 		return clientType;
 	}
 
+	/**
+	 * The body (text) of the yammer message
+	 * @return body
+	 */
 	public Body getBody() {
 		return body;
 	}
@@ -181,6 +213,11 @@ public class YammerMessage {
 		
 		public List<String> getUrls() {
 			return urls;
+		}
+		
+		@Override
+		public String toString() {
+			return plain;
 		}
     }
     
