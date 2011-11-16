@@ -44,10 +44,38 @@ public interface MessageOperations {
 	 */
 	public static final String NO_THREADING = null;
 
+	/**
+	 * Gets messages from the company feed, essentially all messages posted in a Yammer network
+	 * 
+	 * @param olderThan
+	 *            return only messages older than this message id
+	 * @param newerThan
+	 *            return only messages newer than this message id
+	 * @param threadedView
+	 *            type of threaded view or null if no threaded view is required.
+	 *            Valid values are: 
+	 *            {@link #THREADED_EXTENDED}: return first message of thread and two most recent messages of thread,
+	 *            {@link #THREADED}: returns first message of each thread,
+	 *            {@link #NO_THREADING}: no threading
+	 * @param limit the limit of number of messages returned (50 max)
+	 * @return MessageInfo containing meta data and a list of messages
+	 * 
+	 * @see #THREADED
+	 * @see #THREADED_EXTENDED
+	 * @see #NO_THREADING
+	 */	
 	MessageInfo getMessages(long olderThan, long newerThan, String threadedView, int limit);
 
+	/**
+	 * Lets the logged in user like a message
+	 * @param messageId id to like
+	 */
 	void like(long messageId);
 
+	/**
+	 * Unlike a message that has previously been liked by logged in user
+	 * @param messageId id to unlike
+	 */
 	void unlike(long messageId);
 
 	/**
