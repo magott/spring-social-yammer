@@ -24,7 +24,6 @@ import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
 
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.social.yammer.api.YammerThread;
 
@@ -38,7 +37,7 @@ public class ThreadTemplateTest extends AbstractYammerApiTest {
 	public void testGetThread(){
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/threads/123.json")).andExpect(method(GET))
-				.andRespond(withResponse(new ClassPathResource("yammer-thread.json", getClass()), responseHeaders));
+				.andRespond(withResponse(jsonResource("testdata/yammer-thread"), responseHeaders));
 		YammerThread thread = yammerTemplate.threadOperations().getThread(123L);
 		assertThat(thread, notNullValue());
 		assertThread(thread);

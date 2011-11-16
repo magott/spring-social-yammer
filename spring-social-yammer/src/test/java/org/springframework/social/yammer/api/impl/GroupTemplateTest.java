@@ -27,7 +27,6 @@ import static org.springframework.social.test.client.ResponseCreators.withRespon
 import java.util.List;
 
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.social.yammer.api.Group;
 import org.springframework.social.yammer.api.GroupOperations;
@@ -44,7 +43,7 @@ public class GroupTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/groups/"+id+".json"))
 				.andExpect(method(GET))
-				.andRespond(withResponse(new ClassPathResource("yammer-group.json", getClass()), responseHeaders));
+				.andRespond(withResponse(jsonResource("testdata/yammer-group"), responseHeaders));
 		Group group = yammerTemplate.groupOperations().getGroup(id);
 		assertThat(group.getFullName(), equalTo("yammer-test-group"));
 	}
@@ -54,7 +53,7 @@ public class GroupTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/groups.json?page=1&reverse=false"))
 		.andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-groups.json", getClass()), responseHeaders));
+		.andRespond(withResponse(jsonResource("testdata/yammer-groups"), responseHeaders));
 		List<Group> groups = yammerTemplate.groupOperations().getGroups(1,null,null,false);
 		assertThat(groups.get(0).getFullName(), equalTo("yammer-test-group"));
 	}
@@ -64,7 +63,7 @@ public class GroupTemplateTest extends AbstractYammerApiTest {
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/groups.json?page=1&sort_by=privacy&reverse=true&letter=A"))
 		.andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-groups.json", getClass()), responseHeaders));
+		.andRespond(withResponse(jsonResource("testdata/yammer-groups"), responseHeaders));
 		List<Group> groups = yammerTemplate.groupOperations().getGroups(1, 'A', GroupOperations.SORT_BY_PRIVACY, true);
 		assertThat(groups.get(0).getFullName(), equalTo("yammer-test-group"));
 	}

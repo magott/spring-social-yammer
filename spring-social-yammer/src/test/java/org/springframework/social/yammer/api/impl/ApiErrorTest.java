@@ -20,7 +20,7 @@ public class ApiErrorTest extends AbstractYammerApiTest{
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&reverse=false"))
 				.andExpect(method(GET))
-				.andRespond(withResponse(jsonResource("rate-limit-error"), responseHeaders, HttpStatus.valueOf(401),""));
+				.andRespond(withResponse(jsonResource("testdata/rate-limit-error"), responseHeaders, HttpStatus.valueOf(401),""));
 		yammerTemplate.userOperations().getUsers(1);		
 	}
 	

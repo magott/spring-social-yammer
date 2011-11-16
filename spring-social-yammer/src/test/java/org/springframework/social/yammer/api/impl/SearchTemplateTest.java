@@ -25,7 +25,6 @@ import static org.springframework.social.test.client.RequestMatchers.requestTo;
 import static org.springframework.social.test.client.ResponseCreators.withResponse;
 
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.social.yammer.api.SearchResults;
 
@@ -39,7 +38,7 @@ public class SearchTemplateTest extends AbstractYammerApiTest {
 	public void testSearchWithSearchStringOnly(){
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/search.json?search=foo&page=1&number_per_page=20")).andExpect(method(GET))
-				.andRespond(withResponse(new ClassPathResource("yammer-search-results.json", getClass()), responseHeaders));
+				.andRespond(withResponse(jsonResource("testdata/yammer-search-results"), responseHeaders));
 		SearchResults searchResults = yammerTemplate.searchOperations().search("foo");
 		assertSearchResult(searchResults);
 	}
@@ -47,7 +46,7 @@ public class SearchTemplateTest extends AbstractYammerApiTest {
 	public void testSearchWithSearchStringAndPage(){
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/search.json?search=foo&page=2&number_per_page=20")).andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-search-results.json", getClass()), responseHeaders));
+		.andRespond(withResponse(jsonResource("testdata/yammer-search-results"), responseHeaders));
 		SearchResults searchResults = yammerTemplate.searchOperations().search("foo",2);
 		assertSearchResult(searchResults);
 	}
@@ -55,7 +54,7 @@ public class SearchTemplateTest extends AbstractYammerApiTest {
 	public void testSearchWithSearchStringPageAndNumPerPage(){
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/search.json?search=foo&page=2&number_per_page=10")).andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-search-results.json", getClass()), responseHeaders));
+		.andRespond(withResponse(jsonResource("testdata/yammer-search-results"), responseHeaders));
 		SearchResults searchResults = yammerTemplate.searchOperations().search("foo",2,10);
 		assertSearchResult(searchResults);
 	}

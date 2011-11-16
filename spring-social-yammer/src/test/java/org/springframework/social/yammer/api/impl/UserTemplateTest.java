@@ -14,7 +14,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.social.yammer.api.UserInfo;
 import org.springframework.social.yammer.api.UserOperations;
@@ -29,7 +28,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/"+id+".json"))
 				.andExpect(method(GET))
-				.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
+				.andRespond(withResponse(jsonResource("testdata/yammer-user"), responseHeaders));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUser(id);
 		assertThat(yProfile.getId(), equalTo(id));
 		assertYammerProfile(yProfile);
@@ -41,7 +40,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/current.json"))
 				.andExpect(method(GET))
-				.andRespond(withResponse(new ClassPathResource("yammer-user.json", getClass()), responseHeaders));
+				.andRespond(withResponse(jsonResource("testdata/yammer-user"), responseHeaders));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUserProfile();
 		assertThat(yProfile.getId(), equalTo(currentUserId));
 		assertYammerProfile(yProfile);
@@ -54,7 +53,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/by_email.json?email="+encodedEmail))
 		.andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-users.json", getClass()), responseHeaders));
+		.andRespond(withResponse(jsonResource("testdata/yammer-users"), responseHeaders));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUserByEmail(email);
 		assertYammerProfile(yProfile);
 	}
@@ -64,7 +63,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&sort_by=messages&reverse=false&letter=A"))
 		.andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-users.json", getClass()), responseHeaders));
+		.andRespond(withResponse(jsonResource("testdata/yammer-users"), responseHeaders));
 		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1, UserOperations.SORT_BY_MESSAGES, false, 'A');
 		assertYammerProfile(users.get(0));
 	}
@@ -73,7 +72,7 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&reverse=false"))
 		.andExpect(method(GET))
-		.andRespond(withResponse(new ClassPathResource("yammer-users.json", getClass()), responseHeaders));
+		.andRespond(withResponse(jsonResource("testdata/yammer-users"), responseHeaders));
 		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1);
 		assertYammerProfile(users.get(0));
 	}
