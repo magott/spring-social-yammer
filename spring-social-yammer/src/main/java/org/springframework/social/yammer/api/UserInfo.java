@@ -22,7 +22,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 /**
+ * Represents a user when doing an update
  * @author Morten Andersen-Gott
+ * @see UserOperations#updateProfile(long, UserInfo)
  * 
  */
 public class UserInfo {
