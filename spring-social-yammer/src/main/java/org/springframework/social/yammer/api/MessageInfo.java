@@ -26,10 +26,12 @@ public class MessageInfo {
 
 	private List<YammerMessage> messages;
 	private YammerMessageMeta metadata;
+	private List<YammerReference> references;
 	
-	public MessageInfo(List<YammerMessage> messages, YammerMessageMeta meta) {
+	public MessageInfo(List<YammerMessage> messages, YammerMessageMeta meta, List<YammerReference> references) {
 		this.messages=messages;
 		this.metadata=meta;
+		this.references=references;
 	}
 	
 	/**
@@ -46,6 +48,15 @@ public class MessageInfo {
 	 */
 	public YammerMessageMeta getMetadata() {
 		return metadata;
+	}
+	
+	/**
+	 * Returns a list of references. The messages will link to references in this list
+	 * @return list of references
+	 * @see YammerReference
+	 */
+	public List<YammerReference> getReferences() {
+		return references;
 	}
 	
 }

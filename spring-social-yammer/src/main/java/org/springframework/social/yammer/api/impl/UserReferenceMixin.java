@@ -15,27 +15,29 @@
  */
 package org.springframework.social.yammer.api.impl;
 
-import java.util.List;
-
 import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.springframework.social.yammer.api.YammerMessage;
-import org.springframework.social.yammer.api.YammerMessageMeta;
-import org.springframework.social.yammer.api.YammerReference;
+import org.springframework.social.yammer.api.YammerProfile;
 
-/**
- * @author Morten Andersen-Gott
- *
- */
-@JsonIgnoreProperties(ignoreUnknown=true)
-public class MessageInfoMixin {
+abstract class UserReferenceMixin {
 
 	@JsonCreator
-	public MessageInfoMixin(
-		@JsonProperty("messages") List<YammerMessage> messages,
-		@JsonProperty("meta") YammerMessageMeta metadata,
-		@JsonProperty("references") List<YammerReference> references
-	) {}
+	public UserReferenceMixin(
+			@JsonProperty("id") long id, 
+			@JsonProperty("url")String url, 
+			@JsonProperty("web_url")String webUrl,
+			@JsonProperty("name")String name
+			) {	}
+
+	@JsonProperty("mugshot_url")
+	String mugshotUrl;
 	
+	@JsonProperty("stats")
+	YammerProfile.Stats userStats;
+	
+	@JsonProperty("fullName")
+	String fullName;
+	
+	@JsonProperty("job_title")
+	String title;
 }

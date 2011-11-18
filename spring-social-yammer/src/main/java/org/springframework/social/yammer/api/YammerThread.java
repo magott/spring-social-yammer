@@ -122,6 +122,15 @@ public class YammerThread {
 			this.latestReplyId = latestReplyId;
 			this.messageCount = messageCount;
 		}
+
+
+		@Override
+		public String toString() {
+			return "ThreadStats [firstReplyAt=" + firstReplyAt + ", latestReplyAt=" + latestReplyAt + ", firstReplyId=" + firstReplyId
+					+ ", latestReplyId=" + latestReplyId + ", messageCount=" + messageCount + "]";
+		}
+		
+		
 		
 	}
 	

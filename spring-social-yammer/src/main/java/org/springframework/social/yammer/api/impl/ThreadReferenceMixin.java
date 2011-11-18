@@ -15,27 +15,24 @@
  */
 package org.springframework.social.yammer.api.impl;
 
-import java.util.List;
-
 import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.springframework.social.yammer.api.YammerMessage;
-import org.springframework.social.yammer.api.YammerMessageMeta;
-import org.springframework.social.yammer.api.YammerReference;
+import org.springframework.social.yammer.api.YammerThread.ThreadStats;
 
-/**
- * @author Morten Andersen-Gott
- *
- */
-@JsonIgnoreProperties(ignoreUnknown=true)
-public class MessageInfoMixin {
-
+abstract class ThreadReferenceMixin {
+	
 	@JsonCreator
-	public MessageInfoMixin(
-		@JsonProperty("messages") List<YammerMessage> messages,
-		@JsonProperty("meta") YammerMessageMeta metadata,
-		@JsonProperty("references") List<YammerReference> references
-	) {}
+	public ThreadReferenceMixin(
+			@JsonProperty("id") long id, 
+			@JsonProperty("url")String url, 
+			@JsonProperty("web_url")String webUrl
+			) {	}
+	
+	@JsonProperty("thread_starter_id")
+	long threadStarterId;
+	@JsonProperty("stats")
+	ThreadStats stats;
+	@JsonProperty("direct_message")
+	boolean directMessage;
 	
 }
