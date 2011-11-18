@@ -13,31 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.springframework.social.yammer.api.Topic.TopicExpert;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class YammerMessageMetaMixin {
+abstract class TopicMixin {
 
 	@JsonCreator
-	public YammerMessageMetaMixin(
-			@JsonProperty("current_user_id")long currentUserId, 
-			@JsonProperty("feed_name")String feedName, 
-			@JsonProperty("feed_desc")String feedDescription,
-			@JsonProperty("unsee_message_count_following")int unseenMessageCountFollowing, 
-			@JsonProperty("unseen_message_count_received")int unseenMessageCountReceived, 
-			@JsonProperty("liked_message_ids")List<Long> likedMessageIds,
-			@JsonProperty("favorite_message_ids")List<Long> favoriteMessageIds, 
-			@JsonProperty("followed_user_id")List<Long> followedUserIds, 
-			@JsonProperty("bookmarked_message_ids")List<Long> bookmarkedMessageIds) {}
+	public TopicMixin(
+			@JsonProperty("type") String type,
+			@JsonProperty("web_url") String webUrl,
+			@JsonProperty("normalized_name") String normalizedName,
+			@JsonProperty("experts") List<TopicExpert> experts,
+			@JsonProperty("name") String name,
+			@JsonProperty("id") long id
+	) {}
+	
+	static class TopicExpertMixin{
+
+		@JsonCreator
+		public TopicExpertMixin(
+			@JsonProperty("type") String type,
+			@JsonProperty("id") long id
+		) {}
+	}
 	
 }

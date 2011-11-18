@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
 import java.util.Date;
 import java.util.List;
@@ -24,13 +24,14 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.springframework.social.yammer.api.Topic;
 import org.springframework.social.yammer.api.YammerThread.ThreadStats;
+import org.springframework.social.yammer.api.impl.YammerDateDeserializer;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class YammerThreadMixin {
+abstract class YammerThreadMixin {
 
 	@JsonCreator
 	public YammerThreadMixin(
@@ -46,7 +47,7 @@ public class YammerThreadMixin {
 	) {	}
 	
 	
-	public static class YammerThreadStatsMixin{
+	abstract static class YammerThreadStatsMixin{
 		
 		@JsonCreator
 		public YammerThreadStatsMixin(

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ import org.springframework.social.yammer.api.YammerProfile.Stats;
  *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class YammerProfileMixin {
+abstract class YammerProfileMixin {
 	@JsonCreator
 	YammerProfileMixin(
 			@JsonProperty("id") long id, 
@@ -53,7 +53,7 @@ public class YammerProfileMixin {
 	
 	
 	@JsonIgnoreProperties(ignoreUnknown=true)
-	public static class ContactMixin {
+	abstract static class ContactMixin {
 		@JsonCreator
 		ContactMixin(
 				@JsonProperty("email_addresses") List<EMail> emailAddresses, 
@@ -63,7 +63,7 @@ public class YammerProfileMixin {
 	}
 	
 	@JsonIgnoreProperties(ignoreUnknown=true)
-	public static class EMailMixin {
+	abstract static class EMailMixin {
 		@JsonCreator
 		EMailMixin(
 				@JsonProperty("type") String type,
@@ -72,7 +72,7 @@ public class YammerProfileMixin {
 	}
 	
 	@JsonIgnoreProperties(ignoreUnknown=true)
-	public static class InstantMessagingMixin {
+	abstract static class InstantMessagingMixin {
 		@JsonCreator
 		InstantMessagingMixin(
 				@JsonProperty("provider") String type,
@@ -81,7 +81,7 @@ public class YammerProfileMixin {
 	}
 	
 	@JsonIgnoreProperties(ignoreUnknown=true)
-	public static class StatsMixin {
+	abstract static class StatsMixin {
 		@JsonCreator
 		StatsMixin(
 				@JsonProperty("followers") long followers, 
@@ -91,7 +91,7 @@ public class YammerProfileMixin {
 	}
 	
 	@JsonIgnoreProperties(ignoreUnknown=true)
-	public static class SchoolMixin {
+	abstract static class SchoolMixin {
 			@JsonCreator
 			SchoolMixin(
 					@JsonProperty("school") String name, 

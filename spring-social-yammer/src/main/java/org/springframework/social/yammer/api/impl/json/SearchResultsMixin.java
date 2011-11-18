@@ -13,43 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
-import java.util.Date;
+import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.springframework.social.yammer.api.Group.GroupStats;
+import org.springframework.social.yammer.api.Group;
+import org.springframework.social.yammer.api.MessageInfo;
+import org.springframework.social.yammer.api.SearchResults.SearchStats;
+import org.springframework.social.yammer.api.Topic;
+import org.springframework.social.yammer.api.YammerProfile;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class GroupMixin {
+abstract class SearchResultsMixin {
 
 	@JsonCreator
-	GroupMixin(
-			@JsonProperty("privacy")String privacy,
-			@JsonProperty("web_url")String webUrl,
-			@JsonProperty("stats") GroupStats stats,
-			@JsonProperty("mugshot_url")String mugshotUrl,
-			@JsonProperty("url") String url,
-			@JsonProperty("description")String description,
-			@JsonProperty("full_name") String fullName,
-			@JsonProperty("name") String name,
-			@JsonProperty("id") long id,
-			@JsonProperty("created_at") @JsonDeserialize(using=YammerDateDeserializer.class) Date createdAt			
-			) {}
+	public SearchResultsMixin(
+		@JsonProperty("messages") MessageInfo messages,
+		@JsonProperty("users") List<YammerProfile> users,
+		@JsonProperty("groups") List<Group> groups,
+		@JsonProperty("count") SearchStats stats,
+		@JsonProperty("topics") List<Topic> topics
+	) {}
 	
-	static class GroupStatsMixin{
+	
+	static class SearchStatsMixin{
 		@JsonCreator
-
-		GroupStatsMixin(
-				@JsonProperty("members") int members,
-				@JsonProperty("updates") int updates
+		public SearchStatsMixin(
+		  @JsonProperty("groups") int groups,
+		  @JsonProperty("messages") int messages,
+		  @JsonProperty("topics") int topics,
+		  @JsonProperty("users") int users
 		) {}
 	}
+	
 }

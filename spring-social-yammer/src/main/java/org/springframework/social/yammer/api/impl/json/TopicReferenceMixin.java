@@ -13,39 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
-
-import java.util.List;
+package org.springframework.social.yammer.api.impl.json;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.springframework.social.yammer.api.Topic.TopicExpert;
 
-/**
- * @author Morten Andersen-Gott
- *
- */
-@JsonIgnoreProperties(ignoreUnknown=true)
-public class TopicMixin {
+@JsonIgnoreProperties(ignoreUnknown = true)
+abstract class TopicReferenceMixin {
 
 	@JsonCreator
-	public TopicMixin(
-			@JsonProperty("type") String type,
-			@JsonProperty("web_url") String webUrl,
-			@JsonProperty("normalized_name") String normalizedName,
-			@JsonProperty("experts") List<TopicExpert> experts,
-			@JsonProperty("name") String name,
-			@JsonProperty("id") long id
-	) {}
+	public TopicReferenceMixin(
+			@JsonProperty("id") long id, 
+			@JsonProperty("url")String url, 
+			@JsonProperty("web_url")String webUrl,
+			@JsonProperty("name")String name
+			) {	}
 	
-	static class TopicExpertMixin{
-
-		@JsonCreator
-		public TopicExpertMixin(
-			@JsonProperty("type") String type,
-			@JsonProperty("id") long id
-		) {}
-	}
+	@JsonProperty("name")
+	String name;
+	@JsonProperty("normalized_name")
+	String normalizedName;
+	@JsonProperty("permalink")
+	String permalink;
 	
 }

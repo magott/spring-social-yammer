@@ -13,28 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
 import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.springframework.social.yammer.api.YammerProfile;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class TopicReferenceMixin {
+abstract class UserReferenceMixin {
 
 	@JsonCreator
-	public TopicReferenceMixin(
+	public UserReferenceMixin(
 			@JsonProperty("id") long id, 
 			@JsonProperty("url")String url, 
 			@JsonProperty("web_url")String webUrl,
 			@JsonProperty("name")String name
 			) {	}
+
+	@JsonProperty("mugshot_url")
+	String mugshotUrl;
 	
-	@JsonProperty("name")
-	String name;
-	@JsonProperty("normalized_name")
-	String normalizedName;
-	@JsonProperty("permalink")
-	String permalink;
+	@JsonProperty("stats")
+	YammerProfile.Stats userStats;
 	
+	@JsonProperty("fullName")
+	String fullName;
+	
+	@JsonProperty("job_title")
+	String title;
 }

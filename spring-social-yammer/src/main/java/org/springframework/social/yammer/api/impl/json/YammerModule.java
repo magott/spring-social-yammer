@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
 import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.module.SimpleModule;
@@ -47,21 +47,21 @@ import org.springframework.social.yammer.api.YammerProfile.Stats;
 import org.springframework.social.yammer.api.YammerReference;
 import org.springframework.social.yammer.api.YammerThread;
 import org.springframework.social.yammer.api.YammerThread.ThreadStats;
-import org.springframework.social.yammer.api.impl.GroupMixin.GroupStatsMixin;
-import org.springframework.social.yammer.api.impl.SearchResultsMixin.SearchStatsMixin;
-import org.springframework.social.yammer.api.impl.TopicMixin.TopicExpertMixin;
-import org.springframework.social.yammer.api.impl.YammerMessageMixin.AttachmentMixin;
-import org.springframework.social.yammer.api.impl.YammerMessageMixin.AttachmentMixin.FileMixin;
-import org.springframework.social.yammer.api.impl.YammerMessageMixin.AttachmentMixin.ImageMixin;
-import org.springframework.social.yammer.api.impl.YammerMessageMixin.BodyMixin;
-import org.springframework.social.yammer.api.impl.YammerMessageMixin.LikedByMixin;
-import org.springframework.social.yammer.api.impl.YammerMessageMixin.LikedByMixin.NameMixin;
-import org.springframework.social.yammer.api.impl.YammerProfileMixin.ContactMixin;
-import org.springframework.social.yammer.api.impl.YammerProfileMixin.EMailMixin;
-import org.springframework.social.yammer.api.impl.YammerProfileMixin.InstantMessagingMixin;
-import org.springframework.social.yammer.api.impl.YammerProfileMixin.SchoolMixin;
-import org.springframework.social.yammer.api.impl.YammerProfileMixin.StatsMixin;
-import org.springframework.social.yammer.api.impl.YammerThreadMixin.YammerThreadStatsMixin;
+import org.springframework.social.yammer.api.impl.json.GroupMixin.GroupStatsMixin;
+import org.springframework.social.yammer.api.impl.json.SearchResultsMixin.SearchStatsMixin;
+import org.springframework.social.yammer.api.impl.json.TopicMixin.TopicExpertMixin;
+import org.springframework.social.yammer.api.impl.json.YammerMessageMixin.AttachmentMixin;
+import org.springframework.social.yammer.api.impl.json.YammerMessageMixin.BodyMixin;
+import org.springframework.social.yammer.api.impl.json.YammerMessageMixin.LikedByMixin;
+import org.springframework.social.yammer.api.impl.json.YammerMessageMixin.AttachmentMixin.FileMixin;
+import org.springframework.social.yammer.api.impl.json.YammerMessageMixin.AttachmentMixin.ImageMixin;
+import org.springframework.social.yammer.api.impl.json.YammerMessageMixin.LikedByMixin.NameMixin;
+import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.ContactMixin;
+import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.EMailMixin;
+import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.InstantMessagingMixin;
+import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.SchoolMixin;
+import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.StatsMixin;
+import org.springframework.social.yammer.api.impl.json.YammerThreadMixin.YammerThreadStatsMixin;
 
 /**
  * @author Morten Andersen-Gott

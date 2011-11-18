@@ -13,44 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.springframework.social.yammer.api.Group;
-import org.springframework.social.yammer.api.MessageInfo;
-import org.springframework.social.yammer.api.SearchResults.SearchStats;
-import org.springframework.social.yammer.api.Topic;
-import org.springframework.social.yammer.api.YammerProfile;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class SearchResultsMixin {
+abstract class YammerMessageMetaMixin {
 
 	@JsonCreator
-	public SearchResultsMixin(
-		@JsonProperty("messages") MessageInfo messages,
-		@JsonProperty("users") List<YammerProfile> users,
-		@JsonProperty("groups") List<Group> groups,
-		@JsonProperty("count") SearchStats stats,
-		@JsonProperty("topics") List<Topic> topics
-	) {}
-	
-	
-	static class SearchStatsMixin{
-		@JsonCreator
-		public SearchStatsMixin(
-		  @JsonProperty("groups") int groups,
-		  @JsonProperty("messages") int messages,
-		  @JsonProperty("topics") int topics,
-		  @JsonProperty("users") int users
-		) {}
-	}
+	public YammerMessageMetaMixin(
+			@JsonProperty("current_user_id")long currentUserId, 
+			@JsonProperty("feed_name")String feedName, 
+			@JsonProperty("feed_desc")String feedDescription,
+			@JsonProperty("unsee_message_count_following")int unseenMessageCountFollowing, 
+			@JsonProperty("unseen_message_count_received")int unseenMessageCountReceived, 
+			@JsonProperty("liked_message_ids")List<Long> likedMessageIds,
+			@JsonProperty("favorite_message_ids")List<Long> favoriteMessageIds, 
+			@JsonProperty("followed_user_id")List<Long> followedUserIds, 
+			@JsonProperty("bookmarked_message_ids")List<Long> bookmarkedMessageIds) {}
 	
 }

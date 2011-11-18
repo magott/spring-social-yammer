@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.social.yammer.api.impl;
+package org.springframework.social.yammer.api.impl.json;
 
 import java.util.Date;
 import java.util.List;
@@ -28,12 +28,13 @@ import org.springframework.social.yammer.api.YammerMessage.LikedBy;
 import org.springframework.social.yammer.api.YammerMessage.Attachment.File;
 import org.springframework.social.yammer.api.YammerMessage.Attachment.Image;
 import org.springframework.social.yammer.api.YammerMessage.LikedBy.Name;
+import org.springframework.social.yammer.api.impl.YammerDateDeserializer;
 
 /**
  * @author Morten Andersen-Gott
  *
  */
-public class YammerMessageMixin {
+abstract class YammerMessageMixin {
 
 	@JsonCreator
 	YammerMessageMixin(
@@ -58,7 +59,7 @@ public class YammerMessageMixin {
 			@JsonProperty("group_id")long groupId
 			){}
 	
-	public static class BodyMixin{
+	abstract static class BodyMixin{
 		@JsonCreator
 		BodyMixin(
 			@JsonProperty("plain")String plain,
@@ -69,9 +70,9 @@ public class YammerMessageMixin {
 	}
 	
 	@JsonIgnoreProperties(ignoreUnknown=true)
-	public static class AttachmentMixin{
+	abstract static class AttachmentMixin{
 		@JsonCreator
-		public AttachmentMixin(
+		AttachmentMixin(
 				@JsonProperty("uuid")String uuid, 
 				@JsonProperty("type")String type, 
 				@JsonProperty("content_type")String contentType, 
@@ -87,17 +88,17 @@ public class YammerMessageMixin {
 				@JsonProperty("image")Image image
 		) {}
 		
-		public static class FileMixin{
+		abstract static class FileMixin{
 			@JsonCreator
-			public FileMixin(
+			FileMixin(
 		    	@JsonProperty("url") String url,
 		    	@JsonProperty("size") long size
 			) {}
 		}
 		
-		public static class ImageMixin{
+		abstract static class ImageMixin{
 			@JsonCreator
-			public ImageMixin(
+			ImageMixin(
 		    	@JsonProperty("url") String url,
 		    	@JsonProperty("size")long size,
 		    	@JsonProperty("thumbnail_url")String thumbnailUrl				
@@ -105,14 +106,14 @@ public class YammerMessageMixin {
 		}
 	}
 	
-	public static class LikedByMixin{
+	abstract static class LikedByMixin{
 		@JsonCreator
 		LikedByMixin(
 			@JsonProperty("count")int count,
 			@JsonProperty("names") List<Name> names
 		){}
 		
-		public static class NameMixin{
+		abstract static class NameMixin{
 			@JsonCreator
 			NameMixin(
 				@JsonProperty("permalink") String permalink,
