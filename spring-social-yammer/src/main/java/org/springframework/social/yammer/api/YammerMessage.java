@@ -91,7 +91,7 @@ public class YammerMessage {
 
 	/**
 	 * The id of the network this message is posted to
-	 * @return
+	 * @return network id
 	 */
 	public long getNetworkId() {
 		return networkId;
@@ -99,7 +99,7 @@ public class YammerMessage {
 
 	/**
 	 * Privacy status of this message, either public or private
-	 * @return
+	 * @return private or public as String
 	 */
 	public String getPrivacy() {
 		return privacy;

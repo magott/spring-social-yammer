@@ -245,7 +245,6 @@ public interface MessageOperations {
 	 *            return only messages newer than this message id
 	 * @param limit the limit of number of messages returned (50 max)
 	 * @return MessageInfo containing meta data and a list of messages
-	 * @return
 	 */
 	MessageInfo getMessagesInThread(long threadId, long olderThan, long newerThan, int limit);
 
