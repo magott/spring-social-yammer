@@ -41,20 +41,6 @@ public class YammerReference {
 	private long id;
 	private String url;
 	private String webUrl;
-
-	// User, group and topic property
-//	protected String name;
-
-	// Topic properties
-//	protected String permalink;
-//	protected String normalizedName;
-
-	// Thread properties
-//	protected YammerThread.ThreadStats threadStats;
-//	protected Long threadStarterId;
-//	protected String privacy;
-//	protected boolean hasAttachments;
-	
 	
 	public YammerReference(long id, String url, String webUrl) {
 		super();
