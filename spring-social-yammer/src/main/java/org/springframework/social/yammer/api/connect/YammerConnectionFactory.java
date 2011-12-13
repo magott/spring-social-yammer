@@ -15,14 +15,14 @@
  */
 package org.springframework.social.yammer.api.connect;
 
-import org.springframework.social.connect.support.OAuth1ConnectionFactory;
+import org.springframework.social.connect.support.OAuth2ConnectionFactory;
 import org.springframework.social.yammer.api.Yammer;
 
 
-public class YammerConnectionFactory extends OAuth1ConnectionFactory<Yammer> {
+public class YammerConnectionFactory extends OAuth2ConnectionFactory<Yammer> {
 
-	public YammerConnectionFactory(String consumerKey, String consumerSecret) {
-		super("yammer", new YammerServiceProvider(consumerKey, consumerSecret), new YammerAdapter());
+	public YammerConnectionFactory(String clientId, String clientSecret) {
+		super("yammer", new YammerServiceProvider(clientId, clientSecret), new YammerAdapter());
 	}
 
 }

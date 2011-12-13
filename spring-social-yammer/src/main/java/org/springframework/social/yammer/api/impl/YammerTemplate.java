@@ -20,7 +20,7 @@ import java.util.List;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-import org.springframework.social.oauth1.AbstractOAuth1ApiBinding;
+import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.yammer.api.GroupOperations;
 import org.springframework.social.yammer.api.MessageOperations;
 import org.springframework.social.yammer.api.SearchOperations;
@@ -36,7 +36,7 @@ import org.springframework.web.client.RestTemplate;
  * @author Morten Andersen-Gott
  *
  */
-public class YammerTemplate extends AbstractOAuth1ApiBinding implements Yammer{
+public class YammerTemplate extends AbstractOAuth2ApiBinding implements Yammer{
 	
 	private UserOperations userOperations;
 	private MessageOperations messageOperations;
@@ -46,8 +46,8 @@ public class YammerTemplate extends AbstractOAuth1ApiBinding implements Yammer{
 	private SubscriptionOperations subscriptionOperations;
 	private ThreadOperations threadOperations;
 	
-	public YammerTemplate(String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
-		super(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+	public YammerTemplate(String accessToken) {
+		super(accessToken);
 		initSubApis();
 		registerYammerJsonModule();
 	}

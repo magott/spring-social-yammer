@@ -36,7 +36,7 @@ public abstract class AbstractYammerApiTest {
 
 	@Before
 	public void setup() {
-		yammerTemplate = new YammerTemplate("API_KEY", "API_SECRET", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET");
+		yammerTemplate = new YammerTemplate("ACCESS_TOKEN");
 		mockServer = MockRestServiceServer.createServer(yammerTemplate.getRestTemplate());
 		responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
