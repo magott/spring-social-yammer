@@ -97,8 +97,8 @@ configure(javaprojects) {
     jacksonVersion = '1.9.2'
     junitVersion = '4.9'
     mockitoVersion = '1.8.5'
-    springVersion = '3.1.0.RC1'
-    springSecurityVersion = '3.1.0.RC3'
+    springVersion = '3.1.0.RELEASE'
+    springSecurityVersion = '3.1.0.RELEASE'
 	
     sourceSets {
         main {
