@@ -112,22 +112,24 @@ public class YammerThread {
 		private long firstReplyId;
 		private long latestReplyId;
 		private int messageCount;
+        private int shares;
 		
 		
 		public ThreadStats(Date firstReplyAt, Date latestReplyAt, long firstReplyId, long latestReplyId,
-				int messageCount) {
+				int messageCount, int shares) {
 			this.firstReplyAt = firstReplyAt;
 			this.latestReplyAt = latestReplyAt;
 			this.firstReplyId = firstReplyId;
 			this.latestReplyId = latestReplyId;
 			this.messageCount = messageCount;
+            this.shares=shares;
 		}
 
 
 		@Override
 		public String toString() {
 			return "ThreadStats [firstReplyAt=" + firstReplyAt + ", latestReplyAt=" + latestReplyAt + ", firstReplyId=" + firstReplyId
-					+ ", latestReplyId=" + latestReplyId + ", messageCount=" + messageCount + "]";
+					+ ", latestReplyId=" + latestReplyId + ", messageCount=" + messageCount + ", shares=" + shares + "]";
 		}
 		
 		

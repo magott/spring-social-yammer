@@ -234,6 +234,7 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		assertThat(yammerMessage.getNetworkId(), equalTo(104604L));
 		assertThat(yammerMessage.getThreadId(), equalTo(84402777L));
 		assertThat(yammerMessage.getId(), equalTo(84402777L));
+		assertThat(yammerMessage.getSharedMessageId(), equalTo(0L));
 		assertThat(yammerMessage.getSenderId(), equalTo(4022984L));
 		assertThat(yammerMessage.getRepliedToId(), nullValue());
 		assertThat(yammerMessage.getMessageType(), equalTo("update"));

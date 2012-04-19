@@ -55,7 +55,8 @@ abstract class YammerThreadMixin {
 				@JsonProperty("latest_reply_at") @JsonDeserialize(using=YammerDateDeserializer.class) Date latestReplyAt,
 				@JsonProperty("first_reply_id") long firstReplyId,
 				@JsonProperty("latest_reply_id") long latestReplyId,
-				@JsonProperty("updates") int messageCount				
+				@JsonProperty("updates") int messageCount,
+                @JsonProperty("shares") int shares
 		){}
 		
 	}

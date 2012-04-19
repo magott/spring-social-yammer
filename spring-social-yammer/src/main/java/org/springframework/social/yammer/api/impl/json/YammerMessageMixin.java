@@ -56,7 +56,8 @@ abstract class YammerMessageMixin {
 			@JsonProperty("direct_message")boolean directMessage,
 			@JsonProperty("client_type")String clientType, 
 			@JsonProperty("liked_by")LikedBy likedBy,
-			@JsonProperty("group_id")long groupId
+			@JsonProperty("group_id")long groupId,
+            @JsonProperty("shared_message_id") long sharedMessageId
 			){}
 	
 	abstract static class BodyMixin{

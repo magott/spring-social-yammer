@@ -49,6 +49,7 @@
         "parsed": "new test message 1",
         "plain": "new test message 1"
       },
+      "shared_message_id": 123,
       "network_id": 104604,
       "thread_id": 83957686,
       "sender_type": "user",
@@ -631,7 +632,8 @@
         "first_reply_at": null,
         "first_reply_id": null,
         "latest_reply_id": 78654647,
-        "updates": 1
+        "updates": 1,
+        "shares" : 0
       },
       "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity#/Threads/show?threadId=78654647",
       "thread_starter_id": 78654647,

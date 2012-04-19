@@ -44,13 +44,13 @@ public class YammerMessage {
 	private Body body;
 	private LikedBy likedBy;
 	private long groupId;
-	
-	
-	
+    private long sharedMessageId;
+
+
     public YammerMessage(long id, Body body, String url, long networkId, String privacy, long threadId,
 			String senderType, List<Attachment> attachments, Long repliedToId, long senderId, String webUrl,
 			String clientUrl, boolean systemMessage, String messageType, Date createdAt, boolean directMessage,
-			String clientType, LikedBy likedBy, long groupId) {
+			String clientType, LikedBy likedBy, long groupId, long sharedMessageId) {
 		super();
 		this.id = id;
 		this.body = body;
@@ -70,6 +70,8 @@ public class YammerMessage {
 		this.directMessage = directMessage;
 		this.clientType = clientType;
 		this.likedBy = likedBy;
+        this.groupId = groupId;
+        this.sharedMessageId = sharedMessageId;
 	}
     
     
@@ -181,7 +183,11 @@ public class YammerMessage {
 		return groupId;
 	}
 
-	/**
+    public long getSharedMessageId() {
+        return sharedMessageId;
+    }
+
+    /**
 	 * Holds the text of a message in different formats 
 	 *
 	 */
