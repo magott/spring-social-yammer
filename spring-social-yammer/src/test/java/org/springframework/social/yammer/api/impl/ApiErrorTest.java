@@ -1,9 +1,9 @@
 package org.springframework.social.yammer.api.impl;
 
 import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.social.test.client.RequestMatchers.method;
-import static org.springframework.social.test.client.RequestMatchers.requestTo;
-import static org.springframework.social.test.client.ResponseCreators.withResponse;
+import static org.springframework.test.web.client.RequestMatchers.method;
+import static org.springframework.test.web.client.RequestMatchers.requestTo;
+import static org.springframework.test.web.client.ResponseCreators.withResponse;
 
 import java.io.IOException;
 

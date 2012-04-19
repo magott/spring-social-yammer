@@ -6,9 +6,9 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.PUT;
-import static org.springframework.social.test.client.RequestMatchers.method;
-import static org.springframework.social.test.client.RequestMatchers.requestTo;
-import static org.springframework.social.test.client.ResponseCreators.withResponse;
+import static org.springframework.test.web.client.RequestMatchers.method;
+import static org.springframework.test.web.client.RequestMatchers.requestTo;
+import static org.springframework.test.web.client.ResponseCreators.withResponse;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;

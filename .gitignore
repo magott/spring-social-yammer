@@ -1,11 +1,13 @@
 .DS_Store
 build
 **/build
-**/src/test/java/exploration
-spring-social-core/src/test/java/exploration
 .gradle
 **/.classpath
 **/.project
 **/.settings
 **/bin
 *IntegrationTest.java
+*.iml
+*.ipr
+*.iws
+/out

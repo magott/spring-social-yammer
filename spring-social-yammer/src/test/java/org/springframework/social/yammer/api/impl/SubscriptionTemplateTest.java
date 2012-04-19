@@ -20,10 +20,10 @@ import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.DELETE;
-import static org.springframework.social.test.client.RequestMatchers.method;
-import static org.springframework.social.test.client.RequestMatchers.body;
-import static org.springframework.social.test.client.RequestMatchers.requestTo;
-import static org.springframework.social.test.client.ResponseCreators.withResponse;
+import static org.springframework.test.web.client.RequestMatchers.method;
+import static org.springframework.test.web.client.RequestMatchers.body;
+import static org.springframework.test.web.client.RequestMatchers.requestTo;
+import static org.springframework.test.web.client.ResponseCreators.withResponse;
 
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
