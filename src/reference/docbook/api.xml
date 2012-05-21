@@ -5,18 +5,16 @@
 	<para>
 		Spring Social Yammer offers integration with Yammer's REST API with the <interfacename>Yammer</interfacename> interface and its implementation, <classname>YammerTemplate</classname>.
 	</para>
-	
-	<para>
-		To create an instance of <classname>YammerTemplate</classname>, you may pass in your application's OAuth 1 credentials, along with an access token/secret pair to the constructor:
-	</para>
-	
-	<programlisting language="java"><![CDATA[
-String consumerKey = "..."; // The application's consumer key
-String consumerSecret = "..."; // The application's consumer secret
-String accessToken = "..."; // The access token granted after OAuth authorization
-String accessTokenSecret = "..."; // The access token secret granted after OAuth authorization
-Yammer yammer = new YammerTemplate(consumerKey, consumerSecret, accessToken, accessTokenSecret);]]>
-	</programlisting>
+
+    <para>
+        Spring Social Yammer's <interfacename>Yammer</interfacename> interface and its implementation, <classname>YammerTemplate</classname> provide the operations needed to interact with Yammer on behalf of a user.
+        Creating an instance of <classname>YammerTemplate</classname> is as simple as constructing it by passing in an authorized access token to the constructor:
+    </para>
+
+    <programlisting language="java"><![CDATA[
+String accessToken = "f8FX29g..."; // access token received from Yammer after OAuth authorization
+Yammer yammer = new YammerTemplate(accessToken);]]>
+    </programlisting>
 	
 	<para>
 		If you are using Spring Social's <ulink url="http://static.springsource.org/spring-social/docs/1.0.x/reference/html/serviceprovider.html">service provider framework</ulink>, you can get an instance of <interfacename>Yammer</interfacename> from a <interfacename>Connection</interfacename>. 
