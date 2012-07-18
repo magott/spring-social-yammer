@@ -25,16 +25,16 @@ import java.util.Date;
  */
 public class Group {
 
-	private String privacy;
-	private String webUrl;
-	private GroupStats stats;
-	private String mugshotUrl;
-	private String url;
-	private String description;
-	private String fullName;
-	private String name;
-	private long id;
-	private Date createdAt;
+	private final String privacy;
+	private final String webUrl;
+	private final GroupStats stats;
+	private final String mugshotUrl;
+	private final String url;
+	private final String description;
+	private final String fullName;
+	private final String name;
+	private final long id;
+	private final Date createdAt;
 	
 	public Group(String privacy, String webUrl, GroupStats stats, String mugshotUrl, String url, String description,
 			String fullName, String name, long id, Date createdAt) {
@@ -94,6 +94,10 @@ public class Group {
 		return createdAt;
 	}
 
+    public Date getLastMessageAt(){
+        return stats.lastMessageAt;
+    }
+
 	
 	
 	@Override
@@ -110,14 +114,16 @@ public class Group {
 
 
 	public static class GroupStats{
-		private int updates;
-		private int members;
+		private final int updates;
+		private final int members;
+        private final Date lastMessageAt;
+        private final long lastMessageId;
 
-		public GroupStats(int updates, int members) {
+		public GroupStats(int updates, int members, Date lastMessageAt, long lastMessageId) {
 			this.updates = updates;
 			this.members = members;
-		}
-		
-		
-	}
+            this.lastMessageAt = lastMessageAt;
+            this.lastMessageId = lastMessageId;
+        }
+    }
 }

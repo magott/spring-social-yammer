@@ -5,7 +5,9 @@
     "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/groups/yammer-test-group",
     "stats": {
       "updates": 0,
-      "members": 1
+      "members": 1,
+      "last_message_at": "2011/08/06 18:15:57 +0000",
+      "last_message_id": 106698022
     },
     "mugshot_url": "https://assets2.yammer.com/images/group_profile_small.gif",
     "url": "https://www.yammer.com/api/v1/groups/124742",

@@ -34,6 +34,7 @@ import org.springframework.social.yammer.api.impl.YammerDateDeserializer;
  * @author Morten Andersen-Gott
  *
  */
+@JsonIgnoreProperties(ignoreUnknown=true)
 abstract class YammerMessageMixin {
 
 	@JsonCreator

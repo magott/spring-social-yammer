@@ -16,6 +16,7 @@
 package org.springframework.social.yammer.api.impl;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
@@ -46,6 +47,7 @@ public class GroupTemplateTest extends AbstractYammerApiTest {
 				.andRespond(withResponse(jsonResource("testdata/yammer-group"), responseHeaders));
 		Group group = yammerTemplate.groupOperations().getGroup(id);
 		assertThat(group.getFullName(), equalTo("yammer-test-group"));
+        assertThat(group.getLastMessageAt(), notNullValue());
 	}
 	
 	@Test
@@ -56,7 +58,9 @@ public class GroupTemplateTest extends AbstractYammerApiTest {
 		.andRespond(withResponse(jsonResource("testdata/yammer-groups"), responseHeaders));
 		List<Group> groups = yammerTemplate.groupOperations().getGroups(1,null,null,false);
 		assertThat(groups.get(0).getFullName(), equalTo("yammer-test-group"));
-	}
+        assertThat(groups.get(0).getLastMessageAt(), notNullValue());
+
+    }
 	
 	@Test
 	public void testGetGroups_withAllParams(){

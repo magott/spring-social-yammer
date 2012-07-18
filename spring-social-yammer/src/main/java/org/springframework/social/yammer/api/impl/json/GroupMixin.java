@@ -44,13 +44,16 @@ abstract class GroupMixin {
 			@JsonProperty("id") long id,
 			@JsonProperty("created_at") @JsonDeserialize(using=YammerDateDeserializer.class) Date createdAt			
 			) {}
-	
-	static class GroupStatsMixin{
+
+    @JsonIgnoreProperties(ignoreUnknown=true)
+    static class GroupStatsMixin{
 		@JsonCreator
 
 		GroupStatsMixin(
 				@JsonProperty("members") int members,
-				@JsonProperty("updates") int updates
+				@JsonProperty("updates") int updates,
+				@JsonProperty("last_message_at") @JsonDeserialize(using=YammerDateDeserializer.class) Date lastMessageAt,
+				@JsonProperty("last_message_id") long lastMessageId
 		) {}
 	}
 }
