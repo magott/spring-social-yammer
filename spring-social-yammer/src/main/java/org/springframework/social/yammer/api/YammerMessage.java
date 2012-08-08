@@ -77,7 +77,7 @@ public class YammerMessage {
     
     /**
      * The unique identifier for the message
-     * @return userId
+     * @return message id
      */
 	public long getId() {
 		return id;
@@ -92,8 +92,8 @@ public class YammerMessage {
 	}
 
 	/**
-	 * The userId of the network this message is posted to
-	 * @return network userId
+	 * The id of the network this message is posted to
+	 * @return network id
 	 */
 	public long getNetworkId() {
 		return networkId;
@@ -108,8 +108,8 @@ public class YammerMessage {
 	}
 
 	/**
-	 * The userId for the thread this message is a part of
-	 * @return userId of thread
+	 * The id for the thread this message is a part of
+	 * @return id of thread
 	 */
 	public long getThreadId() {
 		return threadId;
@@ -128,8 +128,8 @@ public class YammerMessage {
 	}
 
 	/**
-	 * The userId of the message this message is a reply to, if any
-	 * @return userId of message this is a reply to, or <code>null</code> if this is not a reply
+	 * The id of the message this message is a reply to, if any
+	 * @return id of message this is a reply to, or <code>null</code> if this is not a reply
 	 */
 	public Long getRepliedToId() {
 		return repliedToId;

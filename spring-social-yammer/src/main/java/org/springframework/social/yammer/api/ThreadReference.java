@@ -41,7 +41,7 @@ public class ThreadReference extends YammerReference{
 
 	@Override
 	public String toString() {
-		return "ThreadReference [getUserId()=" + getId() + ", getUrl()=" + getUrl() + ", getWebUrl()=" + getWebUrl() + ", threadStarterId="
+		return "ThreadReference [getId()=" + getId() + ", getUrl()=" + getUrl() + ", getWebUrl()=" + getWebUrl() + ", threadStarterId="
 				+ threadStarterId + ", stats=" + stats + ", directMessage=" + directMessage + "]";
 	}
 	

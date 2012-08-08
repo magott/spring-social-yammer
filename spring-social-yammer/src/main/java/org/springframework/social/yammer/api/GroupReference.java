@@ -57,7 +57,7 @@ public class GroupReference extends YammerReference{
 
 	@Override
 	public String toString() {
-		return "GroupReference [getUserId()=" + getId() + ", getUrl()=" + getUrl() + ", getWebUrl()=" + getWebUrl() + ", name=" + name
+		return "GroupReference [getId()=" + getId() + ", getUrl()=" + getUrl() + ", getWebUrl()=" + getWebUrl() + ", name=" + name
 				+ ", fullName=" + fullName + ", description=" + description + ", mugshotUrl=" + mugshotUrl + "]";
 	}
 	
