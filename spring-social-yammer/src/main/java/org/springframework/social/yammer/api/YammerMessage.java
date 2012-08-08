@@ -77,7 +77,7 @@ public class YammerMessage {
     
     /**
      * The unique identifier for the message
-     * @return id
+     * @return userId
      */
 	public long getId() {
 		return id;
@@ -92,8 +92,8 @@ public class YammerMessage {
 	}
 
 	/**
-	 * The id of the network this message is posted to
-	 * @return network id
+	 * The userId of the network this message is posted to
+	 * @return network userId
 	 */
 	public long getNetworkId() {
 		return networkId;
@@ -108,8 +108,8 @@ public class YammerMessage {
 	}
 
 	/**
-	 * The id for the thread this message is a part of
-	 * @return id of thread
+	 * The userId for the thread this message is a part of
+	 * @return userId of thread
 	 */
 	public long getThreadId() {
 		return threadId;
@@ -128,8 +128,8 @@ public class YammerMessage {
 	}
 
 	/**
-	 * The id of the message this message is a reply to, if any
-	 * @return id of message this is a reply to, or <code>null</code> if this is not a reply
+	 * The userId of the message this message is a reply to, if any
+	 * @return userId of message this is a reply to, or <code>null</code> if this is not a reply
 	 */
 	public Long getRepliedToId() {
 		return repliedToId;
@@ -255,11 +255,13 @@ public class YammerMessage {
 		public static class Name{
     		private String permalink;
     		private String fullName;
+            private long userId;
 			
-    		public Name(String permalink, String fullName) {
+    		public Name(String permalink, String fullName, long userId) {
 				super();
 				this.permalink = permalink;
 				this.fullName = fullName;
+                this.userId = userId;
 			}
 
 			public String getFullName() {
@@ -272,7 +274,15 @@ public class YammerMessage {
 			public String getPermalink() {
 				return permalink;
 			}
-    	}
+
+            /**
+             * @return the user userId for the yammer user associated with the name
+             * @see org.springframework.social.yammer.api.YammerProfile#getId()
+             */
+            public long getUserId() {
+                return userId;
+            }
+        }
     }
 	
     public static class Attachment{

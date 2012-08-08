@@ -54,7 +54,7 @@ public class UserReference extends YammerReference{
 
 	@Override
 	public String toString() {
-		return "UserReference [getId()=" + getId() + ", getUrl()=" + getUrl() + ", getWebUrl()=" + getWebUrl() + ", mugshotUrl="
+		return "UserReference [getUserId()=" + getId() + ", getUrl()=" + getUrl() + ", getWebUrl()=" + getWebUrl() + ", mugshotUrl="
 				+ mugshotUrl + ", userStats=" + userStats + ", fullName=" + fullName + ", title=" + title + ", name=" + name + "]";
 	}
 	

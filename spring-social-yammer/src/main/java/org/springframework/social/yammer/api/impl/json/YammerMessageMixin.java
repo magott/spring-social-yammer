@@ -60,7 +60,8 @@ abstract class YammerMessageMixin {
 			@JsonProperty("group_id")long groupId,
             @JsonProperty("shared_message_id") long sharedMessageId
 			){}
-	
+
+    @JsonIgnoreProperties(ignoreUnknown=true)
 	abstract static class BodyMixin{
 		@JsonCreator
 		BodyMixin(
@@ -89,7 +90,8 @@ abstract class YammerMessageMixin {
 				@JsonProperty("file")File file, 
 				@JsonProperty("image")Image image
 		) {}
-		
+
+        @JsonIgnoreProperties(ignoreUnknown=true)
 		abstract static class FileMixin{
 			@JsonCreator
 			FileMixin(
@@ -97,7 +99,8 @@ abstract class YammerMessageMixin {
 		    	@JsonProperty("size") long size
 			) {}
 		}
-		
+
+        @JsonIgnoreProperties(ignoreUnknown=true)
 		abstract static class ImageMixin{
 			@JsonCreator
 			ImageMixin(
@@ -107,19 +110,22 @@ abstract class YammerMessageMixin {
 			){}
 		}
 	}
-	
+
+    @JsonIgnoreProperties(ignoreUnknown=true)
 	abstract static class LikedByMixin{
 		@JsonCreator
 		LikedByMixin(
 			@JsonProperty("count")int count,
 			@JsonProperty("names") List<Name> names
 		){}
-		
+
+        @JsonIgnoreProperties(ignoreUnknown=true)
 		abstract static class NameMixin{
 			@JsonCreator
 			NameMixin(
 				@JsonProperty("permalink") String permalink,
-				@JsonProperty("full_name") String fullname
+				@JsonProperty("full_name") String fullname,
+                @JsonProperty("user_id") long userId
 			){}
 		}
 	}

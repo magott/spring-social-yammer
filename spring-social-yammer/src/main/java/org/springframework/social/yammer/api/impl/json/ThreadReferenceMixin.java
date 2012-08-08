@@ -16,9 +16,11 @@
 package org.springframework.social.yammer.api.impl.json;
 
 import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.springframework.social.yammer.api.YammerThread.ThreadStats;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 abstract class ThreadReferenceMixin {
 	
 	@JsonCreator

@@ -41,8 +41,8 @@ abstract class SearchResultsMixin {
 		@JsonProperty("count") SearchStats stats,
 		@JsonProperty("topics") List<Topic> topics
 	) {}
-	
-	
+
+    @JsonIgnoreProperties(ignoreUnknown=true)
 	static class SearchStatsMixin{
 		@JsonCreator
 		public SearchStatsMixin(

@@ -38,7 +38,8 @@ abstract class TopicMixin {
 			@JsonProperty("name") String name,
 			@JsonProperty("id") long id
 	) {}
-	
+
+    @JsonIgnoreProperties(ignoreUnknown=true)
 	static class TopicExpertMixin{
 
 		@JsonCreator

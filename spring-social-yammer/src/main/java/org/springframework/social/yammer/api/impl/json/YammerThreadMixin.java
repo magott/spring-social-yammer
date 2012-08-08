@@ -45,8 +45,9 @@ abstract class YammerThreadMixin {
 		@JsonProperty("direct_message") boolean directMessage,
 		@JsonProperty("topics") List<Topic> topics
 	) {	}
-	
-	
+
+
+    @JsonIgnoreProperties(ignoreUnknown=true)
 	abstract static class YammerThreadStatsMixin{
 		
 		@JsonCreator

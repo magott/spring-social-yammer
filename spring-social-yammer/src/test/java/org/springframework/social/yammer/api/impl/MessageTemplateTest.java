@@ -238,8 +238,9 @@ public class MessageTemplateTest extends AbstractYammerApiTest {
 		assertThat(yammerMessage.getSenderId(), equalTo(4022984L));
 		assertThat(yammerMessage.getRepliedToId(), nullValue());
 		assertThat(yammerMessage.getMessageType(), equalTo("update"));
-		assertThat(yammerMessage.getLikedBy().getCount(), equalTo(0));
-		assertThat(yammerMessage.getLikedBy().getNames().size(), equalTo(0));
+		assertThat(yammerMessage.getLikedBy().getCount(), equalTo(1));
+		assertThat(yammerMessage.getLikedBy().getNames().get(0).getUserId(), equalTo(5700203L));
+		assertThat(yammerMessage.getLikedBy().getNames().size(), equalTo(1));
 		assertCollectionNotEmpty(yammerMessage.getAttachments());
 		assertFirstAttachment(yammerMessage.getAttachments().get(0));
 	}

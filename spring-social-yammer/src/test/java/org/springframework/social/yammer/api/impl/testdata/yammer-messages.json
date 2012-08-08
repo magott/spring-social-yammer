@@ -35,10 +35,16 @@
           "id": 974915
         }
       ],
-      "liked_by": {
-        "count": 0,
-        "names": []
-      },
+    "liked_by": {
+        "names": [
+            {
+                "full_name": "Mort1 Andersen-Got",
+                "user_id": 5700203,
+                "permalink": "morten"
+            }
+        ],
+        "count": 1
+    },
       "privacy": "public"
     },
     {
