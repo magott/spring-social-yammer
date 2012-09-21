@@ -15,17 +15,17 @@
  */
 package org.springframework.social.yammer.api.impl;
 
+import org.junit.Test;
+import org.springframework.http.MediaType;
+import org.springframework.social.yammer.api.YammerThread;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.test.web.client.RequestMatchers.method;
-import static org.springframework.test.web.client.RequestMatchers.requestTo;
-import static org.springframework.test.web.client.ResponseCreators.withResponse;
-
-import org.junit.Test;
-import org.springframework.http.MediaType;
-import org.springframework.social.yammer.api.YammerThread;
+import static org.springframework.test.web.client.match.RequestMatchers.method;
+import static org.springframework.test.web.client.match.RequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.ResponseCreators.withSuccess;
 
 /**
  * @author Morten Andersen-Gott
@@ -37,7 +37,7 @@ public class ThreadTemplateTest extends AbstractYammerApiTest {
 	public void testGetThread(){
 		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/threads/123.json")).andExpect(method(GET))
-				.andRespond(withResponse(jsonResource("testdata/yammer-thread"), responseHeaders));
+				.andRespond(withSuccess(jsonResource("testdata/yammer-thread"), MediaType.APPLICATION_JSON));
 		YammerThread thread = yammerTemplate.threadOperations().getThread(123L);
 		assertThat(thread, notNullValue());
 		assertThread(thread);

@@ -20,9 +20,11 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.test.web.client.RequestMatchers.method;
-import static org.springframework.test.web.client.RequestMatchers.requestTo;
-import static org.springframework.test.web.client.ResponseCreators.withResponse;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.client.match.RequestMatchers.method;
+import static org.springframework.test.web.client.match.RequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.ResponseCreators.withResponse;
+import static org.springframework.test.web.client.response.ResponseCreators.withSuccess;
 
 import org.junit.Test;
 import org.springframework.http.MediaType;
@@ -36,25 +38,22 @@ public class SearchTemplateTest extends AbstractYammerApiTest {
 
 	@Test
 	public void testSearchWithSearchStringOnly(){
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/search.json?search=foo&page=1&number_per_page=20")).andExpect(method(GET))
-				.andRespond(withResponse(jsonResource("testdata/yammer-search-results"), responseHeaders));
+				.andRespond(withSuccess(jsonResource("testdata/yammer-search-results"), APPLICATION_JSON));
 		SearchResults searchResults = yammerTemplate.searchOperations().search("foo");
 		assertSearchResult(searchResults);
 	}
 	@Test
 	public void testSearchWithSearchStringAndPage(){
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/search.json?search=foo&page=2&number_per_page=20")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-search-results"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-search-results"), APPLICATION_JSON));
 		SearchResults searchResults = yammerTemplate.searchOperations().search("foo",2);
 		assertSearchResult(searchResults);
 	}
 	@Test
 	public void testSearchWithSearchStringPageAndNumPerPage(){
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/search.json?search=foo&page=2&number_per_page=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-search-results"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-search-results"), APPLICATION_JSON));
 		SearchResults searchResults = yammerTemplate.searchOperations().search("foo",2,10);
 		assertSearchResult(searchResults);
 	}

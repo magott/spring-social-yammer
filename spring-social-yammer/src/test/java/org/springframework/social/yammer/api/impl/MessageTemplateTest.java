@@ -1,24 +1,5 @@
 package org.springframework.social.yammer.api.impl;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
-import static org.springframework.http.HttpMethod.DELETE;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.test.web.client.RequestMatchers.body;
-import static org.springframework.test.web.client.RequestMatchers.method;
-import static org.springframework.test.web.client.RequestMatchers.requestTo;
-import static org.springframework.test.web.client.ResponseCreators.withResponse;
-import static org.springframework.social.yammer.api.MessageOperations.NO_THREADING;
-import static org.springframework.social.yammer.api.MessageOperations.THREADED;
-import static org.springframework.social.yammer.api.MessageOperations.THREADED_EXTENDED;
-
-import java.util.Collection;
-import java.util.List;
-
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.social.yammer.api.MessageInfo;
@@ -27,188 +8,178 @@ import org.springframework.social.yammer.api.YammerMessage.Attachment;
 import org.springframework.social.yammer.api.YammerMessageMeta;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Collection;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
+import static org.springframework.http.HttpMethod.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.social.yammer.api.MessageOperations.*;
+import static org.springframework.test.web.client.match.RequestMatchers.*;
+import static org.springframework.test.web.client.response.ResponseCreators.withSuccess;
+
 public class MessageTemplateTest extends AbstractYammerApiTest {
 
 	@Test
 	public void testGetMessages() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json")).andExpect(method(GET))
-				.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+				.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessages(0, 0, null, 0);
 		assertMessageInfo(messageInfo);
 	}
 
 	@Test
 	public void testGetMessages_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessages(10000, 1, THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 
 	@Test
 	public void testGetMessagesFollowing() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/following.json")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesFollowing(0,0,null,0);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesFollowing_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/following.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesFollowing(10000, 1, THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 
 	@Test
 	public void testGetMessagesSent() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/sent.json")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesSent(0,0,null,0);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesSent_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/sent.json?older_than=10000&newer_than=1&threaded=extended&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesSent(10000, 1, THREADED_EXTENDED, 10);
 		assertMessageInfo(messageInfo);
 	}
 	@Test
 	public void testGetMessagesPrivate() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/private.json")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesPrivate(0,0,null,0);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesPrivate_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/private.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesPrivate(10000, 1,THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesReceived() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/received.json")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesReceived(0,0,null,0);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesReceived_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/received.json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesReceived(10000, 1, "true", 10);
 		assertMessageInfo(messageInfo);
 	}
 	@Test
 	public void testGetMessagesFromUser() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/from_user/"+123+".json")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesFromUser(123,0,0,null,0);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesFromUser_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/from_user/"+123+".json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesFromUser(123,10000, 1, "true", 10);
 		assertMessageInfo(messageInfo);
 	}
 	@Test
 	public void testGetMessagesAboutTopic() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/about_topic/"+123+".json")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesAboutTopic(123,0,0,null,0);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesAboutTopic_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/about_topic/"+123+".json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesAboutTopic(123,10000, 1, "true", 10);
 		assertMessageInfo(messageInfo);
 	}
 	@Test
 	public void testGetMessagesLikedBy() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/liked_by/"+123+".json")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesLikedByUser(123,0,0,NO_THREADING,0);
 		assertMessageInfo(messageInfo);
 	}
 	
 	@Test
 	public void testGetMessagesLikedBy_withParams() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/liked_by/"+123+".json?older_than=10000&newer_than=1&threaded=true&limit=10")).andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		MessageInfo messageInfo = yammerTemplate.messageOperations().getMessagesLikedByUser(123,10000, 1, THREADED, 10);
 		assertMessageInfo(messageInfo);
 	}
 	@Test
 	public void testLikeMessage() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/liked_by/current.json?message_id=123"))
 		.andExpect(method(POST))
-		.andRespond(withResponse("", responseHeaders));
+        .andRespond(withSuccess("", MediaType.TEXT_PLAIN));
 		yammerTemplate.messageOperations().like(123L);
 	}
 	@Test
 	public void testUnlikeMessage() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/liked_by/current.json?message_id=123"))
 		.andExpect(method(DELETE))
-		.andRespond(withResponse("", responseHeaders));
+		.andRespond(withSuccess());
 		yammerTemplate.messageOperations().unlike(123L);
 	}
 	@Test
 	public void testDeleteMessage() {
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages/123"))
 		.andExpect(method(DELETE))
-		.andRespond(withResponse("", responseHeaders));
+		.andRespond(withSuccess());
 		yammerTemplate.messageOperations().delete(123L);
 	}
 	
 	@Test
 	public void testPostUpdate(){
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json"))
-		.andExpect(body("body=Hello"))
+		.andExpect(content().string("body=Hello"))
 		.andExpect(method(POST))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		yammerTemplate.messageOperations().postUpdate("Hello");
 	}
 	@Test
 	public void testPostUpdate_withParams(){
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/messages.json"))
-		.andExpect(body("body=Hello&replied_to_id=1"))
+		.andExpect(content().string("body=Hello&replied_to_id=1"))
 		.andExpect(method(POST))
-		.andRespond(withResponse(jsonResource("testdata/yammer-messages"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-messages"), APPLICATION_JSON));
 		YammerPostDetails details = new YammerPostDetails();
 		details.setReplyToId(1L);
 		yammerTemplate.messageOperations().postUpdate("Hello",details);

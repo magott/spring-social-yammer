@@ -6,9 +6,11 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.PUT;
-import static org.springframework.test.web.client.RequestMatchers.method;
-import static org.springframework.test.web.client.RequestMatchers.requestTo;
-import static org.springframework.test.web.client.ResponseCreators.withResponse;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.client.match.RequestMatchers.method;
+import static org.springframework.test.web.client.match.RequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.ResponseCreators.withResponse;
+import static org.springframework.test.web.client.response.ResponseCreators.withSuccess;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -25,10 +27,9 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 	@Test
 	public void testGetUserInfoById(){
         Long id = 4022983L;
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/"+id+".json"))
 				.andExpect(method(GET))
-				.andRespond(withResponse(jsonResource("testdata/yammer-user"), responseHeaders));
+				.andRespond(withSuccess(jsonResource("testdata/yammer-user"), APPLICATION_JSON));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUser(id);
 		assertThat(yProfile.getId(), equalTo(id));
 		assertYammerProfile(yProfile);
@@ -37,10 +38,9 @@ public class UserTemplateTest extends AbstractYammerApiTest{
     @Test
 	public void testGetCurrentUserProfile(){
         Long currentUserId = 4022983L;
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/current.json"))
 				.andExpect(method(GET))
-				.andRespond(withResponse(jsonResource("testdata/yammer-user"), responseHeaders));
+				.andRespond(withSuccess(jsonResource("testdata/yammer-user"), APPLICATION_JSON));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUserProfile();
 		assertThat(yProfile.getId(), equalTo(currentUserId));
 		assertYammerProfile(yProfile);
@@ -50,39 +50,36 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 	public void testGetUserInfoByEmail() throws UnsupportedEncodingException{
 		String email = "ilya@users.yammer.com";
 		String encodedEmail = StringUtils.replace(email, "@", "%40");
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/by_email.json?email="+encodedEmail))
 		.andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-users"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-users"), APPLICATION_JSON));
 		YammerProfile yProfile = yammerTemplate.userOperations().getUserByEmail(email);
 		assertYammerProfile(yProfile);
 	}
 	
 	@Test
 	public void testGetUsers() throws UnsupportedEncodingException{
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+		responseHeaders.setContentType(APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&sort_by=messages&reverse=false&letter=A"))
 		.andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-users"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-users"), APPLICATION_JSON));
 		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1, UserOperations.SORT_BY_MESSAGES, false, 'A');
 		assertYammerProfile(users.get(0));
 	}
 	@Test
 	public void testGetUsers_page() throws UnsupportedEncodingException{
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users.json?page=1&reverse=false"))
 		.andExpect(method(GET))
-		.andRespond(withResponse(jsonResource("testdata/yammer-users"), responseHeaders));
+		.andRespond(withSuccess(jsonResource("testdata/yammer-users"), APPLICATION_JSON));
 		List<YammerProfile> users = yammerTemplate.userOperations().getUsers(1);
 		assertYammerProfile(users.get(0));
 	}
 	
 	@Test
 	public void testUpdateUser(){
-		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
 		mockServer.expect(requestTo("https://www.yammer.com/api/v1/users/123456.json?full_name=Dilbert+Gradle&job_title=Developer&location=The+Streaming&im_provider=gtalk&im_username=dilbert.gradle%40gmail.com&work_telephone=123456&external_profiles=http%3A%2F%2Fwww.linkedin.com%2Fdilbertgradle&work_extension=1&mobile_telephone=121212&significant_other=Ms+Gradle&kids_names=Dilbert+Gradle+jr&interests=Building&summary=Featured+in+The+Streaming&expertise=Awsomenes&education%5B%5D=foo%2Cbar%2Cfoobar%2C2000%2C2001&education%5B%5D=bar%2Cfoo%2Cbarfoo%2C2001%2C&previous_companies%5B%5D=foobar+consulting%2Cconsultant%2Cconsulting+on+foobarnesse%2C2001%2C&previous_companies%5B%5D=yabadoo%2Ccaveman%2Ccavingness%2C1900%2C1950"))
 		.andExpect(method(PUT))
-		.andRespond(withResponse("", responseHeaders));	
+		.andRespond(withSuccess());
 		UserInfo userInfo = new UserInfo(null, "Dilbert Gradle", "Developer", "The Streaming", "gtalk", "dilbert.gradle@gmail.com", "123456", "1", "121212", "http://www.linkedin.com/dilbertgradle", "Ms Gradle","Dilbert Gradle jr", "Building", "Featured in The Streaming", "Awsomenes");
 		userInfo.addEducation("foo", "bar", "foobar", 2000, 2001);
 		userInfo.addEducation("bar", "foo", "barfoo", 2001, null);

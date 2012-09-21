@@ -1,8 +1,5 @@
 package org.springframework.social.yammer.api.impl;
 
-import java.io.IOException;
-import java.util.Map;
-
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -10,12 +7,11 @@ import org.codehaus.jackson.type.TypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus.Series;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.social.NotAuthorizedException;
-import org.springframework.social.OperationNotPermittedException;
-import org.springframework.social.RateLimitExceededException;
-import org.springframework.social.ResourceNotFoundException;
-import org.springframework.social.UncategorizedApiException;
+import org.springframework.social.*;
 import org.springframework.web.client.DefaultResponseErrorHandler;
+
+import java.io.IOException;
+import java.util.Map;
 
 public class YammerErrorHandler extends DefaultResponseErrorHandler {
 
