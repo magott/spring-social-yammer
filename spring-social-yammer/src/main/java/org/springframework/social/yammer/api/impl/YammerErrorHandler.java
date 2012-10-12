@@ -51,7 +51,7 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 			// limits, 403 will be returned
 			throw new RateLimitExceededException();
 		} else if (statusCode == HttpStatus.NOT_FOUND) {
-			throw new ResourceNotFoundException(statusCode.toString());
+			throw new ResourceNotFoundException(statusCode.toString()+" Resources does not exists or you were trying to create a duplicate ");
 		}else if(statusCode == HttpStatus.BAD_REQUEST){
 			throw new OperationNotPermittedException("The resources does not exist or you don't have permission to do that (HTTP 400)");
 		}
