@@ -3,7 +3,7 @@ buildscript {
         maven { url 'http://repo.springsource.org/plugins-release' }
     }
     dependencies {
-        classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.1.3'
+        classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.2.2'
     }
 }
 
@@ -17,13 +17,15 @@ configure(allprojects) {
     sourceCompatibility=1.5
     targetCompatibility=1.5
 
-    springSocialVersion = '1.0.2.RELEASE'
-    jacksonVersion = '1.9.6'
-    junitVersion = '4.10'
-    mockitoVersion = '1.9.0'
-    springVersion = '3.1.0.RELEASE'
-    springSecurityCryptoVersion = '3.1.0.RELEASE'
-    springTestMvcVersion = "1.0.0.BUILD-SNAPSHOT"
+    ext {
+      springSocialVersion = '1.0.2.RELEASE'
+      jacksonVersion = '1.9.6'
+      junitVersion = '4.10'
+      mockitoVersion = '1.9.0'
+      springVersion = '3.1.0.RELEASE'
+      springSecurityCryptoVersion = '3.1.0.RELEASE'
+      springTestMvcVersion = "1.0.0.BUILD-SNAPSHOT"
+    }
 
     [compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint:none']
 
@@ -39,9 +41,9 @@ configure(allprojects) {
     }
 
     dependencies {
-        testCompile "junit:junit-dep:$junitVersion"
-        testCompile "org.mockito:mockito-all:$mockitoVersion"
-        testCompile "org.springframework:spring-test:$springVersion"
+        testCompile ("junit:junit-dep:$junitVersion")
+        testCompile ("org.mockito:mockito-all:$mockitoVersion")
+        testCompile ("org.springframework:spring-test:$springVersion")
     }
 
     // servlet-api (2.5) and tomcat-servlet-api (3.0) classpath entries should not be
@@ -93,10 +95,10 @@ configure(subprojects) { subproject ->
 project('spring-social-yammer') {
     description = 'Yammer API'
     dependencies {
-       compile "org.springframework.social:spring-social-core:$springSocialVersion"
-       compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion"
-       compile "org.springframework.security:spring-security-crypto:$springSecurityCryptoVersion"
-       testCompile "org.springframework:spring-test-mvc:$springTestMvcVersion"
+       compile ("org.springframework.social:spring-social-core:$springSocialVersion")
+       compile ("org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion")
+       compile ("org.springframework.security:spring-security-crypto:$springSecurityCryptoVersion")
+       testCompile ("org.springframework:spring-test-mvc:$springTestMvcVersion")
     }
 }
 
@@ -188,7 +190,7 @@ configure(rootProject) {
         description = "Builds -${classifier} archive, containing all jars and docs, " +
                       "suitable for community download page."
 
-        baseDir = "${project.name}-${project.version}";
+        ext.baseDir = "${project.name}-${project.version}";
 
         from('src/dist') {
             include 'readme.txt'
@@ -202,9 +204,9 @@ configure(rootProject) {
             into "${baseDir}/docs"
         }
 
-        from(zipTree(schemaZip.archivePath)) {
-            into "${baseDir}/schema"
-        }
+//        from(zipTree(schemaZip.archivePath)) {
+//            into "${baseDir}/schema"
+//        }
 
         subprojects.each { subproject ->
             into ("${baseDir}/libs") {
@@ -227,7 +229,7 @@ configure(rootProject) {
 
     task wrapper(type: Wrapper) {
     	description = 'Generates gradlew[.bat] scripts'
-    	gradleVersion = '1.1'
+    	gradleVersion = '1.3'
     }
 
 }
