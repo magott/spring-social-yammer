@@ -15,5 +15,4 @@
  */
 
 rootProject.name = 'spring-social-yammer'
-include 'docs'
 include 'spring-social-yammer'
