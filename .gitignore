@@ -9,5 +9,6 @@ build
 *IntegrationTest.java
 *.iml
 *.ipr
+.idea/
 *.iws
 /out

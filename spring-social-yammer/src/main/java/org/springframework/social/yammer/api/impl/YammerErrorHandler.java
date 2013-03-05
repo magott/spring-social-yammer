@@ -10,7 +10,9 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.social.*;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 
 public class YammerErrorHandler extends DefaultResponseErrorHandler {
@@ -41,7 +43,20 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 	private void handleClientErrors(ClientHttpResponse response) throws IOException {
 		HttpStatus statusCode = response.getStatusCode();
 
-		if (statusCode == HttpStatus.UNAUTHORIZED) {
+        InputStreamReader is = new InputStreamReader(response.getBody());
+        StringBuilder sb=new StringBuilder();
+        BufferedReader br = new BufferedReader(is);
+        String read = br.readLine();
+
+        while(read != null) {
+            //System.out.println(read);
+            sb.append(read);
+            read =br.readLine();
+
+        }
+
+        System.out.println("response.getBody() = " + sb.toString());
+        if (statusCode == HttpStatus.UNAUTHORIZED) {
 			chekForRateLimitError(response);
 			// Falls back to default 401 handling
 			throw new NotAuthorizedException(response.getStatusText());

@@ -82,7 +82,7 @@ public class OpenGraphObject {
 	 */
 	public static enum ObjectType{
 		
-		EMPLOYEE("employe"),
+		EMPLOYEE("employee"),
 		COMPANY("company"),
 		PRODUCT("product"),
 		PROFILE("profile"),
