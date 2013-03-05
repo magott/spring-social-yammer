@@ -27,6 +27,9 @@ public class YammerProfile {
 
 	private long id;
 	private String mugshotUrl;
+	private String networkName;
+	private String networkDomain;
+	private String networkId;
 	private Stats stats;
 	private String type;
 	private String url;
@@ -51,7 +54,10 @@ public class YammerProfile {
 			String expertise, 
 			String summary, 
 			String jobTitle, 
-			Contact contact, 
+			String networkId,
+			String networkName,
+			String networkDomain,
+			Contact contact,
 			List<School> schools, 
 			List<String> externalUrls) {
 		super();
@@ -68,9 +74,15 @@ public class YammerProfile {
 		this.jobTitle = jobTitle;
 		this.contact = contact;
 		this.schools = schools;
+		this.networkId = networkId;
+		this.networkName = networkName;
+		this.networkDomain = networkDomain;
 		this.externalUrls = externalUrls;
 	}
-	
+
+
+
+
 	/**
 	 * @return the contact
 	 */
@@ -146,11 +158,43 @@ public class YammerProfile {
 		this.jobTitle = jobTitle;
 	}
 
-	public String getJobTitle() {
+    public String getNetworkName() {
+        return networkName;
+    }
+
+    public void setNetworkName(String networkName) {
+        this.networkName = networkName;
+    }
+
+    public String getNetworkId() {
+        return networkId;
+    }
+
+    public void setNetworkId(String networkId) {
+        this.networkId = networkId;
+    }
+
+    public String getJobTitle() {
 		return jobTitle;
 	}
 
-	public static class Contact{
+    public String getNetworkDomain() {
+        return networkDomain;
+    }
+
+    public void setNetworkDomain(String networkDomain) {
+        this.networkDomain = networkDomain;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    public static class Contact{
 		private List<EMail> eMails;
 		private List<String> phoneNumbers;
 		private InstantMessaging instantMessaging;
