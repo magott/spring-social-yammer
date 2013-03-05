@@ -45,6 +45,9 @@ abstract class YammerProfileMixin {
 			@JsonProperty("expertise") String expertise,
 			@JsonProperty("summary") String summary,
 			@JsonProperty("job_title") String jobTitle,
+            @JsonProperty("network_id") String networkName,
+            @JsonProperty("network_name") String networkId,
+            @JsonProperty("network_domain") String networkDomain,
 			@JsonProperty("contact") Contact contact,
 			@JsonProperty("schools") List<School> schools,
 			@JsonProperty("external_urls") List<String> externalUrls

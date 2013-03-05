@@ -21,14 +21,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
-import org.springframework.social.yammer.api.GroupOperations;
-import org.springframework.social.yammer.api.MessageOperations;
-import org.springframework.social.yammer.api.SearchOperations;
-import org.springframework.social.yammer.api.SubscriptionOperations;
-import org.springframework.social.yammer.api.ThreadOperations;
-import org.springframework.social.yammer.api.TopicOperations;
-import org.springframework.social.yammer.api.UserOperations;
-import org.springframework.social.yammer.api.Yammer;
+import org.springframework.social.yammer.api.*;
 import org.springframework.social.yammer.api.impl.json.YammerModule;
 import org.springframework.web.client.RestTemplate;
 
@@ -45,7 +38,8 @@ public class YammerTemplate extends AbstractOAuth2ApiBinding implements Yammer{
 	private TopicOperations topicOperations;
 	private SubscriptionOperations subscriptionOperations;
 	private ThreadOperations threadOperations;
-	
+	private ActivityOperations activityOperations;
+
 	public YammerTemplate(String accessToken) {
 		super(accessToken);
 		initSubApis();
@@ -54,6 +48,9 @@ public class YammerTemplate extends AbstractOAuth2ApiBinding implements Yammer{
 
 	public UserOperations userOperations(){
 		return userOperations;
+	}
+	public ActivityOperations activityOperations(){
+		return activityOperations;
 	}
 	
 	public MessageOperations messageOperations(){
@@ -92,6 +89,7 @@ public class YammerTemplate extends AbstractOAuth2ApiBinding implements Yammer{
 		searchOperations = new SearchTemplate(getRestTemplate());
 		topicOperations = new TopicTemplate(getRestTemplate());
 		subscriptionOperations = new SubscriptionTemplate(getRestTemplate());
+		activityOperations = new ActivityTemplate(getRestTemplate());
 		threadOperations = new ThreadTemplate(getRestTemplate());
 	}
 	

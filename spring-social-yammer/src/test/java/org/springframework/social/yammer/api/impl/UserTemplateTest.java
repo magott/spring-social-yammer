@@ -89,7 +89,8 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 	}
 
 	private void assertYammerProfile(YammerProfile yProfile) {
-		assertThat(yProfile.getFollowersCount(), equalTo(1L));
+//        System.out.println("yProfile = " + yProfile);
+        assertThat(yProfile.getFollowersCount(), equalTo(1L));
 		assertThat(yProfile.getFollowingCount(), equalTo(1L));
 		assertThat(yProfile.getMessageCount(), equalTo(1L));
 		assertThat(yProfile.getMugshotUrl(), notNullValue());
@@ -105,6 +106,9 @@ public class UserTemplateTest extends AbstractYammerApiTest{
 		assertThat(yProfile.getExternalUrls(), notNullValue());
 		assertThat(yProfile.getExternalUrls().isEmpty(), is(false));
 		assertThat(yProfile.getContact(), notNullValue());
+		assertThat(yProfile.getNetworkId(), equalTo("104604"));
+		assertThat(yProfile.getNetworkName(), equalTo("Yammer Developers Test Community"));
+		assertThat(yProfile.getNetworkDomain(),  equalTo(null));
 		assertThat(yProfile.getContact(), notNullValue());
 		assertThat(yProfile.getJobTitle(), equalTo("Social animal"));
 	}

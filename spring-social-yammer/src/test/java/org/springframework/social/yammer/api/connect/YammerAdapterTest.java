@@ -24,7 +24,7 @@ public class YammerAdapterTest {
 
     private YammerProfile createYammerProfile(YammerProfile.Contact contact) {
         return new YammerProfile(4022983L, "https://assets0.yammer.com/user_uploaded/photos/p1/0080/1548/DSCF2811_2_small.JPG",
-                null, "user", "https://www.yammer.com/yammerdeveloperstestcommunity/users/ilya", "Ilya Yakubovich", "ilya", false, "Socializing", "A summary", "Social animal", contact, null, null);
+                null, "user", "https://www.yammer.com/yammerdeveloperstestcommunity/users/ilya", "Ilya Yakubovich", "ilya", false, "Socializing", "A summary", "Social animal", "network-id","network-name","network-domain",contact, null, null);
     }
 
     @Test
