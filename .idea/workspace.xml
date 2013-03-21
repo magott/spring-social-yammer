@@ -2,48 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ebc448f-7aee-4cb6-9577-cf1ca5f33d50" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/aopalliance_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_all_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jackson_core_asl_1_9_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jackson_mapper_asl_1_9_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/junit_dep_4_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mockito_all_1_9_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_aop_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_aop_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_asm_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_asm_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_beans_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_beans_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_context_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_context_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_context_support_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_core_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_core_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_expression_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_expression_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_security_crypto_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_social_core_1_0_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_test_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_test_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_test_mvc_1_0_0_BUILD_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_web_3_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_web_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/spring_webmvc_3_1_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-social-yammer/src/test/java/org/springframework/social/yammer/api/impl/ActivityTemplateTest.java" afterPath="$PROJECT_DIR$/spring-social-yammer/src/test/java/org/springframework/social/yammer/api/impl/ActivityTemplateTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/YammerActivityObject.java" afterPath="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/YammerActivityObject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/impl/YammerErrorHandler.java" afterPath="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/impl/YammerErrorHandler.java" />
     </list>
     <ignored path="spring-social-yammer.iws" />
@@ -142,10 +100,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="YammerActivityObject.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="YammerActivityObject.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/YammerActivityObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="4" selection-start="683" selection-end="683" vertical-scroll-proportion="0.67460316">
+            <state line="25" column="4" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -169,10 +127,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="YammerErrorHandler.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="YammerErrorHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/impl/YammerErrorHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="0" selection-start="4276" selection-end="4276" vertical-scroll-proportion="0.0">
+            <state line="118" column="32" selection-start="4100" selection-end="4100" vertical-scroll-proportion="0.8111111">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -252,9 +210,9 @@
         <option value="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/YammerActivityDetails.java" />
         <option value="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/ActivityOperations.java" />
         <option value="$PROJECT_DIR$/spring-social-yammer/src/test/java/org/springframework/social/yammer/api/impl/testdata/yammer-activity.json" />
-        <option value="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/impl/YammerErrorHandler.java" />
         <option value="$PROJECT_DIR$/spring-social-yammer/src/test/java/org/springframework/social/yammer/api/impl/ActivityTemplateTest.java" />
         <option value="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/YammerActivityObject.java" />
+        <option value="$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/impl/YammerErrorHandler.java" />
       </list>
     </option>
   </component>
@@ -892,15 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/impl/YammerErrorHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="0" selection-start="4276" selection-end="4276" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/YammerActivityDetails.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0">
@@ -917,8 +866,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/YammerActivityObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="4" selection-start="683" selection-end="683" vertical-scroll-proportion="0.67460316">
+        <state line="25" column="4" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-social-yammer/src/main/java/org/springframework/social/yammer/api/impl/YammerErrorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="32" selection-start="4100" selection-end="4100" vertical-scroll-proportion="0.8111111">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

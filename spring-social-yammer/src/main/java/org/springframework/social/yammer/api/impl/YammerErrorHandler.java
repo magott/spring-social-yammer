@@ -116,11 +116,4 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 		// TODO Auto-generated method stub
 
 	}
-    private static final String RATE_LIMIT_EXCEEDED_MESSAGE_TEXT = "Rate limited due to excessive requests.";
-    private static final String ERROR_MESSAGE_KEY = "message";
-
-
-
-
-
 }
