@@ -38,7 +38,6 @@ public class YammerDateDeserializerTest {
 		String dateToParse = "2011/03/31 21:12:57 +0000";
 		Date date = deserializer.createDateFormatter().parse(dateToParse);
 		assertThat(date, notNullValue());
-		System.out.println(date);
 		Calendar cal = Calendar.getInstance(new SimpleTimeZone(0,"GMT"));
 		cal.setTimeInMillis(date.getTime());
 		assertThat(cal.get(Calendar.DAY_OF_MONTH), equalTo(31));
