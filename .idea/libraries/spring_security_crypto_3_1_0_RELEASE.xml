@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="spring-security-crypto-3.1.0.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/org.springframework.security/spring-security-crypto/3.1.0.RELEASE/jar/5d00d9c9ac8067c323b517c1fe3a81984bcfc1d/spring-security-crypto-3.1.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/org.springframework.security/spring-security-crypto/3.1.0.RELEASE/source/751d59274fd2cb612d34de6357c228b69164e40e/spring-security-crypto-3.1.0.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

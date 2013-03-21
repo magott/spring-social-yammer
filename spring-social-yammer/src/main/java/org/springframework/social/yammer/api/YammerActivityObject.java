@@ -10,7 +10,6 @@ public class YammerActivityObject
     private String description = null;
 
     public YammerActivityObject(String title, String description, String url, String type, String image) {
-
         this.title = title;
         this.url = url;
         this.type = type;
