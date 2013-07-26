@@ -23,6 +23,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.springframework.social.yammer.api.YammerProfile.Contact;
 import org.springframework.social.yammer.api.YammerProfile.EMail;
 import org.springframework.social.yammer.api.YammerProfile.InstantMessaging;
+import org.springframework.social.yammer.api.YammerProfile.Phone;
 import org.springframework.social.yammer.api.YammerProfile.School;
 import org.springframework.social.yammer.api.YammerProfile.Stats;
 
@@ -47,7 +48,12 @@ abstract class YammerProfileMixin {
 			@JsonProperty("job_title") String jobTitle,
 			@JsonProperty("contact") Contact contact,
 			@JsonProperty("schools") List<School> schools,
-			@JsonProperty("external_urls") List<String> externalUrls
+			@JsonProperty("external_urls") List<String> externalUrls,
+			
+			@JsonProperty("last_name") String lastName,
+			@JsonProperty("first_name") String firstName,
+			@JsonProperty("network_id") long networkId,
+			@JsonProperty("timezone") String timezone
 	){}
 	
 	
@@ -56,20 +62,31 @@ abstract class YammerProfileMixin {
 	abstract static class ContactMixin {
 		@JsonCreator
 		ContactMixin(
-				@JsonProperty("email_addresses") List<EMail> emailAddresses, 
-				@JsonProperty("phone_numbers") List<String> phoneNumbers,
+				@JsonProperty("email_addresses") List<EMail> emailAddresses,
+				@JsonProperty("phone_numbers") List<Phone> phoneNumbers,
 				@JsonProperty("im") InstantMessaging instantMessaging
 		){}
 	}
 	
-	@JsonIgnoreProperties(ignoreUnknown=true)
+	@JsonIgnoreProperties(ignoreUnknown=false)
 	abstract static class EMailMixin {
 		@JsonCreator
 		EMailMixin(
-				@JsonProperty("type") String type,
-				@JsonProperty("address") String address
+				@JsonProperty("address") String address,
+				@JsonProperty("type") String type
 		){}
 	}
+	
+	@JsonIgnoreProperties(ignoreUnknown=false)
+	abstract static class PhoneMixin {
+		@JsonCreator
+		PhoneMixin(
+				@JsonProperty("number") String number,
+				@JsonProperty("type") String type
+				
+		){}
+	}
+	
 	
 	@JsonIgnoreProperties(ignoreUnknown=true)
 	abstract static class InstantMessagingMixin {

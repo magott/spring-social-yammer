@@ -40,6 +40,11 @@ public class YammerProfile {
 	private String jobTitle;
 	private Contact contact;
 	
+	private String lastName;
+	private String firstName;
+	private long networkId;
+	private String timezone;
+	
 	public YammerProfile(long id, 
 			String mugshotUrl, 
 			Stats stats, 
@@ -53,7 +58,13 @@ public class YammerProfile {
 			String jobTitle, 
 			Contact contact, 
 			List<School> schools, 
-			List<String> externalUrls) {
+			List<String> externalUrls,
+			
+			String lastName,
+			String firstName,
+			long networkId,
+			String timezone
+			) {
 		super();
 		this.id = id;
 		this.mugshotUrl = mugshotUrl;
@@ -69,6 +80,13 @@ public class YammerProfile {
 		this.contact = contact;
 		this.schools = schools;
 		this.externalUrls = externalUrls;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.networkId = networkId;
+		this.timezone = timezone;
+		
+		
+
 	}
 	
 	/**
@@ -149,13 +167,35 @@ public class YammerProfile {
 	public String getJobTitle() {
 		return jobTitle;
 	}
+	
+	
+	
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public long getNetworkId() {
+		return networkId;
+	}
+
+	public String getTimezone() {
+		return timezone;
+	}
+
+
+
 
 	public static class Contact{
 		private List<EMail> eMails;
-		private List<String> phoneNumbers;
+		private List<Phone> phoneNumbers;
 		private InstantMessaging instantMessaging;
 		
-		public Contact(List<EMail> eMails, List<String> phoneNumbers, InstantMessaging instantMessaging) {
+		public Contact(List<EMail> eMails, List<Phone> phoneNumbers, InstantMessaging instantMessaging) {
 			this.eMails = eMails;
 			this.phoneNumbers = phoneNumbers;
 			this.instantMessaging = instantMessaging;
@@ -169,10 +209,11 @@ public class YammerProfile {
 			return instantMessaging;
 		}
 		
-		public List<String> getPhoneNumbers() {
+		public List<Phone> getPhoneNumbers() {
 			return phoneNumbers;
 		}
 
+		
 		
 	}
 	
@@ -180,9 +221,9 @@ public class YammerProfile {
 		private String type;
 		private String address;
 		
-		public EMail(String type, String address){
-			this.type=type;
-			this.address=address;
+		public EMail(String address, String type){
+			this.type = type;
+			this.address = address;
 		}
 
 		public String getAddress() {
@@ -191,6 +232,33 @@ public class YammerProfile {
 
 		public String getType() {
 			return type;
+		}
+		
+		public String toString() {
+			return this.address + " " + this.type;
+		}
+	}
+	
+	public static class Phone{
+		private String type;
+		private String number;
+	
+		
+		public Phone(String number, String type){
+			this.type = type;
+			this.number = number;
+		}
+
+		public String getNumber() {
+			return number;
+		}
+
+		public String getType() {
+			return type;
+		}
+		
+		public String toString() {
+			return this.number + " " + this.type;
 		}
 	}
 	

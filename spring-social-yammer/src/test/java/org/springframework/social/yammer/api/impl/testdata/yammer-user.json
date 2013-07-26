@@ -50,6 +50,8 @@
     "summary": "A summary",
     "network_id": 104604,
     "name": "ilya",
+    "first_name":"Maksims",
+    "last_name":"Markovs",
     "network_name": "Yammer Developers Test Community",
     "interests": [],
     "contact": {
@@ -59,7 +61,16 @@
           "address": "yammer@springsocial.com"
         }
       ],
-      "phone_numbers": [],
+      "phone_numbers": [
+         {
+            "type":"work",
+            "number":"+37126424491"
+         },
+         {
+            "type":"mobile",
+            "number":"+37126424491"
+         }
+      ],
       "im": {
         "provider": "",
         "username": ""

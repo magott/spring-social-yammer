@@ -42,6 +42,7 @@ import org.springframework.social.yammer.api.YammerProfile;
 import org.springframework.social.yammer.api.YammerProfile.Contact;
 import org.springframework.social.yammer.api.YammerProfile.EMail;
 import org.springframework.social.yammer.api.YammerProfile.InstantMessaging;
+import org.springframework.social.yammer.api.YammerProfile.Phone;
 import org.springframework.social.yammer.api.YammerProfile.School;
 import org.springframework.social.yammer.api.YammerProfile.Stats;
 import org.springframework.social.yammer.api.YammerReference;
@@ -59,6 +60,7 @@ import org.springframework.social.yammer.api.impl.json.YammerMessageMixin.LikedB
 import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.ContactMixin;
 import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.EMailMixin;
 import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.InstantMessagingMixin;
+import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.PhoneMixin;
 import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.SchoolMixin;
 import org.springframework.social.yammer.api.impl.json.YammerProfileMixin.StatsMixin;
 import org.springframework.social.yammer.api.impl.json.YammerThreadMixin.YammerThreadStatsMixin;
@@ -70,7 +72,7 @@ import org.springframework.social.yammer.api.impl.json.YammerThreadMixin.YammerT
 public class YammerModule extends SimpleModule {
 
 	public YammerModule() {
-		super("YammerModule", new Version(1, 0, 0, null));
+		super("YammerModule", new Version(1, 0, 2, null));
 	}
 
 	@Override
@@ -80,6 +82,7 @@ public class YammerModule extends SimpleModule {
 		context.setMixInAnnotations(Stats.class, StatsMixin.class);
 		context.setMixInAnnotations(Contact.class, ContactMixin.class);
 		context.setMixInAnnotations(EMail.class, EMailMixin.class);
+		context.setMixInAnnotations(Phone.class, PhoneMixin.class);
 		context.setMixInAnnotations(InstantMessaging.class, InstantMessagingMixin.class);
 		context.setMixInAnnotations(School.class, SchoolMixin.class);
 		context.setMixInAnnotations(MessageInfo.class, MessageInfoMixin.class);
