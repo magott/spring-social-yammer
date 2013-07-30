@@ -68,7 +68,7 @@ abstract class YammerProfileMixin {
 		){}
 	}
 	
-	@JsonIgnoreProperties(ignoreUnknown=false)
+	@JsonIgnoreProperties(ignoreUnknown=true)
 	abstract static class EMailMixin {
 		@JsonCreator
 		EMailMixin(
@@ -77,7 +77,7 @@ abstract class YammerProfileMixin {
 		){}
 	}
 	
-	@JsonIgnoreProperties(ignoreUnknown=false)
+	@JsonIgnoreProperties(ignoreUnknown=true)
 	abstract static class PhoneMixin {
 		@JsonCreator
 		PhoneMixin(
