@@ -1,172 +1,205 @@
 [
-  {
-    "significant_other": "",
-    "type": "user",
-    "schools": [
-     {
-        "degree": "Msc Universe",
-        "school": "Universe-ity",
-        "description": "Dissertation: How to beat Skeletor ",
-        "start_year": 2007,
-        "end_year": 2009
-      },
-      {
-        "degree": "Bsc Eligibility",
-        "school": "School",
-        "description": "Rose ceremony champion",
-        "start_year": 2001,
-        "end_year": 2004
-      },
-      {
-        "degree": "",
-        "school": "",
-        "description": "",
-        "start_year": null,
-        "end_year": null
-      }
-    ],
-    "stats": {
-      "followers": 1,
-      "following": 1,
-      "updates": 1
+    {
+        "significant_other": "",
+        "type": "user",
+        "schools": [
+            {
+                "degree": "Msc Universe",
+                "school": "Universe-ity",
+                "description": "Dissertation: How to beat Skeletor ",
+                "start_year": 2007,
+                "end_year": 2009
+            },
+            {
+                "degree": "Bsc Eligibility",
+                "school": "School",
+                "description": "Rose ceremony champion",
+                "start_year": 2001,
+                "end_year": 2004
+            },
+            {
+                "degree": "",
+                "school": "",
+                "description": "",
+                "start_year": null,
+                "end_year": null
+            }
+        ],
+        "stats": {
+            "followers": 1,
+            "following": 1,
+            "updates": 1
+        },
+        "external_urls": [
+            "http://github.com/SpringSource",
+            "http://www.springframework.org"
+        ],
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/ilya",
+        "mugshot_url": "https://assets0.yammer.com/user_uploaded/photos/p1/0080/1548/DSCF2811_2_small.JPG",
+        "location": "",
+        "state": "active",
+        "verified_admin": "false",
+        "guid": null,
+        "timezone": "Pacific Time (US & Canada)",
+        "url": "https://www.yammer.com/api/v1/users/4022983",
+        "network_domains": [],
+        "kids_names": "",
+        "previous_companies": [],
+        "full_name": "Maksims Markovs",
+        "first_name": "Maksims",
+        "last_name": "Markovs",
+        "birth_date": "",
+        "expertise": "Socializing",
+        "summary": "A summary",
+        "network_id": 104604,
+        "name": "ilya",
+        "network_name": "Yammer Developers Test Community",
+        "interests": [],
+        "contact": {
+            "email_addresses": [
+                {
+                    "type": "other",
+                    "address": "ilya@users.yammer.com"
+                }
+            ],
+            "phone_numbers": [
+                {
+                    "type": "work",
+                    "number": "+37126424491"
+                },
+                {
+                    "type": "mobile",
+                    "number": "+37126424491"
+                }
+            ],
+            "im": {
+                "provider": "",
+                "username": ""
+            }
+        },
+        "hire_date": null,
+        "id": 4022983,
+        "can_broadcast": "false",
+        "admin": "true",
+        "job_title": "Social animal"
     },
-    "external_urls": [
-      "http://github.com/SpringSource",
-      "http://www.springframework.org"
-    ],
-    "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/ilya",
-    "mugshot_url": "https://assets0.yammer.com/user_uploaded/photos/p1/0080/1548/DSCF2811_2_small.JPG",
-    "location": "",
-    "state": "active",
-    "verified_admin": "false",
-    "guid": null,
-    "timezone": "Pacific Time (US & Canada)",
-    "url": "https://www.yammer.com/api/v1/users/4022983",
-    "network_domains": [],
-    "kids_names": "",
-    "previous_companies": [],
-    "full_name": "Ilya Yakubovich",
-    "birth_date": "",
-    "expertise": "Socializing",
-    "summary": "A summary",
-    "network_id": 104604,
-    "name": "ilya",
-    "network_name": "Yammer Developers Test Community",
-    "interests": [],
-    "contact": {
-      "email_addresses": [
-        {
-          "type": "other",
-          "address": "ilya@users.yammer.com"
-        }
-      ],
-      "phone_numbers": [],
-      "im": {
-        "provider": "",
-        "username": ""
-      }
+    {
+        "significant_other": "",
+        "type": "user",
+        "schools": [],
+        "stats": {
+            "followers": 1,
+            "following": 2,
+            "updates": 4
+        },
+        "external_urls": [],
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/mknopp",
+        "mugshot_url": "https://assets1.yammer.com/user_uploaded/photos/p1/0141/2640/n1644278019_46479_62_small.jpg",
+        "location": null,
+        "state": "active",
+        "verified_admin": "false",
+        "guid": null,
+        "timezone": "Pacific Time (US & Canada)",
+        "url": "https://www.yammer.com/api/v1/users/1452329",
+        "network_domains": [],
+        "kids_names": "",
+        "previous_companies": [],
+        "full_name": "Matt Knopp",
+        "first_name": "Matt",
+        "last_name": "Knopp",
+        "birth_date": "",
+        "expertise": "",
+        "summary": "",
+        "network_id": 104604,
+        "name": "mknopp",
+        "network_name": "Yammer Developers Test Community",
+        "interests": [],
+        "contact": {
+            "email_addresses": [
+                {
+                    "type": "other",
+                    "address": "mknopp+yammerdeveloperstestcommunity@users.yammer.com"
+                }
+            ],
+            "phone_numbers": [
+                {
+                    "type": "work",
+                    "number": "+37126424491"
+                },
+                {
+                    "type": "mobile",
+                    "number": "+37126424491"
+                }
+            ],
+            "im": {
+                "provider": "",
+                "username": ""
+            }
+        },
+        "hire_date": null,
+        "id": 1452329,
+        "can_broadcast": "true",
+        "admin": "true",
+        "job_title": null
     },
-    "hire_date": null,
-    "id": 4022983,
-    "can_broadcast": "false",
-    "admin": "true",
-    "job_title": "Social animal"
-  },
-   {
-    "significant_other": "",
-    "type": "user",
-    "schools": [],
-    "stats": {
-      "followers": 1,
-      "following": 2,
-      "updates": 4
-    },
-    "external_urls": [],
-    "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/mknopp",
-    "mugshot_url": "https://assets1.yammer.com/user_uploaded/photos/p1/0141/2640/n1644278019_46479_62_small.jpg",
-    "location": null,
-    "state": "active",
-    "verified_admin": "false",
-    "guid": null,
-    "timezone": "Pacific Time (US & Canada)",
-    "url": "https://www.yammer.com/api/v1/users/1452329",
-    "network_domains": [],
-    "kids_names": "",
-    "previous_companies": [],
-    "full_name": "Matt Knopp",
-    "birth_date": "",
-    "expertise": "",
-    "summary": "",
-    "network_id": 104604,
-    "name": "mknopp",
-    "network_name": "Yammer Developers Test Community",
-    "interests": [],
-    "contact": {
-      "email_addresses": [
-        {
-          "type": "other",
-          "address": "mknopp+yammerdeveloperstestcommunity@users.yammer.com"
-        }
-      ],
-      "phone_numbers": [],
-      "im": {
-        "provider": "",
-        "username": ""
-      }
-    },
-    "hire_date": null,
-    "id": 1452329,
-    "can_broadcast": "true",
-    "admin": "true",
-    "job_title": null
-  },
-  {
-    "significant_other": "",
-    "type": "user",
-    "schools": [],
-    "stats": {
-      "followers": 1,
-      "following": 1,
-      "updates": 4
-    },
-    "external_urls": [],
-    "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/mikealrogers-guest",
-    "mugshot_url": "https://assets3.yammer.com/images/no_photo_small.gif",
-    "location": "",
-    "state": "active",
-    "verified_admin": "false",
-    "guid": null,
-    "timezone": "Pacific Time (US & Canada)",
-    "url": "https://www.yammer.com/api/v1/users/4022984",
-    "network_domains": [],
-    "kids_names": "",
-    "previous_companies": [],
-    "full_name": "mikeal",
-    "birth_date": "",
-    "expertise": "",
-    "summary": "",
-    "network_id": 104604,
-    "name": "mikealrogers-guest",
-    "network_name": "Yammer Developers Test Community",
-    "interests": [],
-    "contact": {
-      "email_addresses": [
-        {
-          "type": "other",
-          "address": "mikealrogers-guest+yammerdeveloperstestcommunity@users.yammer.com"
-        }
-      ],
-      "phone_numbers": [],
-      "im": {
-        "provider": "",
-        "username": ""
-      }
-    },
-    "hire_date": null,
-    "id": 4022984,
-    "can_broadcast": "true",
-    "admin": "true",
-    "job_title": "Test Title"
-  }
-  ]
+    {
+        "significant_other": "",
+        "type": "user",
+        "schools": [],
+        "stats": {
+            "followers": 1,
+            "following": 1,
+            "updates": 4
+        },
+        "external_urls": [],
+        "web_url": "https://www.yammer.com/yammerdeveloperstestcommunity/users/mikealrogers-guest",
+        "mugshot_url": "https://assets3.yammer.com/images/no_photo_small.gif",
+        "location": "",
+        "state": "active",
+        "verified_admin": "false",
+        "guid": null,
+        "timezone": "Pacific Time (US & Canada)",
+        "url": "https://www.yammer.com/api/v1/users/4022984",
+        "network_domains": [],
+        "kids_names": "",
+        "previous_companies": [],
+        "full_name": "mikeal",
+        "first_name": "mikael",
+        "last_name": "",
+        "birth_date": "",
+        "expertise": "",
+        "summary": "",
+        "network_id": 104604,
+        "name": "mikealrogers-guest",
+        "network_name": "Yammer Developers Test Community",
+        "interests": [],
+        "contact": {
+            "email_addresses": [
+                {
+                    "type": "other",
+                    "address": "mikealrogers-guest+yammerdeveloperstestcommunity@users.yammer.com"
+                }
+            ],
+            "phone_numbers": [
+                {
+                    "type": "work",
+                    "number": "+37126424491"
+                },
+                {
+                    "type": "mobile",
+                    "number": "+37126424491"
+                }
+            ],
+            "im": {
+                "provider": "",
+                "username": ""
+            }
+        },
+        "hire_date": null,
+        "id": 4022984,
+        "can_broadcast": "true",
+        "admin": "true",
+        "job_title": "Test Title"
+    }
+]
   

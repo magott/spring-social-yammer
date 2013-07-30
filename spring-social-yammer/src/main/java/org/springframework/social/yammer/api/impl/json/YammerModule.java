@@ -72,7 +72,7 @@ import org.springframework.social.yammer.api.impl.json.YammerThreadMixin.YammerT
 public class YammerModule extends SimpleModule {
 
 	public YammerModule() {
-		super("YammerModule", new Version(1, 0, 2, null));
+		super("YammerModule", new Version(1, 0, 0, null));
 	}
 
 	@Override
