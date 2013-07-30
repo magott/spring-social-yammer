@@ -24,13 +24,13 @@ public class YammerAdapterTest {
 
     private YammerProfile createYammerProfile(YammerProfile.Contact contact) {
         return new YammerProfile(4022983L, "https://assets0.yammer.com/user_uploaded/photos/p1/0080/1548/DSCF2811_2_small.JPG",
-                null, "user", "https://www.yammer.com/yammerdeveloperstestcommunity/users/ilya", "Ilya Yakubovich", "ilya", false, "Socializing", "A summary", "Social animal", contact, null, null);
+                null, "user", "https://www.yammer.com/yammerdeveloperstestcommunity/users/ilya", "Ilya Yakubovich", "ilya", false, "Socializing", "A summary", "Social animal", contact, null, null, null, null, 0L, null);
     }
 
     @Test
     public void shouldFetchProfile() {
     	
-    	YammerProfile.Contact contact = new YammerProfile.Contact(new ArrayList<YammerProfile.EMail>(), new ArrayList<String>(), null);
+    	YammerProfile.Contact contact = new YammerProfile.Contact(new ArrayList<YammerProfile.EMail>(), new ArrayList<YammerProfile.Phone>(), null);
     	YammerProfile yammerProfile = createYammerProfile(contact);
     	
     	UserOperations userOperations = mock(UserOperations.class);
@@ -60,8 +60,8 @@ public class YammerAdapterTest {
     public void whenFetchingProfileShouldSelectPrimaryMail() {
 
         List<YammerProfile.EMail> emails = new ArrayList<YammerProfile.EMail>();
-        emails.add(new YammerProfile.EMail("primary", "yammer@springsocial.com"));
-        emails.add(new YammerProfile.EMail("other", "yammer2@other.com"));
+        emails.add(new YammerProfile.EMail( "yammer@springsocial.com", "primary"));
+        emails.add(new YammerProfile.EMail( "yammer2@other.com", "other"));
         YammerProfile.Contact contact = new YammerProfile.Contact(emails, null, null);
 
         YammerProfile yammerProfile = createYammerProfile(contact);
@@ -80,7 +80,7 @@ public class YammerAdapterTest {
     public void whenFetchingProfileShouldSelectFirstEMailWhenNoPrimaryMailExists() {
 
         List<YammerProfile.EMail> emails = new ArrayList<YammerProfile.EMail>();
-        emails.add(new YammerProfile.EMail("other", "yammer2@other.com"));
+        emails.add(new YammerProfile.EMail("yammer2@other.com", "other"));
         YammerProfile.Contact contact = new YammerProfile.Contact(emails, null, null);
 
         YammerProfile yammerProfile = createYammerProfile(contact);
