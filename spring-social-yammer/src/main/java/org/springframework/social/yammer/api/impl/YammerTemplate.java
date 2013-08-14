@@ -17,8 +17,9 @@ package org.springframework.social.yammer.api.impl;
 
 import java.util.List;
 
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.yammer.api.GroupOperations;
@@ -49,7 +50,6 @@ public class YammerTemplate extends AbstractOAuth2ApiBinding implements Yammer{
 	public YammerTemplate(String accessToken) {
 		super(accessToken);
 		initSubApis();
-		registerYammerJsonModule();
 	}
 
 	public UserOperations userOperations(){
@@ -94,16 +94,14 @@ public class YammerTemplate extends AbstractOAuth2ApiBinding implements Yammer{
 		subscriptionOperations = new SubscriptionTemplate(getRestTemplate());
 		threadOperations = new ThreadTemplate(getRestTemplate());
 	}
-	
-	private void registerYammerJsonModule() {
-		List<HttpMessageConverter<?>> converters = getRestTemplate().getMessageConverters();
-		for (HttpMessageConverter<?> converter : converters) {
-			if(converter instanceof MappingJacksonHttpMessageConverter) {
-				MappingJacksonHttpMessageConverter jsonConverter = (MappingJacksonHttpMessageConverter) converter;
-				ObjectMapper objectMapper = new ObjectMapper();				
-				objectMapper.registerModule(new YammerModule());
-				jsonConverter.setObjectMapper(objectMapper);
-			}
-		}
-	}
+
+    @Override
+    protected MappingJackson2HttpMessageConverter getJsonMessageConverter() {
+        MappingJackson2HttpMessageConverter jsonMessageConverter = super.getJsonMessageConverter();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new YammerModule());
+        jsonMessageConverter.setObjectMapper(objectMapper);
+        return jsonMessageConverter;
+    }
+
 }

@@ -17,9 +17,9 @@ package org.springframework.social.yammer.api.impl.json;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.social.yammer.api.YammerProfile.Contact;
 import org.springframework.social.yammer.api.YammerProfile.EMail;
 import org.springframework.social.yammer.api.YammerProfile.InstantMessaging;
@@ -35,7 +35,7 @@ import org.springframework.social.yammer.api.YammerProfile.Stats;
 abstract class YammerProfileMixin {
 	@JsonCreator
 	YammerProfileMixin(
-			@JsonProperty("id") long id, 
+			@JsonProperty("id") long id,
 			@JsonProperty("mugshot_url") String mugshotUrl,
 			@JsonProperty("stats") Stats stats,
 			@JsonProperty("type") String type,

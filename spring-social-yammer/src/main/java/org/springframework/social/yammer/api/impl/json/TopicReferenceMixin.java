@@ -15,16 +15,16 @@
  */
 package org.springframework.social.yammer.api.impl.json;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class TopicReferenceMixin {
 
 	@JsonCreator
 	public TopicReferenceMixin(
-			@JsonProperty("id") long id, 
+			@JsonProperty("id") long id,
 			@JsonProperty("url")String url, 
 			@JsonProperty("web_url")String webUrl,
 			@JsonProperty("name")String name

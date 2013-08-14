@@ -15,11 +15,12 @@
  */
 package org.springframework.social.yammer.api.impl.json;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * @author Morten Andersen-Gott
@@ -30,7 +31,7 @@ abstract class YammerMessageMetaMixin {
 
 	@JsonCreator
 	public YammerMessageMetaMixin(
-			@JsonProperty("current_user_id")long currentUserId, 
+			@JsonProperty("current_user_id")long currentUserId,
 			@JsonProperty("feed_name")String feedName, 
 			@JsonProperty("feed_desc")String feedDescription,
 			@JsonProperty("unsee_message_count_following")int unseenMessageCountFollowing, 

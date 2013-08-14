@@ -15,8 +15,8 @@
  */
 package org.springframework.social.yammer.api.impl.json;
 
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.module.SimpleModule;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.social.yammer.api.Group;
 import org.springframework.social.yammer.api.Group.GroupStats;
 import org.springframework.social.yammer.api.GroupReference;
@@ -72,7 +72,7 @@ import org.springframework.social.yammer.api.impl.json.YammerThreadMixin.YammerT
 public class YammerModule extends SimpleModule {
 
 	public YammerModule() {
-		super("YammerModule", new Version(1, 0, 0, null));
+		super("YammerModule");
 	}
 
 	@Override

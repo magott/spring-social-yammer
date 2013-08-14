@@ -15,14 +15,7 @@
  */
 package org.springframework.social.yammer.api.impl.json;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonSubTypes.Type;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
-import org.codehaus.jackson.annotate.JsonTypeInfo.As;
-import org.codehaus.jackson.annotate.JsonTypeInfo.Id;
+import com.fasterxml.jackson.annotation.*;
 import org.springframework.social.yammer.api.GroupReference;
 import org.springframework.social.yammer.api.MessageReference;
 import org.springframework.social.yammer.api.TagReference;
@@ -31,21 +24,21 @@ import org.springframework.social.yammer.api.TopicReference;
 import org.springframework.social.yammer.api.UserReference;
 import org.springframework.social.yammer.api.YammerReference;
 
-@JsonTypeInfo(use=Id.NAME, include=As.PROPERTY, property="type", defaultImpl=YammerReference.class)
+@JsonTypeInfo(use= JsonTypeInfo.Id.NAME, include= JsonTypeInfo.As.PROPERTY, property="type", defaultImpl=YammerReference.class)
 @JsonSubTypes({
-				@Type(name="user", value=UserReference.class),
-				@Type(name="tag", value=TagReference.class),
-				@Type(name="topic", value=TopicReference.class),
-				@Type(name="group", value=GroupReference.class),
-				@Type(name="message", value=MessageReference.class),
-				@Type(name="thread", value=ThreadReference.class)
+				@JsonSubTypes.Type(name="user", value=UserReference.class),
+				@JsonSubTypes.Type(name="tag", value=TagReference.class),
+				@JsonSubTypes.Type(name="topic", value=TopicReference.class),
+				@JsonSubTypes.Type(name="group", value=GroupReference.class),
+				@JsonSubTypes.Type(name="message", value=MessageReference.class),
+				@JsonSubTypes.Type(name="thread", value=ThreadReference.class)
 				})
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class YammerReferenceMixin {
 
 	@JsonCreator
 	YammerReferenceMixin(
-			@JsonProperty("id") long id, 
+			@JsonProperty("id") long id,
 			@JsonProperty("url")String url, 
 			@JsonProperty("web_url")String webUrl
 			) {	}
