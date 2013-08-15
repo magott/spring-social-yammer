@@ -1,0 +1,7 @@
+{
+    "response": {
+        "message": "Token not found.",
+        "code": 16,
+        "stat": "fail"
+    }
+}
