@@ -100,6 +100,8 @@ project('spring-social-yammer') {
     description = 'Yammer API'
     dependencies {
        compile ("org.springframework.social:spring-social-core:$springSocialVersion")
+       compile ("org.springframework.social:spring-social-security:$springSocialVersion")
+       compile ("org.springframework.social:spring-social-config:$springSocialVersion")
        compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
        compile ("org.springframework.security:spring-security-crypto:$springSecurityCryptoVersion")
        testCompile ("org.springframework:spring-test:$springVersion")

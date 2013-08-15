@@ -1,0 +1,2 @@
+http\://www.springframework.org/schema/social/spring-social-yammer.xsd=org/springframework/social/yammer/config/xml/spring-social-yammer-1.0.xsd
+http\://www.springframework.org/schema/social/spring-social-yammer-1.0.xsd=org/springframework/social/yammer/config/xml/spring-social-yammer-1.0.xsd
