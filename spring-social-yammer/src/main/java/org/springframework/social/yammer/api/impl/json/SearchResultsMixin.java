@@ -17,9 +17,9 @@ package org.springframework.social.yammer.api.impl.json;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.social.yammer.api.Group;
 import org.springframework.social.yammer.api.MessageInfo;
 import org.springframework.social.yammer.api.SearchResults.SearchStats;

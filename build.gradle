@@ -18,12 +18,12 @@ configure(allprojects) {
     targetCompatibility=1.5
 
     ext {
-      springSocialVersion = '1.0.2.RELEASE'
-      jacksonVersion = '1.9.6'
+      springSocialVersion = '1.1.2.RELEASE'
+      jacksonVersion = '2.5.4'
       junitVersion = '4.10'
       mockitoVersion = '1.9.0'
-      springVersion = '3.1.0.RELEASE'
-      springSecurityCryptoVersion = '3.1.0.RELEASE'
+      springVersion = '4.1.7.RELEASE'
+      springSecurityCryptoVersion = '4.0.1.RELEASE'
       springTestMvcVersion = "1.0.0.BUILD-SNAPSHOT"
     }
 
@@ -99,7 +99,7 @@ project('spring-social-yammer') {
     description = 'Yammer API'
     dependencies {
        compile ("org.springframework.social:spring-social-core:$springSocialVersion")
-       compile ("org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion")
+       compile ("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
        compile ("org.springframework.security:spring-security-crypto:$springSecurityCryptoVersion")
        testCompile ("org.springframework:spring-test-mvc:$springTestMvcVersion")
     }

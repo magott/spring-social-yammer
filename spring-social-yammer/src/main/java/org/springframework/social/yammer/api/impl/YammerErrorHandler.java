@@ -1,9 +1,9 @@
 package org.springframework.social.yammer.api.impl;
 
-import org.codehaus.jackson.JsonFactory;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus.Series;
 import org.springframework.http.client.ClientHttpResponse;
@@ -17,7 +17,7 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 
 	private static final String RATE_LIMIT_EXCEEDED_MESSAGE_TEXT = "Rate limited due to excessive requests.";
 	private static final String ERROR_MESSAGE_KEY = "message";
-
+    private static final String YAMMER_PROVIDER_ID = "yammer";
 
 	@Override
 	public void handleError(ClientHttpResponse response) throws IOException {
@@ -33,7 +33,7 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 		try {
 			super.handleError(response);
 		} catch (Exception e) {
-			throw new UncategorizedApiException("Error consuming Yammer REST API", e);
+			throw new UncategorizedApiException(YAMMER_PROVIDER_ID, "Error consuming Yammer REST API", e);
 		}
 
 	}
@@ -44,16 +44,16 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 		if (statusCode == HttpStatus.UNAUTHORIZED) {
 			chekForRateLimitError(response);
 			// Falls back to default 401 handling
-			throw new NotAuthorizedException(response.getStatusText());
+			throw new NotAuthorizedException(YAMMER_PROVIDER_ID, response.getStatusText());
 
 		} else if (statusCode == HttpStatus.FORBIDDEN) {
 			// When Yammer fixes it's bug in the returned error code for rate
 			// limits, 403 will be returned
-			throw new RateLimitExceededException();
+			throw new RateLimitExceededException(YAMMER_PROVIDER_ID);
 		} else if (statusCode == HttpStatus.NOT_FOUND) {
-			throw new ResourceNotFoundException(statusCode.toString()+" Resources does not exists or you were trying to create a duplicate ");
+			throw new ResourceNotFoundException(YAMMER_PROVIDER_ID, statusCode.toString()+" Resources does not exists or you were trying to create a duplicate ");
 		}else if(statusCode == HttpStatus.BAD_REQUEST){
-			throw new OperationNotPermittedException("The resources does not exist or you don't have permission to do that (HTTP 400)");
+			throw new OperationNotPermittedException(YAMMER_PROVIDER_ID, "The resources does not exist or you don't have permission to do that (HTTP 400)");
 		}
 	}
 
@@ -75,7 +75,7 @@ public class YammerErrorHandler extends DefaultResponseErrorHandler {
 			if (errorMessage.equals(RATE_LIMIT_EXCEEDED_MESSAGE_TEXT)) {
 				// While the API doc says it will return 403 for rate limits
 				// Yammer returns 401 with special message text
-				throw new RateLimitExceededException();
+				throw new RateLimitExceededException(YAMMER_PROVIDER_ID);
 			}
 		}
 	}
