@@ -21,10 +21,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 
 /**
  * @author Morten Andersen-Gott
@@ -35,17 +35,17 @@ public class YammerDateDeserializer extends JsonDeserializer<Date> {
 	//Example format: 2011/03/03 21:12:57 +0000
 	public static final String DATE_FORMAT_MASK = "yyy/MM/dd HH:mm:ss Z";
 	public static final Locale LOCALE = Locale.ENGLISH;
-	
 
-	@Override
-	public Date deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+
+    @Override
+    public Date deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         try {
             return createDateFormatter().parse(jp.getText());
         } catch (ParseException e) {
             return null;
         }
 	}
-	
+
 	SimpleDateFormat createDateFormatter(){
 		return new SimpleDateFormat(DATE_FORMAT_MASK, LOCALE);		
 	}
